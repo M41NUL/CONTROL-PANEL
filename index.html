@@ -479,6 +479,436 @@
             border-color: rgba(0, 255, 0, 0.3);
         }
         
+        /* ========== ADMIN PANEL STYLES ========== */
+
+/* Stats Cards */
+.stat-card {
+    background: rgba(0, 255, 0, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px solid #00ff00;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+}
+
+.stat-card i {
+    color: #00ff00;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 13px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-size: 32px;
+    color: #00ff00;
+    font-weight: bold;
+}
+
+/* Active Bots Card */
+.stat-card.red {
+    background: rgba(255, 0, 0, 0.1);
+    border-color: #ff0000;
+}
+
+.stat-card.red i {
+    color: #ff0000;
+}
+
+.stat-card.red .stat-value {
+    color: #ff0000;
+}
+
+/* User List Container */
+.user-list-container {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 255, 0, 0.1);
+}
+
+.user-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    color: #00ff00;
+    font-size: 14px;
+}
+
+.user-list-header button {
+    background: none;
+    border: 1px solid #00ff00;
+    color: #00ff00;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-list-header button:hover {
+    background: #00ff00;
+    color: black;
+    transform: rotate(180deg);
+}
+
+/* User List Items */
+.user-list-items {
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 8px;
+}
+
+.user-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s;
+}
+
+.user-list-item:hover {
+    background: rgba(0, 255, 0, 0.05);
+}
+
+.user-list-item span {
+    color: #00ff00;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+}
+
+.user-list-item button {
+    background: none;
+    border: none;
+    color: #ff4444;
+    cursor: pointer;
+    padding: 5px 8px;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.user-list-item button:hover {
+    background: #ff4444;
+    color: white;
+    transform: scale(1.1);
+}
+
+/* Admin Controls Grid */
+.admin-controls-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.admin-control-btn {
+    padding: 12px;
+    border: 1px solid;
+    border-radius: 10px;
+    background: transparent;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.admin-control-btn.green {
+    border-color: #00ff00;
+    color: #00ff00;
+}
+
+.admin-control-btn.green:hover {
+    background: #00ff00;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+}
+
+.admin-control-btn.red {
+    border-color: #ff0000;
+    color: #ff0000;
+}
+
+.admin-control-btn.red:hover {
+    background: #ff0000;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+}
+
+/* Server Info Card */
+.server-info-card {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(0, 255, 0, 0.1);
+}
+
+.server-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.server-info-row:last-child {
+    border-bottom: none;
+}
+
+.server-info-label {
+    color: #888;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.server-info-label i {
+    color: #00ff00;
+    font-size: 12px;
+}
+
+.server-info-value {
+    color: #00ff00;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* Admin Log */
+.admin-log-container {
+    margin-bottom: 20px;
+}
+
+.admin-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.admin-log-header span {
+    color: #00ff00;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.admin-log-header button {
+    background: none;
+    border: 1px solid #ff0000;
+    color: #ff0000;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.admin-log-header button:hover {
+    background: #ff0000;
+    color: white;
+}
+
+.admin-log-content {
+    background: #0a0a0a;
+    height: 100px;
+    overflow-y: auto;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    border: 1px solid #333;
+}
+
+.admin-log-line {
+    color: #00ff00;
+    margin-bottom: 4px;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.admin-log-time {
+    color: #008800;
+    margin-right: 8px;
+}
+
+/* Logout Button */
+.admin-logout-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(45deg, #666, #444);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.admin-logout-btn:hover {
+    background: linear-gradient(45deg, #777, #555);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading Spinner */
+.loading-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #00ff00;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 20px;
+    color: #666;
+    font-size: 12px;
+}
+
+.empty-state i {
+    font-size: 24px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+/* Admin Form */
+.admin-login-form {
+    transition: all 0.3s;
+}
+
+.admin-login-form.hidden {
+    display: none;
+}
+
+/* Success/Error Messages */
+.admin-message {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.admin-message.success {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid #00ff00;
+    color: #00ff00;
+}
+
+.admin-message.error {
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid #ff0000;
+    color: #ff0000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stat-card {
+        padding: 15px;
+    }
+    
+    .stat-value {
+        font-size: 24px;
+    }
+    
+    .admin-controls-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .user-list-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    
+    .user-list-item button {
+        align-self: flex-end;
+    }
+}
+
+/* Scrollbar for Admin Log */
+.admin-log-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.admin-log-content::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.admin-log-content::-webkit-scrollbar-thumb {
+    background: #00ff00;
+    border-radius: 4px;
+}
+
+/* Hover Effects */
+.glass-card .stat-card {
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.glass-card .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
+}
+
+/* Admin Badge */
+.admin-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+    margin-left: 8px;
+}
+
+.admin-badge i {
+    font-size: 10px;
+}
         .support-bubble {
             position: fixed;
             bottom: 30px;
@@ -1732,23 +2162,114 @@
                 </div>
 </div>
 
-            <div id="adminSection" class="content-section" style="display: none;">
-                <div class="glass-card">
-                    <h3 class="sub-heading">ADMIN PANEL</h3>
-                    
-                    <div class="input-wrapper">
-                        <i class="fas fa-key"></i>
-                        <input type="password" id="adminPasskey" placeholder="Admin Passkey">
-                        <i class="fas fa-eye-slash eye-icon" id="adminEyeIcon" onclick="toggleAdminPassword()"></i>
-                    </div>
-                    
-                    <button class="admin-btn" onclick="adminLogin()">
-                        <i class="fas fa-lock"></i> LOGIN ADMIN
-                    </button>
+            <!-- ========== ADMIN PANEL SECTION ========== -->
+<div id="adminSection" class="content-section" style="display: none;">
+    <div class="glass-card">
+        <div class="flex items-center gap-2 mb-4">
+            <i class="fas fa-crown text-[#ffd700] text-xl"></i>
+            <h3 class="sub-heading m-0">ADMIN PANEL</h3>
+        </div>
+        
+        <!-- Admin Login Form (visible when not logged in) -->
+        <div id="adminLoginForm">
+            <div class="input-wrapper">
+                <i class="fas fa-key"></i>
+                <input type="password" id="adminPasskey" placeholder="Admin Passkey">
+                <i class="fas fa-eye-slash eye-icon" id="adminEyeIcon" onclick="toggleAdminPassword()"></i>
+            </div>
+            
+            <button class="admin-btn" onclick="adminLogin()">
+                <i class="fas fa-lock"></i> LOGIN ADMIN
+            </button>
+        </div>
+        
+        <!-- Admin Dashboard (visible after login) -->
+        <div id="adminContent" style="display: none;">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="bg-[#00ff00]/10 p-4 rounded-xl text-center border border-[#00ff00]">
+                    <i class="fas fa-users text-[#00ff00] text-2xl mb-2"></i>
+                    <div class="text-xs text-gray-500 uppercase">TOTAL USERS</div>
+                    <div class="text-3xl text-[#00ff00] font-bold" id="totalUsers">0</div>
+                </div>
+                <div class="bg-[#ff0000]/10 p-4 rounded-xl text-center border border-[#ff0000]">
+                    <i class="fas fa-robot text-[#ff0000] text-2xl mb-2"></i>
+                    <div class="text-xs text-gray-500 uppercase">ACTIVE BOTS</div>
+                    <div class="text-3xl text-[#ff0000] font-bold" id="activeBots">0</div>
                 </div>
             </div>
-        </div>
-    </div>
+            
+            <!-- User Management -->
+            <div class="mb-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-[#00ff00] text-sm"><i class="fas fa-list mr-1"></i>USER ACCOUNTS</span>
+                    <button class="text-xs bg-[#00ff00]/10 border border-[#00ff00] px-3 py-1 rounded hover:bg-[#00ff00] hover:text-black transition" onclick="refreshUserList()">
+                        <i class="fas fa-sync-alt mr-1"></i>REFRESH
+                    </button>
+                </div>
+                
+                <div class="bg-black/30 rounded-lg p-2 max-h-48 overflow-y-auto" id="userList">
+                    <div class="text-center text-gray-600 py-4">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>Loading users...
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Controls -->
+            <div class="grid grid-cols-2 gap-2 mb-4">
+                <button class="border border-[#00ff00] bg-[#00ff00]/10 text-[#00ff00] px-3 py-2 rounded text-sm hover:bg-[#00ff00] hover:text-black transition" onclick="restartAllBots()">
+                    <i class="fas fa-sync-alt mr-1"></i>RESTART ALL
+                </button>
+                <button class="border border-[#ff0000] bg-[#ff0000]/10 text-[#ff0000] px-3 py-2 rounded text-sm hover:bg-[#ff0000] hover:text-white transition" onclick="stopAllBots()">
+                    <i class="fas fa-stop-circle mr-1"></i>STOP ALL
+                </button>
+                <button class="border border-[#00ff00] bg-[#00ff00]/10 text-[#00ff00] px-3 py-2 rounded text-sm hover:bg-[#00ff00] hover:text-black transition" onclick="clearAllConsoles()">
+                    <i class="fas fa-eraser mr-1"></i>CLEAR ALL
+                </button>
+                <button class="border border-[#00ff00] bg-[#00ff00]/10 text-[#00ff00] px-3 py-2 rounded text-sm hover:bg-[#00ff00] hover:text-black transition" onclick="exportAccounts()">
+                    <i class="fas fa-download mr-1"></i>EXPORT
+                </button>
+            </div>
+            
+            <!-- Server Info -->
+            <div class="bg-black/20 rounded-lg p-3 mb-4 text-xs">
+                <div class="flex justify-between mb-1">
+                    <span class="text-gray-500">SERVER UPTIME:</span>
+                    <span class="text-[#00ff00]" id="adminServerUptime">00h 00m 00s</span>
+                </div>
+                <div class="flex justify-between mb-1">
+                    <span class="text-gray-500">TOTAL BOTS:</span>
+                    <span class="text-[#00ff00]" id="totalBotsCount">0</span>
+                </div>
+                <div class="flex justify-between">
+                    <span class="text-gray-500">API STATUS:</span>
+                    <span class="text-[#00ff00]">✅ CONNECTED</span>
+                </div>
+            </div>
+            
+            <!-- Admin Activity Log -->
+            <div class="mb-4">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-[#00ff00] text-sm"><i class="fas fa-history mr-1"></i>ADMIN LOG</span>
+                    <button class="text-xs text-[#ff0000] hover:text-white hover:bg-[#ff0000] px-2 py-1 rounded transition" onclick="clearAdminLog()">
+                        <i class="fas fa-trash mr-1"></i>CLEAR
+                    </button>
+                </div>
+                <div class="bg-[#0a0a0a] h-24 overflow-y-auto p-2 rounded text-xs border border-gray-800 font-mono" id="adminLog">
+                    <div class="text-[#00ff00]">
+                        <span class="text-[#008800]">[00:00:00]</span> Admin panel initialized
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Logout Button -->
+            <button class="w-full bg-gradient-to-r from-gray-700 to-gray-900 text-white py-3 rounded-lg font-bold hover:from-gray-600 hover:to-gray-800 transition flex items-center justify-center gap-2" onclick="adminLogout()">
+                <i class="fas fa-sign-out-alt"></i> LOGOUT
+          	 </button>
+         </div>
+    	 </div>
+ 		</div>
+</div>
 
 <script>
     const API_URL = "https://darklink-tcp.onrender.com";
@@ -1875,7 +2396,7 @@
             
             if (realBotStatus) {
                 if (data.start_time) {
-                    botStartTime = data.start_time * 1000; // REAL TIME
+                    botStartTime = data.start_time * 1000;
                     addConsoleLine(`🤖 Bot running since: ${new Date(botStartTime).toLocaleTimeString()}`);
                 } else if (!botStartTime) {
                     botStartTime = Date.now();
@@ -1920,7 +2441,6 @@
 
     // ========== DUAL STATUS SYSTEM ==========
     function startDualStatusSystem() {
-        // Switch every 3 seconds
         setInterval(() => {
             showServer = !showServer;
             
@@ -1932,7 +2452,6 @@
             setTimeout(updateStatusUI, 300);
         }, 3000);
         
-        // Update every second
         setInterval(() => {
             getBotRealStatus();
             updateStatusUI();
@@ -2053,48 +2572,501 @@
         icon.classList.toggle('fa-eye');
     }
 
-    // ========== LOGIN HANDLER ==========
+    // ========== 🔥 LOGIN HANDLER (API CONNECTED) ==========
     function handleLogin() {
-        const username = document.getElementById('loginUsername').value;
-        const password = document.getElementById('loginPassword').value;
+        const username = document.getElementById('loginUsername').value.trim();
+        const password = document.getElementById('loginPassword').value.trim();
         const errorDiv = document.getElementById('loginError');
-        
+
         if (!username || !password) {
             errorDiv.style.display = 'block';
-            errorDiv.textContent = 'Please fill in all fields!';
+            errorDiv.textContent = 'Please fill all fields!';
             document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.add('shake'));
             setTimeout(() => document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.remove('shake')), 500);
             return;
         }
-        
-        if (username === 'mainul' && password === '1234') {
-            localStorage.setItem(STORAGE_LOGIN, 'true');
-            
-            document.getElementById('loginPage').classList.remove('active');
-            document.getElementById('panelPage').classList.add('active');
-            
-            const savedUid = localStorage.getItem(STORAGE_UID);
-            const savedPass = localStorage.getItem(STORAGE_PASS);
-            
-            if (savedUid && savedPass) {
-                document.getElementById('accountUid').value = savedUid;
-                document.getElementById('accountPass').value = savedPass;
-                addConsoleLine('✅ Loaded saved account');
+
+        addConsoleLine('🔐 Sending login request...');
+
+        fetch(`${API_URL}/api/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                localStorage.setItem(STORAGE_LOGIN, 'true');
+
+                document.getElementById('loginPage').classList.remove('active');
+                document.getElementById('panelPage').classList.add('active');
+
+                const savedUid = localStorage.getItem(STORAGE_UID);
+                const savedPass = localStorage.getItem(STORAGE_PASS);
+                
+                if (savedUid && savedPass) {
+                    document.getElementById('accountUid').value = savedUid;
+                    document.getElementById('accountPass').value = savedPass;
+                    addConsoleLine('✅ Loaded saved account');
+                }
+
+                addConsoleLine('✅ Login successful!');
+                showPopup('🔥 Welcome back, MAINUL - X!', 'success');
+
+                getServerStartTime();
+                getBotRealStatus();
+                startDualStatusSystem();
+                startLiveConsoleSync();
+            } else {
+                errorDiv.style.display = 'block';
+                errorDiv.textContent = data.msg || 'Login failed';
+                addConsoleLine('❌ Login failed');
+                
+                document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.add('shake'));
+                setTimeout(() => document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.remove('shake')), 500);
             }
-            
-            addConsoleLine('✅ Welcome, MAINUL - X!');
-            
-            getServerStartTime();
-            getBotRealStatus();
-            startDualStatusSystem();
-            startLiveConsoleSync();
-        } else {
+        })
+        .catch(() => {
             errorDiv.style.display = 'block';
-            errorDiv.textContent = 'Invalid credentials!';
+            errorDiv.textContent = 'Server error!';
+            addConsoleLine('❌ API connection error');
+            
             document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.add('shake'));
             setTimeout(() => document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.remove('shake')), 500);
-        }
+        });
     }
+
+  // ========== ADMIN PANEL FUNCTIONS ==========
+
+let isAdminLoggedIn = false;
+
+// 👑 Admin Login Function
+function adminLogin() {
+    const passkey = document.getElementById('adminPasskey').value.trim();
+
+    if (!passkey) {
+        showPopup('❌ Please enter admin password', 'error');
+        return;
+    }
+
+    addConsoleLine('👑 Verifying admin credentials...');
+
+    fetch(`${API_URL}/api/admin_login`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ password: passkey })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            isAdminLoggedIn = true;
+            
+            // Store admin pass in localStorage (for future API calls)
+            localStorage.setItem('admin_pass', passkey);
+            
+            addConsoleLine('✅ Admin login successful');
+            showPopup('👑 Admin access granted!', 'success');
+            
+            // Hide login form, show dashboard
+            document.getElementById('adminLoginForm').style.display = 'none';
+            document.getElementById('adminContent').style.display = 'block';
+            document.getElementById('adminPasskey').value = '';
+            
+            // Load admin data
+            loadAdminData();
+            addAdminLog('✅ Admin logged in');
+        } else {
+            addConsoleLine('❌ Wrong admin password');
+            showPopup('❌ Wrong admin password', 'error');
+            
+            document.querySelector('#adminLoginForm .input-wrapper input').classList.add('shake');
+            setTimeout(() => {
+                document.querySelector('#adminLoginForm .input-wrapper input').classList.remove('shake');
+            }, 500);
+        }
+    })
+    .catch(() => {
+        addConsoleLine('❌ Server error');
+        showPopup('❌ Server error', 'error');
+    });
+}
+
+// 👑 Load Admin Dashboard Data
+function loadAdminData() {
+    // Load users count
+    fetch(`${API_URL}/api/accounts`, {
+        headers: { "x-api-key": API_KEY }
+    })
+    .then(res => res.json())
+    .then(data => {
+        const userCount = Object.keys(data).length;
+        document.getElementById('totalUsers').innerText = userCount;
+        document.getElementById('totalBotsCount').innerText = userCount;
+        
+        // Render user list
+        renderUserList(data);
+    })
+    .catch(err => {
+        addAdminLog('❌ Failed to load users');
+    });
+
+    // Load active bots
+    fetch(`${API_URL}/api/status`, {
+        headers: { "x-api-key": API_KEY }
+    })
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById('activeBots').innerText = data.running_bots || 0;
+    });
+
+    // Load server uptime
+    updateServerUptime();
+    setInterval(updateServerUptime, 1000);
+}
+
+// 👑 Render User List
+function renderUserList(users) {
+    const userListEl = document.getElementById('userList');
+    
+    if (!users || Object.keys(users).length === 0) {
+        userListEl.innerHTML = `
+            <div class="empty-state">
+                <i class="fas fa-users-slash"></i>
+                <div>No users found</div>
+            </div>
+        `;
+        return;
+    }
+
+    let html = '';
+    for (let uid in users) {
+        html += `
+            <div class="user-list-item">
+                <span>${uid}</span>
+                <button onclick="deleteUser('${uid}')" title="Delete user">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        `;
+    }
+    
+    userListEl.innerHTML = html;
+    addAdminLog(`📋 Loaded ${Object.keys(users).length} users`);
+}
+
+// 👑 Refresh User List
+function refreshUserList() {
+    addAdminLog('🔄 Refreshing user list...');
+    
+    fetch(`${API_URL}/api/accounts`, {
+        headers: { "x-api-key": API_KEY }
+    })
+    .then(res => res.json())
+    .then(data => {
+        renderUserList(data);
+        document.getElementById('totalUsers').innerText = Object.keys(data).length;
+        addAdminLog('✅ User list refreshed');
+    })
+    .catch(() => {
+        addAdminLog('❌ Failed to refresh');
+    });
+}
+
+// 👑 Delete User
+function deleteUser(uid) {
+    if (!confirm(`⚠️ Are you sure you want to delete user ${uid}?`)) return;
+    
+    const admin_pass = localStorage.getItem('admin_pass');
+    
+    if (!admin_pass) {
+        showPopup('❌ Admin authentication required', 'error');
+        return;
+    }
+
+    addAdminLog(`🗑️ Deleting user: ${uid}`);
+
+    fetch(`${API_URL}/api/admin/delete_user`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-api-key": API_KEY
+        },
+        body: JSON.stringify({ 
+            uid, 
+            admin_pass: admin_pass 
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            addAdminLog(`✅ User ${uid} deleted`);
+            showPopup('✅ User deleted successfully', 'success');
+            refreshUserList(); // Refresh the list
+        } else {
+            addAdminLog(`❌ Failed to delete user: ${data.msg}`);
+            showPopup(data.msg || 'Failed to delete', 'error');
+        }
+    })
+    .catch(() => {
+        addAdminLog('❌ Server error during delete');
+        showPopup('❌ Server error', 'error');
+    });
+}
+
+// 👑 Restart All Bots
+function restartAllBots() {
+    if (!confirm('⚠️ Are you sure you want to restart ALL bots?')) return;
+    
+    const admin_pass = localStorage.getItem('admin_pass');
+    
+    addAdminLog('🔄 Restarting all bots...');
+
+    fetch(`${API_URL}/api/admin/stop_all`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-api-key": API_KEY
+        },
+        body: JSON.stringify({ admin_pass: admin_pass })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            addAdminLog('✅ All bots stopped');
+            
+            // Now start them again
+            setTimeout(() => {
+                fetch(`${API_URL}/api/accounts`, {
+                    headers: { "x-api-key": API_KEY }
+                })
+                .then(res => res.json())
+                .then(accounts => {
+                    for (let uid in accounts) {
+                        fetch(`${API_URL}/api/start`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "x-api-key": API_KEY
+                            },
+                            body: JSON.stringify({ 
+                                uid, 
+                                password: accounts[uid] 
+                            })
+                        });
+                    }
+                    addAdminLog('✅ All bots restarted');
+                    showPopup('✅ Restart commands sent', 'success');
+                });
+            }, 2000);
+        } else {
+            addAdminLog('❌ Failed to restart bots');
+        }
+    })
+    .catch(() => {
+        addAdminLog('❌ Server error');
+    });
+}
+
+// 👑 Stop All Bots
+function stopAllBots() {
+    if (!confirm('⚠️ Are you sure you want to stop ALL bots?')) return;
+    
+    const admin_pass = localStorage.getItem('admin_pass');
+    
+    addAdminLog('🛑 Stopping all bots...');
+
+    fetch(`${API_URL}/api/admin/stop_all`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-api-key": API_KEY
+        },
+        body: JSON.stringify({ admin_pass: admin_pass })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            addAdminLog(`✅ Stopped ${data.msg || 'all bots'}`);
+            document.getElementById('activeBots').innerText = '0';
+            showPopup('✅ All bots stopped', 'success');
+        } else {
+            addAdminLog('❌ Failed to stop bots');
+        }
+    })
+    .catch(() => {
+        addAdminLog('❌ Server error');
+    });
+}
+
+// 👑 Clear All Consoles
+function clearAllConsoles() {
+    if (!confirm('⚠️ Clear ALL consoles?')) return;
+    
+    const admin_pass = localStorage.getItem('admin_pass');
+    
+    addAdminLog('🧹 Clearing all consoles...');
+
+    fetch(`${API_URL}/api/admin/clear_all`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-api-key": API_KEY
+        },
+        body: JSON.stringify({ admin_pass: admin_pass })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            addAdminLog('✅ All consoles cleared');
+            showPopup('✅ All consoles cleared', 'success');
+        } else {
+            addAdminLog('❌ Failed to clear consoles');
+        }
+    })
+    .catch(() => {
+        addAdminLog('❌ Server error');
+    });
+}
+
+// 👑 Export Accounts to JSON
+function exportAccounts() {
+    addAdminLog('📦 Exporting accounts data...');
+
+    fetch(`${API_URL}/api/accounts`, {
+        headers: { "x-api-key": API_KEY }
+    })
+    .then(res => res.json())
+    .then(data => {
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `accounts_backup_${new Date().toISOString().slice(0,10)}.json`;
+        a.click();
+        URL.revokeObjectURL(url);
+        
+        addAdminLog('✅ Data exported successfully');
+        showPopup('✅ Accounts exported', 'success');
+    })
+    .catch(() => {
+        addAdminLog('❌ Export failed');
+        showPopup('❌ Export failed', 'error');
+    });
+}
+
+// 👑 Add Admin Log Entry
+function addAdminLog(text) {
+    const logEl = document.getElementById('adminLog');
+    if (!logEl) return;
+    
+    const now = new Date();
+    const time = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
+    
+    const line = document.createElement('div');
+    line.className = 'admin-log-line';
+    line.innerHTML = `<span class="admin-log-time">[${time}]</span> ${text}`;
+    
+    logEl.appendChild(line);
+    logEl.scrollTop = logEl.scrollHeight;
+    
+    // Also add to main console
+    addConsoleLine(`👑 ADMIN: ${text}`);
+}
+
+// 👑 Clear Admin Log
+function clearAdminLog() {
+    const logEl = document.getElementById('adminLog');
+    if (logEl) {
+        logEl.innerHTML = '';
+        addAdminLog('📋 Admin log cleared');
+    }
+}
+
+// 👑 Update Server Uptime in Admin Panel
+function updateServerUptime() {
+    fetch(`${API_URL}/api/status`, {
+        headers: { "x-api-key": API_KEY }
+    })
+    .then(res => res.json())
+    .then(data => {
+        let uptimeStr = data.server_uptime || data.uptime || "0s";
+        
+        // Parse seconds
+        let seconds = 0;
+        if (uptimeStr.includes('s')) {
+            seconds = parseInt(uptimeStr.replace('s', ''));
+        }
+        
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+        const secs = seconds % 60;
+        
+        const formatted = `${hours.toString().padStart(2,'0')}h ${minutes.toString().padStart(2,'0')}m ${secs.toString().padStart(2,'0')}s`;
+        document.getElementById('adminServerUptime').innerText = formatted;
+    })
+    .catch(() => {
+        document.getElementById('adminServerUptime').innerText = '--h --m --s';
+    });
+}
+
+// 👑 Admin Logout
+function adminLogout() {
+    isAdminLoggedIn = false;
+    localStorage.removeItem('admin_pass');
+    
+    document.getElementById('adminLoginForm').style.display = 'block';
+    document.getElementById('adminContent').style.display = 'none';
+    
+    addAdminLog('👋 Admin logged out');
+    showPopup('Admin logged out', 'info');
+}
+
+// 👑 Check Admin Status when switching to admin section
+function checkAdminStatus() {
+    const adminPass = localStorage.getItem('admin_pass');
+    
+    if (adminPass) {
+        // Verify with server (optional)
+        fetch(`${API_URL}/api/admin_login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ password: adminPass })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                isAdminLoggedIn = true;
+                document.getElementById('adminLoginForm').style.display = 'none';
+                document.getElementById('adminContent').style.display = 'block';
+                loadAdminData();
+            } else {
+                // Invalid stored pass
+                localStorage.removeItem('admin_pass');
+                document.getElementById('adminLoginForm').style.display = 'block';
+                document.getElementById('adminContent').style.display = 'none';
+            }
+        });
+    } else {
+        document.getElementById('adminLoginForm').style.display = 'block';
+        document.getElementById('adminContent').style.display = 'none';
+    }
+}
+
+// 👑 Update showSection function to include admin check
+// (Add this inside your existing showSection function)
+/*
+// Add this inside the 'admin' section case:
+if (section === 'admin') {
+    checkAdminStatus();
+}
+*/
 
     // ========== SAVE ACCOUNT ==========
     function saveAccount() {
@@ -2141,41 +3113,45 @@
         });
     }
 
-    // ========== SIDEBAR ==========
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('open');
-        document.getElementById('overlay').classList.toggle('active');
-    }
+// ========== SIDEBAR ==========
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('active');
+}
+
+function closeSidebar() {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('overlay').classList.remove('active');
+}
+
+function logout() {
+    localStorage.removeItem(STORAGE_LOGIN);
+    localStorage.removeItem('admin_pass'); // Also remove admin session
+    document.getElementById('panelPage').classList.remove('active');
+    document.getElementById('loginPage').classList.add('active');
+    document.getElementById('loginUsername').value = '';
+    document.getElementById('loginPassword').value = '';
+    addConsoleLine('👋 Logged out');
+}
+
+function showSection(section) {
+    document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.sidebar-menu-item').forEach(el => el.classList.remove('active'));
     
-    function closeSidebar() {
-        document.getElementById('sidebar').classList.remove('open');
-        document.getElementById('overlay').classList.remove('active');
-    }
-    
-    function logout() {
-        localStorage.removeItem(STORAGE_LOGIN);
-        document.getElementById('panelPage').classList.remove('active');
-        document.getElementById('loginPage').classList.add('active');
-        document.getElementById('loginUsername').value = '';
-        document.getElementById('loginPassword').value = '';
-        addConsoleLine('👋 Logged out');
-    }
-    
-    function showSection(section) {
-        document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.sidebar-menu-item').forEach(el => el.classList.remove('active'));
+    if (section === 'control') {
+        document.getElementById('controlSection').style.display = 'block';
+        document.querySelector('.sidebar-menu-item').classList.add('active');
+    } else if (section === 'login') {
+        document.getElementById('loginSection').style.display = 'block';
+        document.querySelectorAll('.sidebar-menu-item')[1].classList.add('active');
+    } else if (section === 'admin') {
+        document.getElementById('adminSection').style.display = 'block';
+        document.querySelectorAll('.sidebar-menu-item')[2].classList.add('active');
         
-        if (section === 'control') {
-            document.getElementById('controlSection').style.display = 'block';
-            document.querySelector('.sidebar-menu-item').classList.add('active');
-        } else if (section === 'login') {
-            document.getElementById('loginSection').style.display = 'block';
-            document.querySelectorAll('.sidebar-menu-item')[1].classList.add('active');
-        } else if (section === 'admin') {
-            document.getElementById('adminSection').style.display = 'block';
-            document.querySelectorAll('.sidebar-menu-item')[2].classList.add('active');
-        }
+        
+        checkAdminStatus();
     }
+}
     
     function toggleBot() {
         const toggle = document.getElementById('botToggle');
@@ -2426,22 +3402,6 @@
         const console = document.getElementById('console');
         console.scrollTop = console.scrollHeight;
         addConsoleLine('📜 Scrolled to bottom');
-    }
-
-    // ========== ADMIN LOGIN ==========
-    function adminLogin() {
-        const passkey = document.getElementById('adminPasskey').value;
-        
-        if(passkey === 'admin123') {
-            addConsoleLine('✅ Admin login successful');
-            addConsoleLine('🔐 Admin access granted');
-            showPopup('✅ Admin login successful', 'success');
-        } else {
-            addConsoleLine('❌ Invalid admin passkey');
-            showPopup('❌ Invalid passkey', 'error');
-            document.querySelector('.input-wrapper input').classList.add('shake');
-            setTimeout(() => document.querySelector('.input-wrapper input').classList.remove('shake'), 500);
-        }
     }
 
     // ========== ADD CONSOLE LINE ==========
