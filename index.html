@@ -3,7 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="title" content="MAINUL TCP CONTROLLER - ফ্রি ফায়ার বট প্যানেল">
+    <meta name="description" content="MAINUL TCP CONTROLLER - পূর্ণাঙ্গ ফ্রি ফায়ার বট কন্ট্রোল প্যানেল। রিয়েল টাইম বট স্ট্যাটাস, লাইভ কনসোল ভিউয়ার, অ্যাকাউন্ট ম্যানেজমেন্ট। ডেভেলপার: MAINUL - X | টেলিগ্রাম: @mdmainulislaminfo | হোয়াটসঅ্যাপ: +8801308850528">
+    <meta name="keywords" content="mainul tcp, free fire bot, ff bot, tcp controller, mainul bot, bot panel, ff hack, free fire panel, mainul islam">
+    <meta name="author" content="MAINUL - X (Md. Mainul Islam)">
+    <meta name="robots" content="index, follow">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mainul-tcp.onrender.com">
+    <meta property="og:title" content="MAINUL TCP CONTROLLER">
+    <meta property="og:description" content="MAINUL TCP CONTROLLER - ফ্রি ফায়ার বট কন্ট্রোল প্যানেল। রিয়েল টাইম বট ম্যানেজমেন্ট, কনসোল ভিউয়ার। ডেভেলপার: MAINUL - X">
+    <meta property="og:image" content="https://mainul-tcp.onrender.com/preview.jpg">
+    <meta property="og:site_name" content="MAINUL TCP">
+    
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mainul-tcp.onrender.com">
+    <meta property="twitter:title" content="MAINUL TCP CONTROLLER">
+    <meta property="twitter:description" content="ফ্রি ফায়ার বট কন্ট্রোল প্যানেল - MAINUL TCP">
+    <meta property="twitter:image" content="https://mainul-tcp.onrender.com/preview.jpg">
+    <meta property="twitter:creator" content="@mdmainulislaminfo">
+    
+    <meta name="telegram" content="@mdmainulislaminfo">
+    <meta name="whatsapp" content="+8801308850528">
+    <meta name="email" content="githubmainul@gmail.com">
+    <meta name="github" content="https://github.com/M41NUL">
     <title>MAINUL TCP CONTROLLER</title>
+<!-- =========================================== -->  
+    <!-- CREDIT DEV INFORMATION                  -->
+<!-- =========================================== -->
+<!--                                             -->
+<!-- BOT NAME      : MAINUL TCP CONTROLLER       -->
+<!-- AUTHOR        : Md. Mainul Islam            -->
+<!-- OWNER         : MAINUL - X                  -->
+<!-- GITHUB        : https://github.com/M41NUL   --> <!-- WHATSAPP  				: +8801308850528              -->
+<!-- TELEGRAM  				: @mdmainulislaminfo          -->
+<!-- EMAIL         : githubmainul@gmail.com      -->
+<!-- LICENSE       : MIT License                 -->
+<!-- CREATED DATE  : March 18, 2026              -->
+<!-- VERSION					  	: 1.0.1            			        -->
+<!--                                             -->
+<!-- Copyright (c) 2026 MAINUL - X. All Rights Reserved.-->
+<!-- =========================================== -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -918,39 +959,626 @@
             background: #00ff00;
             color: black;
         }
+        /* আপডেটেড সাপোর্ট বাবল - সুপার লাইভ */
+.support-bubble {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+}
+
+.bubble-button {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, #00ff00, #00cc00);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.4);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: pulse 2s infinite;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.bubble-button:hover {
+    transform: scale(1.15);
+    box-shadow: 0 12px 30px rgba(0, 255, 0, 0.7);
+}
+
+.bubble-button i {
+    color: black;
+    font-size: 22px;
+}
+
+.notification-dot {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    background: #ff0000;
+    border-radius: 50%;
+    border: 2px solid #050505;
+    animation: pulse 1s infinite;
+}
+
+.bubble-content {
+    position: absolute;
+    bottom: 60px;
+    right: 0;
+    width: 320px;
+    background: rgba(15, 15, 15, 0.98);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    box-shadow: 0 20px 50px rgba(0, 255, 0, 0.3);
+}
+
+.bubble-content.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+.bubble-content::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    right: 18px;
+    width: 24px;
+    height: 24px;
+    background: rgba(15, 15, 15, 0.98);
+    border-right: 1px solid rgba(0, 255, 0, 0.3);
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+    transform: rotate(45deg);
+    backdrop-filter: blur(20px);
+}
+
+.support-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.support-header i {
+    color: #00ff00;
+    font-size: 20px;
+}
+
+.support-header span {
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.live-badge {
+    background: rgba(255, 0, 0, 0.2);
+    padding: 4px 8px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    background: #ff0000;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+.live-badge span {
+    color: #ff0000;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.agent-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 0, 0.1);
+}
+
+.agent-avatar {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #00ff00, #00aa00);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agent-avatar i {
+    color: black;
+    font-size: 20px;
+}
+
+.agent-details {
+    flex: 1;
+}
+
+.agent-name {
+    color: #00ff00;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.agent-status {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: #888;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    background: #00ff00;
+    border-radius: 50%;
+    animation: pulse 1s infinite;
+}
+
+.response-time {
+    background: rgba(0, 255, 0, 0.1);
+    padding: 4px 8px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(0, 255, 0, 0.2);
+}
+
+.response-time i {
+    color: #00ff00;
+    font-size: 10px;
+}
+
+.response-time span {
+    color: #00ff00;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.quick-replies {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
+}
+
+.quick-reply-btn {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 20px;
+    padding: 6px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: #fff;
+    font-size: 11px;
+}
+
+.quick-reply-btn:hover {
+    background: rgba(0, 255, 0, 0.2);
+    border-color: #00ff00;
+    transform: translateY(-2px);
+}
+
+.quick-reply-btn i {
+    color: #00ff00;
+    font-size: 12px;
+}
+
+.support-info {
+    margin: 15px 0;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(0, 255, 0, 0.1);
+}
+
+.support-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+    padding: 8px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.support-item:hover {
+    background: rgba(0, 255, 0, 0.1);
+    transform: translateX(5px);
+}
+
+.support-item i {
+    width: 16px;
+    color: #00ff00;
+    font-size: 14px;
+}
+
+.support-item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.support-label {
+    color: #666;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.support-value {
+    color: #fff;
+    text-decoration: none;
+    font-size: 11px;
+    transition: color 0.3s;
+}
+
+.support-value:hover {
+    color: #00ff00;
+}
+
+.copy-btn-small {
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 4px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.copy-btn-small:hover {
+    background: #00ff00;
+    border-color: #00ff00;
+}
+
+.copy-btn-small i {
+    color: #00ff00;
+    font-size: 12px;
+}
+
+.copy-btn-small:hover i {
+    color: black;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0;
+    padding: 10px 15px;
+    background: rgba(0, 255, 0, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 0, 0.1);
+    width: fit-content;
+    max-width: 100%;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 15px 0;
+    padding: 15px 20px;
+    background: rgba(0, 255, 0, 0.08);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 30px;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.1);
+    backdrop-filter: blur(5px);
+}
+
+.typing-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.typing-dots span {
+    width: 10px;
+    height: 10px;
+    background: #00ff00;
+    border-radius: 50%;
+    animation: typing 1.4s infinite;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+.typing-text {
+    color: #00ff00;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    background: rgba(0, 255, 0, 0.1);
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    30% {
+        transform: translateY(-8px);
+        opacity: 1;
+    }
+}
+@keyframes typing {
+    0%, 60%, 100% {
+        transform: translateY(0);
+        opacity: 0.6;
+    }
+    30% {
+        transform: translateY(-px);
+        opacity: 1;
+    }
+}
+
+.support-footer {
+    text-align: center;
+    color: #666;
+    font-size: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.support-footer i {
+    color: #00ff00;
+    font-size: 12px;
+}
+
+.overlay-bubble {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99;
+    display: none;
+}
+
+.overlay-bubble.active {
+    display: block;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.stats-details {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.setting-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.setting-label i {
+    color: #00ff00;
+    width: 20px;
+}
+
+.setting-select {
+    margin-top: 15px;
+}
+
+.setting-select select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 8px;
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+
+.profile-avatar-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(0, 255, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #00ff00;
+}
     </style>
 </head>
 <body>
     <div class="fixed top-1/4 left-1/4 w-96 h-96 bg-[#00ff00] rounded-full mix-blend-multiply filter blur-[128px] opacity-10 -z-10"></div>
-    <div class="fixed bottom-1/4 right-1/4 w-96 h-96 bg-[#ff0000] rounded-full mix-blend-multiply filter blur-[128px] opacity-10 -z-10"></div>
+<div class="fixed bottom-1/4 right-1/4 w-96 h-96 bg-[#ff0000] rounded-full mix-blend-multiply filter blur-[128px] opacity-10 -z-10"></div>
 
-    <div class="support-bubble">
-        <div class="bubble-button">
-            <i class="fas fa-headset"></i>
-        </div>
-        <div class="bubble-content">
-            <div class="support-header">
+<!-- সুপার সাপোর্ট বাবল - লাইভ ফিল -->
+<div class="support-bubble">
+    <div class="bubble-button" onclick="toggleBubble()">
+        <i class="fas fa-headset"></i>
+        <span class="notification-dot"></span>
+    </div>
+    <div class="bubble-content" id="bubbleContent">
+        <!-- হেডার লাইভ স্ট্যাটাস -->
+        <div class="support-header">
+            <div class="flex items-center gap-2">
                 <i class="fas fa-user-circle"></i>
-                Mainul Support
-                <span class="online-status"></span>
+                <span>MAINUL SUPPORT</span>
             </div>
-            <div class="text-xs text-gray-400 mb-2">Online</div>
-            <div class="support-info">
-                <div class="support-item">
-                    <i class="fab fa-telegram"></i>
-                    <a href="#" target="_blank">@mdmainulislaminfo</a>
+            <div class="live-badge">
+                <span class="live-dot"></span>
+                <span>LIVE</span>
+            </div>
+        </div>
+        
+        <!-- এজেন্ট তথ্য -->
+        <div class="agent-info">
+            <div class="agent-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div class="agent-details">
+                <div class="agent-name">MAINUL - X</div>
+                <div class="agent-status">
+                    <span class="status-dot"></span>
+                    Online Now
                 </div>
-                <div class="support-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <a href="https://wa.me/8801308850528" target="_blank">+8801308850528</a>
+            </div>
+            <div class="response-time">
+                <i class="fas fa-bolt"></i>
+                2min
+            </div>
+        </div>
+        
+        <!-- কুইক রিপ্লাই বাটন -->
+        <div class="quick-replies">
+            <button class="quick-reply-btn" onclick="quickReply('help')">
+                <i class="fas fa-question-circle"></i> Help
+            </button>
+            <button class="quick-reply-btn" onclick="quickReply('price')">
+                <i class="fas fa-tag"></i> Price
+            </button>
+            <button class="quick-reply-btn" onclick="quickReply('bot')">
+                <i class="fas fa-robot"></i> Bot
+            </button>
+        </div>
+        
+        <!-- কন্টাক্ট ইনফো -->
+        <div class="support-info">
+            <div class="support-item">
+                <i class="fab fa-telegram-plane"></i>
+                <div class="support-item-content">
+                    <span class="support-label">Telegram</span>
+                    <a href="https://t.me/mdmainulislaminfo" target="_blank" class="support-value">@mdmainulislaminfo</a>
                 </div>
+                <button class="copy-btn-small" onclick="copyText('@mdmainulislaminfo')">
+                    <i class="fas fa-copy"></i>
+                </button>
             </div>
-            <div class="support-footer">
-                <i class="fas fa-clock mr-1"></i>
-                Available 24/7 for your mission
+            
+            <div class="support-item">
+                <i class="fab fa-whatsapp"></i>
+                <div class="support-item-content">
+                    <span class="support-label">WhatsApp</span>
+                    <a href="https://wa.me/8801308850528" target="_blank" class="support-value">+8801308850528</a>
+                </div>
+                <button class="copy-btn-small" onclick="copyText('+8801308850528')">
+                    <i class="fas fa-copy"></i>
+                </button>
             </div>
+            
+            <div class="support-item">
+                <i class="fab fa-github"></i>
+                <div class="support-item-content">
+                    <span class="support-label">GitHub</span>
+                    <a href="https://github.com/M41NUL" target="_blank" class="support-value">M41NUL</a>
+                </div>
+                <button class="copy-btn-small" onclick="copyText('M41NUL')">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+            
+            <div class="support-item">
+                <i class="fas fa-envelope"></i>
+                <div class="support-item-content">
+                    <span class="support-label">Email</span>
+                    <a href="mailto:githubmainul@gmail.com" class="support-value">githubmainul@gmail.com</a>
+                </div>
+                <button class="copy-btn-small" onclick="copyText('githubmainul@gmail.com')">
+                    <i class="fas fa-copy"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- টাইপিং ইন্ডিকেটর (বড় গ্রিন কার্ড) -->
+<div class="typing-indicator">
+    <div class="typing-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <div class="typing-text">Support is typing...</div>
+</div>
+        
+        <!-- ফুটার -->
+        <div class="support-footer">
+            <i class="fas fa-shield-alt"></i>
+            <span>24/7 Premium Support • Response < 5min</span>
         </div>
     </div>
+</div>
+
+<!-- Bubble Overlay -->
+<div class="overlay-bubble" id="bubbleOverlay" onclick="closeBubble()"></div>
 
     <div id="loginPage" class="page">
         <div class="login-container">
@@ -1039,11 +1667,11 @@
             <div id="controlSection" class="content-section" style="display: block;">
                 <div class="status-card">
                     <div class="status-row">
-                        <span>BOT STATUS</span>
+                        <span>BOT/SERVER STATUS</span>
                         <span class="badge-stopped" id="statusBadge">STOPPED</span>
                     </div>
                     <div class="status-row">
-                        <span>SERVER UPTIME</span>
+                        <span>BOT/SERVER UPTIME</span>
                         <span class="uptime" id="uptime">00h 00m 00s</span>
                     </div>
                 </div>
@@ -1102,7 +1730,7 @@
                         <i class="fas fa-save"></i> SAVE ACCOUNT
                     </button>
                 </div>
-            </div>
+</div>
 
             <div id="adminSection" class="content-section" style="display: none;">
                 <div class="glass-card">
@@ -1132,11 +1760,15 @@
     const STORAGE_THEME = "mainul_theme";
 
     let botEnabled = false;
-    let updateInterval = null;
-    let statusInterval = null;
-    let uptimeLoop = null;
-    let botTimerInterval = null;
     let botStartTime = null;
+    let serverStartTime = null;
+    let realBotStatus = false;
+    let consoleLines = [
+        { text: 'Console Initialized...', timestamp: '00:00:00' }
+    ];
+    
+    // Dual Status Switch
+    let showServer = true;
 
     document.addEventListener("DOMContentLoaded", function() {
         const savedTheme = localStorage.getItem(STORAGE_THEME);
@@ -1146,6 +1778,7 @@
             document.getElementById('themeIcon').classList.add('fa-sun');
         }
         
+        renderConsole();
         addConsoleLine('MAINUL TCP CONTROLLER initialized');
         addConsoleLine('Login to start');
         
@@ -1161,20 +1794,177 @@
             if (savedUid && savedPass) {
                 document.getElementById('accountUid').value = savedUid;
                 document.getElementById('accountPass').value = savedPass;
-                addConsoleLine('Loaded saved account');
+                addConsoleLine('✅ Loaded saved account');
             }
             
-            loadServerUptime();
-            if (!uptimeLoop) uptimeLoop = setInterval(loadServerUptime, 5000);
+            getServerStartTime();
+            getBotRealStatus();
+            startDualStatusSystem();
+            startLiveConsoleSync();
             
-            startConsoleUpdates();
-            checkBotStatus();
-            addConsoleLine('Welcome back, MAINUL - X!');
+            addConsoleLine('✅ Welcome back, MAINUL - X!');
         } else {
             document.getElementById('loginPage').classList.add('active');
         }
     });
 
+    // ========== TIME FORMAT ==========
+    function formatTime(seconds) {
+        let h = Math.floor(seconds / 3600);
+        let m = Math.floor((seconds % 3600) / 60);
+        let s = seconds % 60;
+        return `${h.toString().padStart(2, '0')}h ${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
+    }
+
+    // ========== GET SERVER TIME ==========
+    function getServerStartTime() {
+        fetch(`${API_URL}/api/status`, {
+            method: "GET",
+            headers: { "x-api-key": API_KEY }
+        })
+        .then(res => res.json())
+        .then(data => {
+            let uptimeStr = data.server_uptime || data.uptime || "0s";
+            let seconds = 0;
+            
+            if (uptimeStr.includes('h')) {
+                let parts = uptimeStr.split('h');
+                seconds += parseInt(parts[0]) * 3600;
+                if (parts[1].includes('m')) {
+                    let mParts = parts[1].split('m');
+                    seconds += parseInt(mParts[0]) * 60;
+                    if (mParts[1].includes('s')) {
+                        seconds += parseInt(mParts[1].replace('s', ''));
+                    }
+                }
+            } else if (uptimeStr.includes('m')) {
+                let parts = uptimeStr.split('m');
+                seconds += parseInt(parts[0]) * 60;
+                if (parts[1].includes('s')) {
+                    seconds += parseInt(parts[1].replace('s', ''));
+                }
+            } else if (uptimeStr.includes('s')) {
+                seconds = parseInt(uptimeStr.replace('s', ''));
+            }
+            
+            serverStartTime = Date.now() - (seconds * 1000);
+            addConsoleLine(`📡 Server uptime: ${uptimeStr}`);
+        })
+        .catch(err => {
+            console.log('Failed to get server time');
+            serverStartTime = Date.now();
+        });
+    }
+
+    // ========== GET BOT REAL STATUS ==========
+    function getBotRealStatus() {
+        const uid = getCurrentUid();
+        if (!uid) return;
+        
+        fetch(`${API_URL}/api/user_status`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": API_KEY
+            },
+            body: JSON.stringify({ uid: uid })
+        })
+        .then(res => res.json())
+        .then(data => {
+            realBotStatus = data.running || false;
+            
+            if (realBotStatus) {
+                if (data.start_time) {
+                    botStartTime = data.start_time * 1000; // REAL TIME
+                    addConsoleLine(`🤖 Bot running since: ${new Date(botStartTime).toLocaleTimeString()}`);
+                } else if (!botStartTime) {
+                    botStartTime = Date.now();
+                }
+            } else {
+                botStartTime = null;
+            }
+        })
+        .catch(err => {
+            console.log('Status check error');
+        });
+    }
+
+    // ========== UPDATE UI ==========
+    function updateStatusUI() {
+        let now = Date.now();
+        
+        if (showServer) {
+            if (serverStartTime) {
+                let sec = Math.floor((now - serverStartTime) / 1000);
+                document.getElementById("statusBadge").innerText = "SERVER ONLINE";
+                document.getElementById("statusBadge").className = "badge-running";
+                document.getElementById("uptime").innerText = formatTime(sec);
+            } else {
+                document.getElementById("statusBadge").innerText = "SERVER ONLINE";
+                document.getElementById("statusBadge").className = "badge-running";
+                document.getElementById("uptime").innerText = "00h 00m 00s";
+            }
+        } else {
+            if (realBotStatus && botStartTime) {
+                let sec = Math.floor((now - botStartTime) / 1000);
+                document.getElementById("statusBadge").innerText = "BOT RUNNING";
+                document.getElementById("statusBadge").className = "badge-running";
+                document.getElementById("uptime").innerText = formatTime(sec);
+            } else {
+                document.getElementById("statusBadge").innerText = "BOT OFFLINE";
+                document.getElementById("statusBadge").className = "badge-stopped";
+                document.getElementById("uptime").innerText = "00h 00m 00s";
+            }
+        }
+    }
+
+    // ========== DUAL STATUS SYSTEM ==========
+    function startDualStatusSystem() {
+        // Switch every 3 seconds
+        setInterval(() => {
+            showServer = !showServer;
+            
+            document.getElementById("statusBadge").innerText = "-----";
+            document.getElementById("uptime").innerText = "Loading...";
+            
+            getBotRealStatus();
+            
+            setTimeout(updateStatusUI, 300);
+        }, 3000);
+        
+        // Update every second
+        setInterval(() => {
+            getBotRealStatus();
+            updateStatusUI();
+        }, 1000);
+    }
+
+    // ========== LIVE CONSOLE SYNC ==========
+    function startLiveConsoleSync() {
+        setInterval(() => {
+            const uid = getCurrentUid();
+            if (!uid) return;
+
+            fetch(`${API_URL}/api/console`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-api-key": API_KEY
+                },
+                body: JSON.stringify({ uid })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.console && data.console.length > 0) {
+                    consoleLines = data.console;
+                    renderConsole();
+                }
+            })
+            .catch(err => console.log('Console sync error'));
+        }, 2000);
+    }
+
+    // ========== THEME TOGGLE ==========
     function toggleTheme() {
         const body = document.body;
         const icon = document.getElementById('themeIcon');
@@ -1192,15 +1982,15 @@
         }
     }
 
+    // ========== COPY CONSOLE ==========
     function copyConsole() {
-        const console = document.getElementById('console');
-        const lines = Array.from(console.children).map(line => line.textContent).join('\n');
-        
-        navigator.clipboard.writeText(lines).then(() => {
-            showPopup('Console copied to clipboard!', 'success');
+        const text = consoleLines.map(line => `[${line.timestamp}] ${line.text}`).join('\n');
+        navigator.clipboard.writeText(text).then(() => {
+            showPopup('✅ Console copied to clipboard!', 'success');
         });
     }
 
+    // ========== POPUP ==========
     function showPopup(message, type = 'success') {
         const oldPopup = document.getElementById('custom-popup');
         if (oldPopup) oldPopup.remove();
@@ -1238,51 +2028,32 @@
         }, 5000);
     }
 
+    // ========== PASSWORD TOGGLES ==========
     function toggleLoginPassword() {
         const pass = document.getElementById('loginPassword');
         const icon = document.getElementById('loginEyeIcon');
-        
-        if (pass.type === 'password') {
-            pass.type = 'text';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        } else {
-            pass.type = 'password';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        }
+        pass.type = pass.type === 'password' ? 'text' : 'password';
+        icon.classList.toggle('fa-eye-slash');
+        icon.classList.toggle('fa-eye');
     }
 
     function toggleAccountPassword() {
         const pass = document.getElementById('accountPass');
         const icon = document.getElementById('accountEyeIcon');
-        
-        if (pass.type === 'password') {
-            pass.type = 'text';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        } else {
-            pass.type = 'password';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        }
+        pass.type = pass.type === 'password' ? 'text' : 'password';
+        icon.classList.toggle('fa-eye-slash');
+        icon.classList.toggle('fa-eye');
     }
 
     function toggleAdminPassword() {
         const pass = document.getElementById('adminPasskey');
         const icon = document.getElementById('adminEyeIcon');
-        
-        if (pass.type === 'password') {
-            pass.type = 'text';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
-        } else {
-            pass.type = 'password';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
-        }
+        pass.type = pass.type === 'password' ? 'text' : 'password';
+        icon.classList.toggle('fa-eye-slash');
+        icon.classList.toggle('fa-eye');
     }
 
+    // ========== LOGIN HANDLER ==========
     function handleLogin() {
         const username = document.getElementById('loginUsername').value;
         const password = document.getElementById('loginPassword').value;
@@ -1308,14 +2079,15 @@
             if (savedUid && savedPass) {
                 document.getElementById('accountUid').value = savedUid;
                 document.getElementById('accountPass').value = savedPass;
-                addConsoleLine('Loaded saved account');
+                addConsoleLine('✅ Loaded saved account');
             }
             
-            addConsoleLine('Welcome, MAINUL - X!');
-            loadServerUptime();
-            if (!uptimeLoop) uptimeLoop = setInterval(loadServerUptime, 5000);
-            startConsoleUpdates();
-            checkBotStatus();
+            addConsoleLine('✅ Welcome, MAINUL - X!');
+            
+            getServerStartTime();
+            getBotRealStatus();
+            startDualStatusSystem();
+            startLiveConsoleSync();
         } else {
             errorDiv.style.display = 'block';
             errorDiv.textContent = 'Invalid credentials!';
@@ -1324,27 +2096,52 @@
         }
     }
 
-    function saveAccount(showMsg = true) {
+    // ========== SAVE ACCOUNT ==========
+    function saveAccount() {
         const uid = document.getElementById('accountUid').value.trim();
         const pass = document.getElementById('accountPass').value.trim();
         
         if (!uid || !pass) {
-            if (showMsg) showPopup('Please enter UID and Password', 'error');
-            addConsoleLine('Enter UID & Password');
+            showPopup('❌ Please enter UID and Password', 'error');
+            addConsoleLine('❌ Enter UID & Password');
             return;
         }
 
-        if (showMsg) addConsoleLine('Saving account...');
-
-        localStorage.setItem(STORAGE_UID, uid);
-        localStorage.setItem(STORAGE_PASS, pass);
-        
-        if (showMsg) {
-            showPopup('Account saved successfully!', 'success');
-            addConsoleLine(`Account saved: ${uid}`);
+        if (!/^\d+$/.test(uid)) {
+            showPopup('❌ UID must be numbers only', 'error');
+            return;
         }
+
+        addConsoleLine('📡 Saving account to server...');
+
+        fetch(`${API_URL}/api/add_account`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": API_KEY
+            },
+            body: JSON.stringify({ uid: uid, password: pass })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                localStorage.setItem(STORAGE_UID, uid);
+                localStorage.setItem(STORAGE_PASS, pass);
+                
+                showPopup('✅ Account saved successfully!', 'success');
+                addConsoleLine('✅ Account added & ready');
+            } else {
+                showPopup(data.msg || 'Failed to add account', 'error');
+                addConsoleLine('❌ ' + (data.msg || 'Save failed'));
+            }
+        })
+        .catch(() => {
+            showPopup('❌ API connection error', 'error');
+            addConsoleLine('❌ API error');
+        });
     }
 
+    // ========== SIDEBAR ==========
     function toggleSidebar() {
         document.getElementById('sidebar').classList.toggle('open');
         document.getElementById('overlay').classList.toggle('active');
@@ -1357,17 +2154,11 @@
     
     function logout() {
         localStorage.removeItem(STORAGE_LOGIN);
-        
         document.getElementById('panelPage').classList.remove('active');
         document.getElementById('loginPage').classList.add('active');
         document.getElementById('loginUsername').value = '';
         document.getElementById('loginPassword').value = '';
-        if (statusInterval) clearInterval(statusInterval);
-        if (updateInterval) clearInterval(updateInterval);
-        if (uptimeLoop) {
-            clearInterval(uptimeLoop);
-            uptimeLoop = null;
-        }
+        addConsoleLine('👋 Logged out');
     }
     
     function showSection(section) {
@@ -1391,77 +2182,42 @@
         botEnabled = toggle.checked;
         
         if (botEnabled) {
-            addConsoleLine('Bot controls enabled');
-            showPopup('Bot controls are now active', 'success');
+            addConsoleLine('✅ Bot controls enabled');
+            showPopup('✅ Bot controls are now active', 'success');
         } else {
-            addConsoleLine('Bot controls disabled');
-            showPopup('Bot controls are now disabled', 'info');
+            addConsoleLine('⛔ Bot controls disabled');
+            showPopup('⛔ Bot controls are now disabled', 'info');
             
-            if (document.getElementById('statusBadge').textContent === 'RUNNING') {
+            if (realBotStatus) {
                 stopBot();
             }
         }
     }
     
-    function checkBotEnabled() {
-        if (!botEnabled) {
-            showPopup('Please enable bot controls first', 'error');
-            addConsoleLine('Enable bot controls first');
-            return false;
-        }
-        return true;
-    }
-    
     function getCurrentUid() {
         return localStorage.getItem(STORAGE_UID) || document.getElementById('accountUid').value.trim();
     }
-    
-    function loadServerUptime() {
-        fetch(`${API_URL}/api/status`, {
-            method: "GET",
-            headers: {
-                "x-api-key": API_KEY
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            // Server uptime থেকে সঠিক ফরম্যাট তৈরি
-            let uptime = data.server_uptime || data.uptime || "0s";
-            
-            // যদি সেকেন্ডে আসে (যেমন: "1118s")
-            if (uptime.includes('s') && !uptime.includes('h') && !uptime.includes('m')) {
-                const seconds = parseInt(uptime.replace('s', ''));
-                const hours = Math.floor(seconds / 3600);
-                const minutes = Math.floor((seconds % 3600) / 60);
-                const secs = seconds % 60;
-                uptime = `${hours.toString().padStart(2, '0')}h ${minutes.toString().padStart(2, '0')}m ${secs.toString().padStart(2, '0')}s`;
-            }
-            
-            // যেকোনো PTIME স্ট্রিং সরিয়ে ফেলা
-            uptime = uptime.replace(/PTIME/g, '');
-            
-            document.getElementById('uptime').textContent = uptime;
-        })
-        .catch(err => console.log('Uptime load error'));
-    }
-    
+
+    // ========== START BOT ==========
     function startBot() {
-        if (!checkBotEnabled()) return;
-        
-        if (document.getElementById('statusBadge').textContent === 'RUNNING') {
-            showPopup('Bot is already running', 'error');
+        const uid = getCurrentUid();
+        if (!uid) {
+            showPopup('❌ Please enter UID first', 'error');
             return;
         }
         
-        const uid = document.getElementById('accountUid').value.trim();
+        if (realBotStatus) {
+            showPopup('⚠️ Bot is already running', 'error');
+            return;
+        }
+        
         const pass = document.getElementById('accountPass').value.trim();
-        
-        if (!uid || !pass) {
-            showPopup('Please save account first', 'error');
+        if (!pass) {
+            showPopup('❌ Please enter password', 'error');
             return;
         }
-        
-        addConsoleLine('Starting bot...');
+
+        addConsoleLine('🚀 Sending start command to device...');
 
         fetch(`${API_URL}/api/start`, {
             method: "POST",
@@ -1469,39 +2225,44 @@
                 "Content-Type": "application/json",
                 "x-api-key": API_KEY
             },
-            body: JSON.stringify({
-                uid: uid,
-                password: pass
+            body: JSON.stringify({ 
+                uid: uid, 
+                password: pass,
+                device: 'user_device'
             })
         })
         .then(res => res.json())
         .then(data => {
             if(data.success){
-                addConsoleLine('Bot Started');
-                document.getElementById('statusBadge').textContent = 'RUNNING';
-                document.getElementById('statusBadge').className = 'badge-running';
-                showPopup('Bot started successfully!', 'success');
+                botStartTime = Date.now();
+                realBotStatus = true;
+                
+                addConsoleLine('✅ Bot started on your device');
+                showPopup('✅ Bot started successfully!', 'success');
+                
+                if (data.start_time) {
+                    botStartTime = data.start_time * 1000;
+                }
             } else {
-                addConsoleLine(`${data.message || 'Failed to start'}`);
-                showPopup('Failed to start bot', 'error');
+                addConsoleLine('❌ ' + (data.message || 'Failed to start'));
+                showPopup('❌ Failed to start bot', 'error');
             }
         })
         .catch(() => {
-            addConsoleLine('API error');
-            showPopup('API connection error', 'error');
+            addConsoleLine('❌ Cannot connect to server');
+            showPopup('❌ Connection error', 'error');
         });
     }
-    
+
+    // ========== STOP BOT ==========
     function stopBot() {
-        if (!checkBotEnabled()) return;
-        
         const uid = getCurrentUid();
         if (!uid) {
-            showPopup('No UID found', 'error');
+            showPopup('❌ Please enter UID first', 'error');
             return;
         }
-        
-        addConsoleLine('Stopping bot...');
+
+        addConsoleLine('🛑 Sending stop command to device...');
 
         fetch(`${API_URL}/api/stop`, {
             method: "POST",
@@ -1509,35 +2270,38 @@
                 "Content-Type": "application/json",
                 "x-api-key": API_KEY
             },
-            body: JSON.stringify({
-                uid: uid
+            body: JSON.stringify({ 
+                uid: uid,
+                device: 'user_device'
             })
         })
         .then(res => res.json())
         .then(data => {
             if(data.success){
-                addConsoleLine('Bot Stopped');
-                document.getElementById('statusBadge').textContent = 'STOPPED';
-                document.getElementById('statusBadge').className = 'badge-stopped';
-                showPopup('Bot stopped', 'success');
+                botStartTime = null;
+                realBotStatus = false;
+                
+                addConsoleLine('✅ Bot stopped on your device');
+                showPopup('✅ Bot stopped successfully!', 'success');
+            } else {
+                addConsoleLine('❌ ' + (data.message || 'Failed to stop'));
             }
         })
         .catch(() => {
-            addConsoleLine('API error');
-            showPopup('API connection error', 'error');
+            addConsoleLine('❌ Cannot connect to server');
+            showPopup('❌ Connection error', 'error');
         });
     }
-    
+
+    // ========== RESTART BOT ==========
     function restartBot() {
-        if (!checkBotEnabled()) return;
-        
         const uid = getCurrentUid();
         if (!uid) {
-            showPopup('No UID found', 'error');
+            showPopup('❌ Please enter UID first', 'error');
             return;
         }
-        
-        addConsoleLine('Restarting...');
+
+        addConsoleLine('🔄 Sending restart command to device...');
 
         fetch(`${API_URL}/api/restart`, {
             method: "POST",
@@ -1545,33 +2309,42 @@
                 "Content-Type": "application/json",
                 "x-api-key": API_KEY
             },
-            body: JSON.stringify({
-                uid: uid
+            body: JSON.stringify({ 
+                uid: uid,
+                device: 'user_device'
             })
         })
         .then(res => res.json())
         .then(data => {
             if(data.success){
-                addConsoleLine('Restarted');
-                showPopup('Bot restarted', 'success');
+                botStartTime = Date.now();
+                realBotStatus = true;
+                
+                addConsoleLine('✅ Bot restarted on your device');
+                showPopup('✅ Bot restarted successfully!', 'success');
+            } else {
+                addConsoleLine('❌ ' + (data.message || 'Failed to restart'));
             }
         })
         .catch(() => {
-            addConsoleLine('API error');
-            showPopup('API connection error', 'error');
+            addConsoleLine('❌ Cannot connect to server');
+            showPopup('❌ Connection error', 'error');
         });
     }
-    
+
+    // ========== FORCE KILL ==========
     function forceKill() {
-        if (!checkBotEnabled()) return;
-        
         const uid = getCurrentUid();
         if (!uid) {
-            showPopup('No UID found', 'error');
+            showPopup('❌ Please enter UID first', 'error');
             return;
         }
-        
-        addConsoleLine('Force killing...');
+
+        if (!confirm('⚠️ Are you sure? This will force kill the bot!')) {
+            return;
+        }
+
+        addConsoleLine('💀 Sending force kill command to device...');
 
         fetch(`${API_URL}/api/forcekill`, {
             method: "POST",
@@ -1579,130 +2352,167 @@
                 "Content-Type": "application/json",
                 "x-api-key": API_KEY
             },
-            body: JSON.stringify({
-                uid: uid
+            body: JSON.stringify({ 
+                uid: uid,
+                device: 'user_device'
             })
         })
         .then(res => res.json())
         .then(data => {
             if(data.success){
-                addConsoleLine('Killed');
-                document.getElementById('statusBadge').textContent = 'STOPPED';
-                document.getElementById('statusBadge').className = 'badge-stopped';
-                showPopup('Bot force killed', 'success');
+                botStartTime = null;
+                realBotStatus = false;
+                
+                addConsoleLine('✅ Bot force killed on your device');
+                showPopup('✅ Bot force killed!', 'success');
+            } else {
+                addConsoleLine('❌ ' + (data.message || 'Failed to kill'));
             }
         })
         .catch(() => {
-            addConsoleLine('API error');
-            showPopup('API connection error', 'error');
+            addConsoleLine('❌ Cannot connect to server');
+            showPopup('❌ Connection error', 'error');
         });
     }
-    
+
+    // ========== CLEAR CONSOLE ==========
     function clearConsole() {
-        if (!checkBotEnabled()) return;
-        
-        document.getElementById('console').innerHTML = '';
-        addConsoleLine('Console cleared');
-        addConsoleLine('Console Initialized...');
+        const uid = getCurrentUid();
+        if (!uid) {
+            showPopup('❌ Please enter UID first', 'error');
+            return;
+        }
+
+        fetch(`${API_URL}/api/clear_console`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "x-api-key": API_KEY
+            },
+            body: JSON.stringify({ uid })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success){
+                consoleLines = [];
+                renderConsole();
+                addConsoleLine('🧹 Console cleared');
+                showPopup('✅ Console cleared!', 'success');
+            }
+        })
+        .catch(() => {
+            addConsoleLine('❌ Cannot connect to server');
+            showPopup('❌ Connection error', 'error');
+        });
     }
-    
-    function scrollConsole() {
-        if (!checkBotEnabled()) return;
+
+    // ========== RENDER CONSOLE ==========
+    function renderConsole() {
+        const consoleElement = document.getElementById('console');
+        consoleElement.innerHTML = '';
         
+        consoleLines.forEach(line => {
+            const lineDiv = document.createElement('div');
+            lineDiv.className = 'console-line';
+            lineDiv.innerHTML = `<span class="console-timestamp">[${line.timestamp}]</span> ${line.text}`;
+            consoleElement.appendChild(lineDiv);
+        });
+        
+        consoleElement.scrollTop = consoleElement.scrollHeight;
+    }
+
+    // ========== SCROLL CONSOLE ==========
+    function scrollConsole() {
         const console = document.getElementById('console');
         console.scrollTop = console.scrollHeight;
-        addConsoleLine('Scrolled to bottom');
+        addConsoleLine('📜 Scrolled to bottom');
     }
-    
+
+    // ========== ADMIN LOGIN ==========
     function adminLogin() {
         const passkey = document.getElementById('adminPasskey').value;
         
         if(passkey === 'admin123') {
-            addConsoleLine('Admin login successful');
-            addConsoleLine('Admin access granted');
-            showPopup('Admin login successful', 'success');
+            addConsoleLine('✅ Admin login successful');
+            addConsoleLine('🔐 Admin access granted');
+            showPopup('✅ Admin login successful', 'success');
         } else {
-            addConsoleLine('Invalid admin passkey');
-            showPopup('Invalid passkey', 'error');
+            addConsoleLine('❌ Invalid admin passkey');
+            showPopup('❌ Invalid passkey', 'error');
             document.querySelector('.input-wrapper input').classList.add('shake');
             setTimeout(() => document.querySelector('.input-wrapper input').classList.remove('shake'), 500);
         }
     }
-    
+
+    // ========== ADD CONSOLE LINE ==========
     function addConsoleLine(text) {
-        const console = document.getElementById('console');
         const now = new Date();
         const time = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
         
-        const line = document.createElement('div');
-        line.className = 'console-line';
-        line.innerHTML = `<span class="console-timestamp">[${time}]</span> ${text}`;
-        console.appendChild(line);
-        console.scrollTop = console.scrollHeight;
-    }
-    
-    function checkBotStatus() {
-        if (statusInterval) clearInterval(statusInterval);
+        consoleLines.push({
+            text: text,
+            timestamp: time
+        });
         
-        statusInterval = setInterval(() => {
-            const uid = getCurrentUid();
-            if (!uid) return;
-            
-            fetch(`${API_URL}/api/user_status`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": API_KEY
-                },
-                body: JSON.stringify({
-                    uid: uid
-                })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.running) {
-                    document.getElementById('statusBadge').textContent = 'RUNNING';
-                    document.getElementById('statusBadge').className = 'badge-running';
-                } else {
-                    document.getElementById('statusBadge').textContent = 'STOPPED';
-                    document.getElementById('statusBadge').className = 'badge-stopped';
-                }
-            })
-            .catch(err => console.log('Status check error'));
-        }, 3000);
-    }
-    
-    function startConsoleUpdates() {
-        if (updateInterval) clearInterval(updateInterval);
+        if (consoleLines.length > 200) {
+            consoleLines = consoleLines.slice(-200);
+        }
         
-        updateInterval = setInterval(() => {
-            const uid = getCurrentUid();
-            if (!uid) return;
-            
-            fetch(`${API_URL}/api/console`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": API_KEY
-                },
-                body: JSON.stringify({
-                    uid: uid
-                })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.console && data.console.length > 0) {
-                    const consoleElement = document.getElementById('console');
-                    consoleElement.innerHTML = '';
-                    
-                    data.console.forEach(line => {
-                        addConsoleLine(line.text || line);
-                    });
-                }
-            })
-            .catch(err => console.log('Console update error'));
-        }, 2000);
+        renderConsole();
     }
+
+    // ========== BUBBLE FUNCTIONS ==========
+    function toggleBubble() {
+        const bubble = document.getElementById('bubbleContent');
+        const overlay = document.getElementById('bubbleOverlay');
+        
+        if (bubble.classList.contains('active')) {
+            bubble.classList.remove('active');
+            overlay.classList.remove('active');
+        } else {
+            bubble.classList.add('active');
+            overlay.classList.add('active');
+        }
+    }
+
+    function closeBubble() {
+        document.getElementById('bubbleContent').classList.remove('active');
+        document.getElementById('bubbleOverlay').classList.remove('active');
+    }
+
+    // Bubble button setup
+    (function() {
+        const bubbleBtn = document.querySelector('.bubble-button');
+        if (bubbleBtn) {
+            bubbleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                toggleBubble();
+            });
+        }
+    })();
+
+    function quickReply(type) {
+        let message = '';
+        if (type === 'help') message = 'I need help with the bot';
+        else if (type === 'price') message = 'Tell me about pricing';
+        else if (type === 'bot') message = 'Bot features please';
+        
+        addConsoleLine(`💬 Support: ${message}`);
+        showPopup('✅ Message sent to support!', 'success');
+        closeBubble();
+    }
+
+    function copyText(text) {
+        navigator.clipboard.writeText(text).then(() => {
+            showPopup('✅ Copied to clipboard!', 'success');
+        });
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeBubble();
+        }
+    });
 </script>
 </body>
 </html>
