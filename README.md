@@ -82,7 +82,7 @@ python app.py
 
 ## 🌐 LIVE DEMO
 
-👉 **[https://mainul-tcp.onrender.com](https://tcpffbot.netlify.app/)**
+👉 **[https://tcpffbot.netlify.app/](https://tcpffbot.netlify.app/)**
 
 ---
 
