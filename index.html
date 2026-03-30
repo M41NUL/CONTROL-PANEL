@@ -3,3476 +3,539 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Update | MAINUL - X</title>
     
-    <meta name="title" content="MAINUL TCP CONTROLLER - ফ্রি ফায়ার বট প্যানেল">
-    <meta name="description" content="MAINUL TCP CONTROLLER - পূর্ণাঙ্গ ফ্রি ফায়ার বট কন্ট্রোল প্যানেল। রিয়েল টাইম বট স্ট্যাটাস, লাইভ কনসোল ভিউয়ার, অ্যাকাউন্ট ম্যানেজমেন্ট। ডেভেলপার: MAINUL - X | টেলিগ্রাম: @mdmainulislaminfo | হোয়াটসঅ্যাপ: +8801308850528">
-    <meta name="keywords" content="mainul tcp, free fire bot, ff bot, tcp controller, mainul bot, bot panel, ff hack, free fire panel, mainul islam">
-    <meta name="author" content="MAINUL - X (Md. Mainul Islam)">
-    <meta name="robots" content="index, follow">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mainul-tcp.onrender.com">
-    <meta property="og:title" content="MAINUL TCP CONTROLLER">
-    <meta property="og:description" content="MAINUL TCP CONTROLLER - ফ্রি ফায়ার বট কন্ট্রোল প্যানেল। রিয়েল টাইম বট ম্যানেজমেন্ট, কনসোল ভিউয়ার। ডেভেলপার: MAINUL - X">
-    <meta property="og:image" content="https://mainul-tcp.onrender.com/preview.jpg">
-    <meta property="og:site_name" content="MAINUL TCP">
-    
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://mainul-tcp.onrender.com">
-    <meta property="twitter:title" content="MAINUL TCP CONTROLLER">
-    <meta property="twitter:description" content="ফ্রি ফায়ার বট কন্ট্রোল প্যানেল - MAINUL TCP">
-    <meta property="twitter:image" content="https://mainul-tcp.onrender.com/preview.jpg">
-    <meta property="twitter:creator" content="@mdmainulislaminfo">
-    
-    <meta name="telegram" content="@mdmainulislaminfo">
-    <meta name="whatsapp" content="+8801308850528">
-    <meta name="email" content="githubmainul@gmail.com">
-    <meta name="github" content="https://github.com/M41NUL">
-    <title>MAINUL TCP CONTROLLER</title>
-<!-- =========================================== -->  
-    <!-- CREDIT DEV INFORMATION                  -->
-<!-- =========================================== -->
-<!--                                             -->
-<!-- BOT NAME      : MAINUL TCP CONTROLLER       -->
-<!-- AUTHOR        : Md. Mainul Islam            -->
-<!-- OWNER         : MAINUL - X                  -->
-<!-- GITHUB        : https://github.com/M41NUL   --> <!-- WHATSAPP  				: +8801308850528              -->
-<!-- TELEGRAM  				: @mdmainulislaminfo          -->
-<!-- EMAIL         : githubmainul@gmail.com      -->
-<!-- LICENSE       : MIT License                 -->
-<!-- CREATED DATE  : March 18, 2026              -->
-<!-- VERSION					  	: 1.0.1            			        -->
-<!--                                             -->
-<!-- Copyright (c) 2026 MAINUL - X. All Rights Reserved.-->
-<!-- =========================================== -->
+    <!-- Fonts & Icons -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --theme-accent: #ffffff;      /* Default Glow & Icon Color */
+            --tool-color: #ffffff;        /* Default Tool Name Color */
+            --notice-color: #9ca3af;      /* Default Notice Text Color */
+            --box-bg-color: rgba(255, 255, 255, 0.03); /* Terminal/Notice Box BG */
         }
-        
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'JetBrains Mono', monospace;
-            background: #050505;
-            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            background-color: #050505;
+            color: #ffffff;
             min-height: 100vh;
-            transition: background 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
             position: relative;
         }
-        
-        body.light-mode {
-            background: #f0f0f0;
-            color: #1a1a1a;
+
+        /* Animated Background Glows using Theme Accent */
+        .glow-1 {
+            position: absolute;
+            top: -15%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--theme-accent);
+            opacity: 0.05;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: 0;
+            animation: float 12s infinite alternate ease-in-out;
         }
-        
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
+
+        .glow-2 {
+            position: absolute;
+            bottom: -15%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: var(--theme-accent);
+            opacity: 0.04;
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: 0;
+            animation: float 10s infinite alternate-reverse ease-in-out;
         }
-        
-        ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+
+        @keyframes float {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 80px) scale(1.1); }
         }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #00ff00;
-            border-radius: 10px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #00cc00;
-        }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-        }
-        
+
+        /* Glassmorphism Card */
         .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(15, 15, 15, 0.6);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .glass-card:hover::before {
-            left: 100%;
-        }
-        
-        .glass-card:hover {
-            border-color: rgba(0, 255, 0, 0.3);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(0, 255, 0, 0.15);
-        }
-        
-        .login-container {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .login-card {
-            max-width: 400px;
-            width: 100%;
-            padding: 40px;
-            border-radius: 30px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            animation: floatIn 0.8s ease-out;
-        }
-        
-        @keyframes floatIn {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) scale(0.95);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        
-        .panel-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            padding-bottom: 100px;
-        }
-        
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 44px;
-            height: 22px;
-        }
-        
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #333;
-            transition: .3s;
-            border-radius: 22px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            left: 2px;
-            bottom: 2px;
-            background-color: white;
-            transition: .3s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: #00ff00;
-            box-shadow: 0 0 15px #00ff00;
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(22px);
-        }
-        
-        .console {
-            background: #0a0a0a;
-            height: 200px;
-            overflow-y: auto;
-            padding: 12px;
-            font-family: 'Courier New', monospace;
-            font-size: 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 255, 0, 0.2);
-            box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.05);
-        }
-        
-        body.light-mode .console {
-            background: #ffffff;
-            color: #333;
-        }
-        
-        .console-line {
-            color: #00ff00;
-            margin-bottom: 4px;
-            animation: slideIn 0.3s ease-out;
-            word-break: break-word;
-        }
-        
-        body.light-mode .console-line {
-            color: #006600;
-        }
-        
-        .console-timestamp {
-            color: #008800;
-            margin-right: 10px;
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-        }
-        .shake {
-            animation: shake 0.5s ease-in-out;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
-        }
-        
-        .pulse {
-            animation: pulse 1.5s infinite;
-        }
-        
-        .action-btn {
-            padding: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.03);
-            color: white;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 5px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        body.light-mode .action-btn {
-            color: #333;
-        }
-        
-        .action-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(0, 255, 0, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s;
-        }
-        
-        .action-btn:hover::before {
-            width: 150px;
-            height: 150px;
-        }
-        
-        .action-btn:hover {
-            border-color: #00ff00;
-            color: #00ff00;
-            transform: translateY(-2px);
-        }
-        
-        .action-btn.special:hover {
-            border-color: #ff0000;
-            color: #ff0000;
-        }
-        
-        .action-btn.special:hover::before {
-            background: rgba(255, 0, 0, 0.2);
-        }
-        
-        .action-btn:active {
-            transform: scale(0.95);
-        }
-        
-        .save-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(45deg, #00ff00, #00cc00);
-            color: black;
-            border: none;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .save-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .save-btn:hover::before {
-            left: 100%;
-        }
-        
-        .save-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 255, 0, 0.3);
-        }
-        
-        .save-btn:active {
-            transform: scale(0.98);
-        }
-        
-        .admin-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(45deg, #ff0000, #cc0000);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .admin-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-        
-        .admin-btn:hover::before {
-            left: 100%;
-        }
-        
-        .admin-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3);
-        }
-        
-        .admin-btn:active {
-            transform: scale(0.98);
-        }
-        
-        .input-wrapper {
-            position: relative;
-            margin-bottom: 15px;
-        }
-        
-        .input-wrapper i:not(.eye-icon) {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #666;
-            font-size: 16px;
-            transition: color 0.3s ease;
-            z-index: 5;
-        }
-        
-        .input-wrapper .eye-icon {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            color: #9ca3af;
-            font-size: 18px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
             z-index: 10;
-            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            width: 90%;
+            max-width: 600px;
         }
-        
-        .input-wrapper .eye-icon:hover {
-            color: #00ff00;
-            transform: translateY(-50%) scale(1.1);
-        }
-        
-        .input-wrapper input {
-            width: 100%;
-            padding: 15px 45px 15px 45px;
-            background: rgba(255, 255, 255, 0.03);
+
+        /* Dynamic Colors Applied */
+        .dynamic-tool { color: var(--tool-color); }
+        .dynamic-notice { color: var(--notice-color); }
+        .dynamic-box { background: var(--box-bg-color); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .dynamic-icon { color: var(--theme-accent); }
+
+        /* Status Badge & Radar */
+        .status-badge {
+            background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: white;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-        
-        body.light-mode .input-wrapper input {
-            color: #333;
-            background: rgba(255, 255, 255, 0.8);
-        }
-        
-        .input-wrapper input:focus {
-            outline: none;
-            border-color: #00ff00;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-            background: rgba(0, 255, 0, 0.05);
-        }
-        
-        .input-wrapper input:hover {
-            border-color: rgba(0, 255, 0, 0.3);
-        }
-        
-        /* ========== ADMIN PANEL STYLES ========== */
-
-/* Stats Cards */
-.stat-card {
-    background: rgba(0, 255, 0, 0.1);
-    padding: 20px;
-    border-radius: 15px;
-    text-align: center;
-    border: 1px solid #00ff00;
-    transition: all 0.3s ease;
-}
-
-.stat-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
-}
-
-.stat-card i {
-    color: #00ff00;
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.stat-label {
-    font-size: 13px;
-    color: #888;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.stat-value {
-    font-size: 32px;
-    color: #00ff00;
-    font-weight: bold;
-}
-
-/* Active Bots Card */
-.stat-card.red {
-    background: rgba(255, 0, 0, 0.1);
-    border-color: #ff0000;
-}
-
-.stat-card.red i {
-    color: #ff0000;
-}
-
-.stat-card.red .stat-value {
-    color: #ff0000;
-}
-
-/* User List Container */
-.user-list-container {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 255, 0, 0.1);
-}
-
-.user-list-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    color: #00ff00;
-    font-size: 14px;
-}
-
-.user-list-header button {
-    background: none;
-    border: 1px solid #00ff00;
-    color: #00ff00;
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.user-list-header button:hover {
-    background: #00ff00;
-    color: black;
-    transform: rotate(180deg);
-}
-
-/* User List Items */
-.user-list-items {
-    max-height: 200px;
-    overflow-y: auto;
-    border-radius: 8px;
-}
-
-.user-list-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 12px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.3s;
-}
-
-.user-list-item:hover {
-    background: rgba(0, 255, 0, 0.05);
-}
-
-.user-list-item span {
-    color: #00ff00;
-    font-size: 13px;
-    font-family: 'Courier New', monospace;
-}
-
-.user-list-item button {
-    background: none;
-    border: none;
-    color: #ff4444;
-    cursor: pointer;
-    padding: 5px 8px;
-    border-radius: 5px;
-    transition: all 0.3s;
-}
-
-.user-list-item button:hover {
-    background: #ff4444;
-    color: white;
-    transform: scale(1.1);
-}
-
-/* Admin Controls Grid */
-.admin-controls-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.admin-control-btn {
-    padding: 12px;
-    border: 1px solid;
-    border-radius: 10px;
-    background: transparent;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.admin-control-btn.green {
-    border-color: #00ff00;
-    color: #00ff00;
-}
-
-.admin-control-btn.green:hover {
-    background: #00ff00;
-    color: black;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
-}
-
-.admin-control-btn.red {
-    border-color: #ff0000;
-    color: #ff0000;
-}
-
-.admin-control-btn.red:hover {
-    background: #ff0000;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
-}
-
-/* Server Info Card */
-.server-info-card {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 12px;
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 1px solid rgba(0, 255, 0, 0.1);
-}
-
-.server-info-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.server-info-row:last-child {
-    border-bottom: none;
-}
-
-.server-info-label {
-    color: #888;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.server-info-label i {
-    color: #00ff00;
-    font-size: 12px;
-}
-
-.server-info-value {
-    color: #00ff00;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-/* Admin Log */
-.admin-log-container {
-    margin-bottom: 20px;
-}
-
-.admin-log-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.admin-log-header span {
-    color: #00ff00;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.admin-log-header button {
-    background: none;
-    border: 1px solid #ff0000;
-    color: #ff0000;
-    padding: 5px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
-.admin-log-header button:hover {
-    background: #ff0000;
-    color: white;
-}
-
-.admin-log-content {
-    background: #0a0a0a;
-    height: 100px;
-    overflow-y: auto;
-    padding: 12px;
-    border-radius: 8px;
-    font-family: 'Courier New', monospace;
-    font-size: 11px;
-    border: 1px solid #333;
-}
-
-.admin-log-line {
-    color: #00ff00;
-    margin-bottom: 4px;
-    line-height: 1.4;
-    word-break: break-word;
-}
-
-.admin-log-time {
-    color: #008800;
-    margin-right: 8px;
-}
-
-/* Logout Button */
-.admin-logout-btn {
-    width: 100%;
-    padding: 14px;
-    background: linear-gradient(45deg, #666, #444);
-    color: white;
-    border: none;
-    border-radius: 12px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.admin-logout-btn:hover {
-    background: linear-gradient(45deg, #777, #555);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-/* Loading Spinner */
-.loading-spinner {
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #00ff00;
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to { transform: rotate(360deg); }
-}
-
-/* Empty State */
-.empty-state {
-    text-align: center;
-    padding: 20px;
-    color: #666;
-    font-size: 12px;
-}
-
-.empty-state i {
-    font-size: 24px;
-    margin-bottom: 8px;
-    color: #333;
-}
-
-/* Admin Form */
-.admin-login-form {
-    transition: all 0.3s;
-}
-
-.admin-login-form.hidden {
-    display: none;
-}
-
-/* Success/Error Messages */
-.admin-message {
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.admin-message.success {
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px solid #00ff00;
-    color: #00ff00;
-}
-
-.admin-message.error {
-    background: rgba(255, 0, 0, 0.1);
-    border: 1px solid #ff0000;
-    color: #ff0000;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .stat-card {
-        padding: 15px;
-    }
-    
-    .stat-value {
-        font-size: 24px;
-    }
-    
-    .admin-controls-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .user-list-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    
-    .user-list-item button {
-        align-self: flex-end;
-    }
-}
-
-/* Scrollbar for Admin Log */
-.admin-log-content::-webkit-scrollbar {
-    width: 4px;
-}
-
-.admin-log-content::-webkit-scrollbar-track {
-    background: #1a1a1a;
-}
-
-.admin-log-content::-webkit-scrollbar-thumb {
-    background: #00ff00;
-    border-radius: 4px;
-}
-
-/* Hover Effects */
-.glass-card .stat-card {
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.glass-card .stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
-}
-
-/* Admin Badge */
-.admin-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background: rgba(255, 215, 0, 0.1);
-    border: 1px solid #ffd700;
-    color: #ffd700;
-    padding: 4px 8px;
-    border-radius: 20px;
-    font-size: 10px;
-    margin-left: 8px;
-}
-
-.admin-badge i {
-    font-size: 10px;
-}
-        .support-bubble {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 100;
-        }
-        
-        .bubble-button {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #00ff00, #00cc00);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(0, 255, 0, 0.3);
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-        }
-        
-        .bubble-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(0, 255, 0, 0.5);
-        }
-        
-        .bubble-button i {
-            color: black;
-            font-size: 24px;
-        }
-        
-        .bubble-content {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 280px;
-            background: rgba(20, 20, 20, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 255, 0, 0.3);
-            border-radius: 20px;
-            padding: 20px;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-        }
-        
-        .support-bubble:hover .bubble-content {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .bubble-content::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            right: 25px;
-            width: 20px;
-            height: 20px;
-            background: rgba(20, 20, 20, 0.95);
-            border-right: 1px solid rgba(0, 255, 0, 0.3);
-            border-bottom: 1px solid rgba(0, 255, 0, 0.3);
-            transform: rotate(45deg);
-            backdrop-filter: blur(20px);
-        }
-        
-        .support-header {
-            color: #00ff00;
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: flex;
+            color: #fff;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: inline-flex;
             align-items: center;
             gap: 8px;
         }
-        
-        .support-header i {
-            font-size: 20px;
-        }
-        
-        .online-status {
-            display: inline-block;
+
+        .pulse-dot {
             width: 8px;
             height: 8px;
-            background: #00ff00;
+            background-color: var(--theme-accent);
             border-radius: 50%;
-            margin-left: 8px;
+            box-shadow: 0 0 12px var(--theme-accent);
             animation: pulse 1.5s infinite;
         }
-        
-        .support-info {
-            margin: 15px 0;
-            padding: 10px;
-            background: rgba(0, 255, 0, 0.05);
+
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); box-shadow: 0 0 15px var(--theme-accent); }
+            50% { opacity: 0.4; transform: scale(1.3); box-shadow: 0 0 5px var(--theme-accent); }
+            100% { opacity: 1; transform: scale(1); box-shadow: 0 0 15px var(--theme-accent); }
+        }
+
+        /* Gear Animation */
+        .gear-container {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+        }
+
+        .gear {
+            font-size: 50px;
+            color: var(--theme-accent);
+            animation: spin 6s linear infinite;
+            cursor: pointer; /* Admin Trigger */
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .gear-small {
+            position: absolute;
+            font-size: 25px;
+            color: rgba(255, 255, 255, 0.7);
+            bottom: 5px;
+            right: 5px;
+            animation: spin 3s linear infinite reverse;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(90deg, transparent, var(--theme-accent), transparent);
+            position: absolute;
+            animation: scan 2s ease-in-out infinite;
+        }
+
+        @keyframes scan {
+            0% { left: -50%; }
+            100% { left: 100%; }
+        }
+
+        /* Fake Terminal */
+        .terminal-box {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            text-align: left;
+            padding: 15px;
             border-radius: 12px;
-            border: 1px solid rgba(0, 255, 0, 0.1);
+            margin: 20px 0;
+            line-height: 1.6;
+            color: #a3a3a3;
+        }
+        .term-line span { color: var(--theme-accent); font-weight: bold; }
+        .blink { animation: blinker 1s linear infinite; }
+        @keyframes blinker { 50% { opacity: 0; } }
+
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
         }
         
-        .support-item {
+        .contact-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            margin: 8px 0;
-            color: #fff;
-            font-size: 12px;
-        }
-        
-        .support-item i {
-            width: 20px;
-            color: #00ff00;
-        }
-        
-        .support-item a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .support-item a:hover {
-            color: #00ff00;
-        }
-        
-        .support-footer {
-            text-align: center;
-            color: #666;
-            font-size: 11px;
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .hidden {
-            display: none;
-        }
-        
-        .error-message {
-            color: #ff0000;
-            text-align: center;
-            margin: 10px 0;
-            display: none;
-            font-size: 13px;
-        }
-        
-        .page {
-            display: none;
-        }
-        
-        .page.active {
-            display: block;
-        }
-        
-        .sidebar {
-            position: fixed;
-            left: -280px;
-            top: 0;
-            width: 260px;
-            height: 100vh;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-            transition: left 0.3s ease;
-            z-index: 50;
-            padding: 20px;
-        }
-        
-        body.light-mode .sidebar {
-            background: rgba(240, 240, 240, 0.95);
-        }
-        
-        .sidebar.open {
-            left: 0;
-        }
-        
-        .sidebar-header {
-            color: #00ff00;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            margin-bottom: 20px;
-        }
-        
-        .sidebar-menu-item {
-            padding: 12px 15px;
-            margin: 5px 0;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 10px;
             border-radius: 12px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s;
-        }
-        
-        .sidebar-menu-item i {
-            width: 20px;
-            color: #00ff00;
-            font-size: 16px;
-        }
-        
-        .sidebar-menu-item:hover {
-            background: rgba(0, 255, 0, 0.1);
-        }
-        
-        .sidebar-menu-item.active {
-            background: rgba(0, 255, 0, 0.15);
-            color: #00ff00;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-            z-index: 40;
-            display: none;
-        }
-        
-        .overlay.active {
-            display: block;
-        }
-        
-        .top-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 50px;
-            margin-bottom: 20px;
-            animation: slideIn 0.5s ease-out;
-        }
-        
-        .menu-icon {
-            cursor: pointer;
-            color: #00ff00;
-            font-size: 20px;
-            transition: all 0.3s;
-        }
-        
-        .menu-icon:hover {
-            transform: scale(1.1);
-            text-shadow: 0 0 10px #00ff00;
-        }
-        
-        .title {
-            color: #00ff00;
-            font-weight: bold;
-            font-size: 16px;
-            animation: glow 2s ease-in-out infinite;
-        }
-        
-        @keyframes glow {
-            0%, 100% { text-shadow: 0 0 5px #00ff00; }
-            50% { text-shadow: 0 0 20px #00ff00; }
-        }
-        
-        .status-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
-            animation: slideIn 0.5s ease-out;
-        }
-        
-        .status-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        
-        .badge-stopped {
-            background: rgba(255, 0, 0, 0.1);
-            color: #ff0000;
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 0, 0, 0.2);
-        }
-        
-        .badge-running {
-            background: rgba(0, 255, 0, 0.1);
-            color: #00ff00;
-            padding: 4px 12px;
-            border-radius: 20px;
-            border: 1px solid rgba(0, 255, 0, 0.2);
-            animation: pulse 2s infinite;
-        }
-        
-        .uptime {
-            color: #00ff00;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        
-        .button-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin: 15px 0;
-        }
-        
-        .sub-heading {
-            color: #00ff00;
-            font-size: 16px;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid rgba(0, 255, 0, 0.2);
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            color: #666;
-            font-size: 12px;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .social-link {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 20px;
-            transition: all 0.3s;
             text-decoration: none;
-        }
-        
-        .social-link:hover {
-            transform: translateY(-5px) scale(1.1);
-            border-color: #00ff00;
-            color: #00ff00;
-            box-shadow: 0 10px 20px rgba(0, 255, 0, 0.2);
-        }
-
-        .popup-notification {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 9999;
-            min-width: 300px;
-            max-width: 400px;
-            padding: 0;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            animation: popupFadeIn 0.3s ease;
-        }
-
-        @keyframes popupFadeIn {
-            from {
-                opacity: 0;
-                transform: translate(-50%, -40%);
-            }
-            to {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
-        }
-
-        @keyframes popupFadeOut {
-            from {
-                opacity: 1;
-                transform: translate(-50%, -50%);
-            }
-            to {
-                opacity: 0;
-                transform: translate(-50%, -40%);
-            }
-        }
-
-        .popup-header {
-            padding: 15px 20px;
-            font-weight: bold;
-            font-size: 16px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .popup-body {
-            padding: 20px;
-            font-size: 14px;
-            line-height: 1.6;
-        }
-
-        .popup-footer {
-            padding: 12px 20px;
-            text-align: right;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .popup-button {
-            padding: 6px 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-        }
-
-        .popup-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .popup-success {
-            background: linear-gradient(135deg, #1a2a1a, #0a1a0a);
-            border: 1px solid #00ff00;
-        }
-
-        .popup-success .popup-header {
-            background: rgba(0, 255, 0, 0.1);
-            color: #00ff00;
-            border-bottom-color: #00ff00;
-        }
-
-        .popup-success .popup-button {
-            background: #00ff00;
-            color: black;
-        }
-
-        .popup-success .popup-button:hover {
-            box-shadow: 0 0 20px #00ff00;
-        }
-
-        .popup-error {
-            background: linear-gradient(135deg, #2a1a1a, #1a0a0a);
-            border: 1px solid #ff0000;
-        }
-
-        .popup-error .popup-header {
-            background: rgba(255, 0, 0, 0.1);
-            color: #ff0000;
-            border-bottom-color: #ff0000;
-        }
-
-        .popup-error .popup-button {
-            background: #ff0000;
-            color: white;
-        }
-
-        .popup-error .popup-button:hover {
-            box-shadow: 0 0 20px #ff0000;
-        }
-
-        .copy-btn {
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid #00ff00;
-            color: #00ff00;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
+            color: #d1d5db;
             font-size: 11px;
-            margin-left: 10px;
+            transition: all 0.3s;
         }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--theme-accent);
+            transform: translateY(-2px);
+            color: #fff;
+        }
+
+        .contact-item i {
+            font-size: 16px;
+            color: var(--theme-accent);
+        }
+
+        /* Admin UI */
+        .admin-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 999;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: 0.3s;
+        }
+        .admin-overlay.active { opacity: 1; pointer-events: all; }
         
-        .copy-btn:hover {
-            background: #00ff00;
-            color: black;
+        .admin-input {
+            width: 100%; background: rgba(0,0,0,0.4);
+            border: 1px solid rgba(255,255,255,0.1); color: white;
+            padding: 10px 15px; border-radius: 8px; font-size: 12px; margin-bottom: 12px;
+            font-family: 'JetBrains Mono', monospace; outline: none;
         }
-        /* আপডেটেড সাপোর্ট বাবল - সুপার লাইভ */
-.support-bubble {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 100;
-}
+        .admin-input:focus { border-color: #fff; }
+        
+        .color-picker-group {
+            display: flex; justify-content: space-between; align-items: center;
+            background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 8px; margin-bottom: 8px;
+        }
+        .color-picker-group label { font-size: 11px; color: #aaa; }
+        input[type="color"] {
+            -webkit-appearance: none; border: none; width: 30px; height: 30px;
+            border-radius: 5px; cursor: pointer; background: transparent;
+        }
+        input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
+        input[type="color"]::-webkit-color-swatch { border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; }
 
-.bubble-button {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #00ff00, #00cc00);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.4);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation: pulse 2s infinite;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    position: relative;
-}
-
-.bubble-button:hover {
-    transform: scale(1.15);
-    box-shadow: 0 12px 30px rgba(0, 255, 0, 0.7);
-}
-
-.bubble-button i {
-    color: black;
-    font-size: 22px;
-}
-
-.notification-dot {
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 12px;
-    height: 12px;
-    background: #ff0000;
-    border-radius: 50%;
-    border: 2px solid #050505;
-    animation: pulse 1s infinite;
-}
-
-.bubble-content {
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    width: 320px;
-    background: rgba(15, 15, 15, 0.98);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 255, 0, 0.3);
-    border-radius: 20px;
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    box-shadow: 0 20px 50px rgba(0, 255, 0, 0.3);
-}
-
-.bubble-content.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-}
-
-.bubble-content::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    right: 18px;
-    width: 24px;
-    height: 24px;
-    background: rgba(15, 15, 15, 0.98);
-    border-right: 1px solid rgba(0, 255, 0, 0.3);
-    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
-    transform: rotate(45deg);
-    backdrop-filter: blur(20px);
-}
-
-.support-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 255, 0, 0.2);
-}
-
-.support-header i {
-    color: #00ff00;
-    font-size: 20px;
-}
-
-.support-header span {
-    color: #00ff00;
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.live-badge {
-    background: rgba(255, 0, 0, 0.2);
-    padding: 4px 8px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    border: 1px solid rgba(255, 0, 0, 0.3);
-}
-
-.live-dot {
-    width: 8px;
-    height: 8px;
-    background: #ff0000;
-    border-radius: 50%;
-    animation: pulse 1s infinite;
-}
-
-.live-badge span {
-    color: #ff0000;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.agent-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 15px;
-    padding: 10px;
-    background: rgba(0, 255, 0, 0.05);
-    border-radius: 12px;
-    border: 1px solid rgba(0, 255, 0, 0.1);
-}
-
-.agent-avatar {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #00ff00, #00aa00);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.agent-avatar i {
-    color: black;
-    font-size: 20px;
-}
-
-.agent-details {
-    flex: 1;
-}
-
-.agent-name {
-    color: #00ff00;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-.agent-status {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: #888;
-}
-
-.status-dot {
-    width: 6px;
-    height: 6px;
-    background: #00ff00;
-    border-radius: 50%;
-    animation: pulse 1s infinite;
-}
-
-.response-time {
-    background: rgba(0, 255, 0, 0.1);
-    padding: 4px 8px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    border: 1px solid rgba(0, 255, 0, 0.2);
-}
-
-.response-time i {
-    color: #00ff00;
-    font-size: 10px;
-}
-
-.response-time span {
-    color: #00ff00;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.quick-replies {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 15px;
-}
-
-.quick-reply-btn {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 255, 0, 0.2);
-    border-radius: 20px;
-    padding: 6px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
-    color: #fff;
-    font-size: 11px;
-}
-
-.quick-reply-btn:hover {
-    background: rgba(0, 255, 0, 0.2);
-    border-color: #00ff00;
-    transform: translateY(-2px);
-}
-
-.quick-reply-btn i {
-    color: #00ff00;
-    font-size: 12px;
-}
-
-.support-info {
-    margin: 15px 0;
-    padding: 10px;
-    background: rgba(0, 255, 0, 0.03);
-    border-radius: 12px;
-    border: 1px solid rgba(0, 255, 0, 0.1);
-}
-
-.support-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 8px 0;
-    padding: 8px;
-    border-radius: 8px;
-    transition: all 0.3s;
-}
-
-.support-item:hover {
-    background: rgba(0, 255, 0, 0.1);
-    transform: translateX(5px);
-}
-
-.support-item i {
-    width: 16px;
-    color: #00ff00;
-    font-size: 14px;
-}
-
-.support-item-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.support-label {
-    color: #666;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.support-value {
-    color: #fff;
-    text-decoration: none;
-    font-size: 11px;
-    transition: color 0.3s;
-}
-
-.support-value:hover {
-    color: #00ff00;
-}
-
-.copy-btn-small {
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px solid rgba(0, 255, 0, 0.2);
-    border-radius: 4px;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.copy-btn-small:hover {
-    background: #00ff00;
-    border-color: #00ff00;
-}
-
-.copy-btn-small i {
-    color: #00ff00;
-    font-size: 12px;
-}
-
-.copy-btn-small:hover i {
-    color: black;
-}
-
-.typing-indicator {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin: 10px 0;
-    padding: 10px 15px;
-    background: rgba(0, 255, 0, 0.05);
-    border-radius: 20px;
-    border: 1px solid rgba(0, 255, 0, 0.1);
-    width: fit-content;
-    max-width: 100%;
-}
-
-.typing-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin: 15px 0;
-    padding: 15px 20px;
-    background: rgba(0, 255, 0, 0.08);
-    border: 1px solid rgba(0, 255, 0, 0.3);
-    border-radius: 30px;
-    width: 100%;
-    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.1);
-    backdrop-filter: blur(5px);
-}
-
-.typing-dots {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.typing-dots span {
-    width: 10px;
-    height: 10px;
-    background: #00ff00;
-    border-radius: 50%;
-    animation: typing 1.4s infinite;
-    box-shadow: 0 0 10px #00ff00;
-}
-
-.typing-dots span:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.typing-dots span:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.typing-text {
-    color: #00ff00;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    background: rgba(0, 255, 0, 0.1);
-    padding: 5px 15px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 255, 0, 0.3);
-}
-
-@keyframes typing {
-    0%, 60%, 100% {
-        transform: translateY(0);
-        opacity: 0.6;
-    }
-    30% {
-        transform: translateY(-8px);
-        opacity: 1;
-    }
-}
-@keyframes typing {
-    0%, 60%, 100% {
-        transform: translateY(0);
-        opacity: 0.6;
-    }
-    30% {
-        transform: translateY(-px);
-        opacity: 1;
-    }
-}
-
-.support-footer {
-    text-align: center;
-    color: #666;
-    font-size: 10px;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-.support-footer i {
-    color: #00ff00;
-    font-size: 12px;
-}
-
-.overlay-bubble {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 99;
-    display: none;
-}
-
-.overlay-bubble.active {
-    display: block;
-}
-.stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.stats-details {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 12px;
-    padding: 15px;
-}
-
-.stat-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.stat-row:last-child {
-    border-bottom: none;
-}
-
-.setting-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.setting-item:last-child {
-    border-bottom: none;
-}
-
-.setting-label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.setting-label i {
-    color: #00ff00;
-    width: 20px;
-}
-
-.setting-select {
-    margin-top: 15px;
-}
-
-.setting-select select {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 255, 0, 0.2);
-    border-radius: 8px;
-    color: white;
-    padding: 10px;
-    width: 100%;
-}
-
-.profile-avatar-large {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: rgba(0, 255, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #00ff00;
-}
+        .btn-glass {
+            background: #fff; color: #000; border: none; padding: 10px;
+            border-radius: 8px; font-weight: bold; cursor: pointer;
+            width: 100%; font-size: 13px; transition: 0.3s;
+        }
+        .btn-glass:hover { background: #e5e5e5; transform: scale(0.98); }
     </style>
 </head>
 <body>
-    <div class="fixed top-1/4 left-1/4 w-96 h-96 bg-[#00ff00] rounded-full mix-blend-multiply filter blur-[128px] opacity-10 -z-10"></div>
-<div class="fixed bottom-1/4 right-1/4 w-96 h-96 bg-[#ff0000] rounded-full mix-blend-multiply filter blur-[128px] opacity-10 -z-10"></div>
 
-<!-- সুপার সাপোর্ট বাবল - লাইভ ফিল -->
-<div class="support-bubble">
-    <div class="bubble-button" onclick="toggleBubble()">
-        <i class="fas fa-headset"></i>
-        <span class="notification-dot"></span>
-    </div>
-    <div class="bubble-content" id="bubbleContent">
-        <!-- হেডার লাইভ স্ট্যাটাস -->
-        <div class="support-header">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-user-circle"></i>
-                <span>MAINUL SUPPORT</span>
-            </div>
-            <div class="live-badge">
-                <span class="live-dot"></span>
-                <span>LIVE</span>
+    <!-- Ambient Background -->
+    <div class="glow-1"></div>
+    <div class="glow-2"></div>
+
+    <!-- Main Maintenance Card -->
+    <div class="glass-card p-6 md:p-8 text-center">
+        
+        <div class="mb-4">
+            <div class="status-badge">
+                <span class="pulse-dot"></span>
+                SYSTEM UPGRADE IN PROGRESS
             </div>
         </div>
+
+        <div class="gear-container mb-4">
+            <!-- Secret Trigger here (Click 5 times) -->
+            <i class="fas fa-cog gear" id="secretTrigger"></i>
+            <i class="fas fa-cogs gear-small"></i>
+        </div>
+
+        <!-- Dynamic Tool Name -->
+        <h1 id="displayToolName" class="text-2xl md:text-3xl font-bold mb-2 tracking-wider dynamic-tool uppercase">
+            MAINUL TCP CONTROLLER
+        </h1>
         
-        <!-- এজেন্ট তথ্য -->
-        <div class="agent-info">
-            <div class="agent-avatar">
-                <i class="fas fa-robot"></i>
+        <!-- Dynamic Notice Message -->
+        <p id="displayNotice" class="text-sm md:text-sm leading-relaxed mb-4 dynamic-notice px-2">
+            The server is currently undergoing scheduled maintenance to improve performance and add new features. Please wait while we upgrade the core system files.
+        </p>
+
+        <!-- Fake Terminal -->
+        <div class="terminal-box dynamic-box shadow-inner">
+            <div class="term-line">> Initializing update sequence... <span>[OK]</span></div>
+            <div class="term-line">> Stopping user connections... <span>[DONE]</span></div>
+            <div class="term-line">> Patching core files... <span class="blink">Wait</span></div>
+            <div class="progress-container mt-3 mb-1">
+                <div class="progress-bar"></div>
             </div>
-            <div class="agent-details">
-                <div class="agent-name">MAINUL - X</div>
-                <div class="agent-status">
-                    <span class="status-dot"></span>
-                    Online Now
-                </div>
-            </div>
-            <div class="response-time">
-                <i class="fas fa-bolt"></i>
-                2min
+            <div class="text-[9px] text-gray-500 text-right mt-1">Please do not close this window</div>
+        </div>
+
+        <!-- Contact Grid -->
+        <div class="text-left mt-6">
+            <h3 class="text-[10px] text-gray-500 uppercase tracking-widest mb-2 border-b border-gray-800 pb-1">Developer Contact</h3>
+            <div class="contact-grid">
+                <a href="https://wa.me/8801308850528" target="_blank" class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <div class="font-bold">WhatsApp</div>
+                        <div class="text-[9px] text-gray-500">+8801308850528</div>
+                    </div>
+                </a>
+                <a href="https://t.me/mdmainulislaminfo" target="_blank" class="contact-item">
+                    <i class="fab fa-telegram-plane"></i>
+                    <div>
+                        <div class="font-bold">Telegram</div>
+                        <div class="text-[9px] text-gray-500">@mdmainulislaminfo</div>
+                    </div>
+                </a>
+                <a href="https://github.com/M41NUL" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <div>
+                        <div class="font-bold">GitHub</div>
+                        <div class="text-[9px] text-gray-500">M41NUL</div>
+                    </div>
+                </a>
+                <a href="mailto:githubmainul@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <div class="font-bold">Email</div>
+                        <div class="text-[9px] text-gray-500">githubmainul@gmail.com</div>
+                    </div>
+                </a>
             </div>
         </div>
-        
-        <!-- কুইক রিপ্লাই বাটন -->
-        <div class="quick-replies">
-            <button class="quick-reply-btn" onclick="quickReply('help')">
-                <i class="fas fa-question-circle"></i> Help
-            </button>
-            <button class="quick-reply-btn" onclick="quickReply('price')">
-                <i class="fas fa-tag"></i> Price
-            </button>
-            <button class="quick-reply-btn" onclick="quickReply('bot')">
-                <i class="fas fa-robot"></i> Bot
-            </button>
-        </div>
-        
-        <!-- কন্টাক্ট ইনফো -->
-        <div class="support-info">
-            <div class="support-item">
-                <i class="fab fa-telegram-plane"></i>
-                <div class="support-item-content">
-                    <span class="support-label">Telegram</span>
-                    <a href="https://t.me/mdmainulislaminfo" target="_blank" class="support-value">@mdmainulislaminfo</a>
-                </div>
-                <button class="copy-btn-small" onclick="copyText('@mdmainulislaminfo')">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            
-            <div class="support-item">
-                <i class="fab fa-whatsapp"></i>
-                <div class="support-item-content">
-                    <span class="support-label">WhatsApp</span>
-                    <a href="https://wa.me/8801308850528" target="_blank" class="support-value">+8801308850528</a>
-                </div>
-                <button class="copy-btn-small" onclick="copyText('+8801308850528')">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            
-            <div class="support-item">
-                <i class="fab fa-github"></i>
-                <div class="support-item-content">
-                    <span class="support-label">GitHub</span>
-                    <a href="https://github.com/M41NUL" target="_blank" class="support-value">M41NUL</a>
-                </div>
-                <button class="copy-btn-small" onclick="copyText('M41NUL')">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            
-            <div class="support-item">
-                <i class="fas fa-envelope"></i>
-                <div class="support-item-content">
-                    <span class="support-label">Email</span>
-                    <a href="mailto:githubmainul@gmail.com" class="support-value">githubmainul@gmail.com</a>
-                </div>
-                <button class="copy-btn-small" onclick="copyText('githubmainul@gmail.com')">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- টাইপিং ইন্ডিকেটর (বড় গ্রিন কার্ড) -->
-<div class="typing-indicator">
-    <div class="typing-dots">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="typing-text">Support is typing...</div>
-</div>
-        
-        <!-- ফুটার -->
-        <div class="support-footer">
-            <i class="fas fa-shield-alt"></i>
-            <span>24/7 Premium Support • Response < 5min</span>
+
+        <div class="mt-6 text-[10px] text-gray-600 font-mono">
+            &copy; <span id="year"></span> MAINUL - X. All rights reserved. | MIT License
         </div>
     </div>
-</div>
 
-<!-- Bubble Overlay -->
-<div class="overlay-bubble" id="bubbleOverlay" onclick="closeBubble()"></div>
+    <!-- Secret Admin Panel -->
+    <div class="admin-overlay" id="adminModal">
+        <div class="glass-card !max-w-sm p-6 relative">
+            <i class="fas fa-times absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-white" onclick="closeAdmin()"></i>
+            
+            <h2 class="text-lg font-bold mb-4 text-white"><i class="fas fa-sliders-h mr-2"></i> Customize Update Page</h2>
+            
+            <!-- Login Step -->
+            <div id="loginSection">
+                <input type="password" id="adminPass" class="admin-input" placeholder="Admin Password">
+                <button class="btn-glass" onclick="verifyAdmin()">Unlock Admin</button>
+                <p id="passError" class="text-red-400 text-xs mt-2 hidden text-center">Incorrect Password!</p>
+            </div>
 
-    <div id="loginPage" class="page">
-        <div class="login-container">
-            <div class="login-card">
-                <div class="text-center mb-8">
-                    <div class="w-16 h-16 bg-[#00ff00] rounded-2xl flex items-center justify-center mx-auto mb-4 pulse">
-                        <i class="fa-solid fa-network-wired text-black text-2xl"></i>
+            <!-- Settings Step -->
+            <div id="editSection" class="hidden">
+                <label class="block text-[10px] text-gray-400 mb-1 uppercase">Tool Name</label>
+                <input type="text" id="inputToolName" class="admin-input">
+                
+                <label class="block text-[10px] text-gray-400 mb-1 uppercase">Notice Message</label>
+                <textarea id="inputNotice" class="admin-input h-16 resize-none"></textarea>
+
+                <div class="mt-2 mb-4">
+                    <div class="color-picker-group">
+                        <label>Tool Name Color</label>
+                        <input type="color" id="colorTool" value="#ffffff">
                     </div>
-                    <h1 class="text-2xl font-bold" style="color: #00ff00;">MAINUL TCP</h1>
-                    <p class="text-gray-400 text-sm mt-2">CONTROLLER</p>
+                    <div class="color-picker-group">
+                        <label>Notice Text Color</label>
+                        <input type="color" id="colorNotice" value="#9ca3af">
+                    </div>
+                    <div class="color-picker-group">
+                        <label>Theme Accent (Glow/Icons)</label>
+                        <input type="color" id="colorAccent" value="#ffffff">
+                    </div>
+                    <div class="color-picker-group">
+                        <label>Box Background</label>
+                        <input type="color" id="colorBox" value="#1a1a1a">
+                    </div>
                 </div>
                 
-                <div class="space-y-4">
-                    <div class="input-wrapper">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="loginUsername" placeholder="Username">
-                    </div>
-                    
-                    <div class="input-wrapper">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="loginPassword" placeholder="Password">
-                        <i class="fas fa-eye-slash eye-icon" id="loginEyeIcon" onclick="toggleLoginPassword()"></i>
-                    </div>
-                    
-                    <div id="loginError" class="error-message"></div>
-                    
-                    <button class="save-btn" onclick="handleLogin()">
-                        <i class="fas fa-sign-in-alt"></i> LOGIN
-                    </button>
-                </div>
-                
-                <div class="social-links">
-                    <a href="https://github.com/M41NUL" target="_blank" class="social-link">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-telegram"></i>
-                    </a>
-                    <a href="https://wa.me/8801308850528" target="_blank" class="social-link">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="mailto:githubmainul@gmail.com" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                    </a>
-                </div>
-                
-                <div class="footer">
-                    <p>© 2026 MAINUL-X | POWERED BY MAINUL - X TEAM.</p>
-                </div>
+                <button class="btn-glass" onclick="saveSettings()">
+                    <i class="fas fa-save mr-1"></i> Save Changes
+                </button>
             </div>
         </div>
     </div>
 
-    <div id="panelPage" class="page">
-        <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
-
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-header">MAINUL TCP</div>
-            <div class="sidebar-menu-item active" onclick="showSection('control'); closeSidebar()">
-                <i class="fas fa-tachometer-alt"></i> Control Panel
-            </div>
-            <div class="sidebar-menu-item" onclick="showSection('login'); closeSidebar()">
-                <i class="fas fa-sign-in-alt"></i> Account Login
-            </div>
-            <div class="sidebar-menu-item" onclick="showSection('admin'); closeSidebar()">
-                <i class="fas fa-crown"></i> Admin Panel
-            </div>
-        </div>
-
-        <div class="panel-container">
-            <div class="top-bar">
-                <div class="menu-icon" onclick="toggleSidebar()">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <div class="title">MAINUL TCP CONTROLLER</div>
-                <div class="flex items-center gap-4">
-                    <div class="menu-icon" onclick="toggleTheme()">
-                        <i class="fas fa-moon" id="themeIcon"></i>
-                    </div>
-                    <div class="menu-icon" onclick="logout()">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div id="controlSection" class="content-section" style="display: block;">
-                <div class="status-card">
-                    <div class="status-row">
-                        <span>BOT/SERVER STATUS</span>
-                        <span class="badge-stopped" id="statusBadge">STOPPED</span>
-                    </div>
-                    <div class="status-row">
-                        <span>BOT/SERVER UPTIME</span>
-                        <span class="uptime" id="uptime">00h 00m 00s</span>
-                    </div>
-                </div>
-
-                <div class="glass-card">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 style="color: #00ff00;">BOT OPERATIONS</h3>
-                        <label class="switch">
-                            <input type="checkbox" id="botToggle" onchange="toggleBot()">
-                            <span class="slider"></span>
-                        </label>
-                    </div>
-                    
-                    <div class="button-grid">
-                        <button class="action-btn" onclick="startBot()"><i class="fas fa-play"></i> START</button>
-                        <button class="action-btn" onclick="stopBot()"><i class="fas fa-stop"></i> STOP</button>
-                        <button class="action-btn" onclick="restartBot()"><i class="fas fa-sync-alt"></i> RESTART</button>
-                    </div>
-                    
-                    <div class="button-grid">
-                        <button class="action-btn special" onclick="forceKill()"><i class="fas fa-skull"></i> FORCE KILL</button>
-                        <button class="action-btn" onclick="clearConsole()"><i class="fas fa-eraser"></i> CLEAR</button>
-                        <button class="action-btn" onclick="scrollConsole()"><i class="fas fa-arrows-alt-v"></i> SCROLL</button>
-                    </div>
-                </div>
-
-                <div class="glass-card mt-4">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="sub-heading">CONSOLE OUTPUT</h3>
-                        <button class="copy-btn" onclick="copyConsole()"><i class="fas fa-copy"></i> COPY</button>
-                    </div>
-                    <div class="console" id="console">
-                        <div class="console-line">
-                            <span class="console-timestamp">[00:00:00]</span> Console Initialized...
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="loginSection" class="content-section" style="display: none;">
-                <div class="glass-card">
-                    <h3 class="sub-heading">ACCOUNT LOGIN</h3>
-                    
-                    <div class="input-wrapper">
-                        <i class="fas fa-user"></i>
-                        <input type="text" id="accountUid" placeholder="Enter UID">
-                    </div>
-                    
-                    <div class="input-wrapper">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="accountPass" placeholder="Enter Password">
-                        <i class="fas fa-eye-slash eye-icon" id="accountEyeIcon" onclick="toggleAccountPassword()"></i>
-                    </div>
-                    
-                    <button class="save-btn" onclick="saveAccount()">
-                        <i class="fas fa-save"></i> SAVE ACCOUNT
-                    </button>
-                </div>
-</div>
-
-            <!-- ========== ADMIN PANEL SECTION ========== -->
-<div id="adminSection" class="content-section" style="display: none;">
-    <div class="glass-card">
-        <div class="flex items-center gap-2 mb-4">
-            <i class="fas fa-crown text-[#ffd700] text-xl"></i>
-            <h3 class="sub-heading m-0">ADMIN PANEL</h3>
-        </div>
+    <script>
+        // --- ADMIN CONFIGURATION ---
+        const ADMIN_PASS = "mainul"; // আপনার পাসওয়ার্ড
         
-        <!-- Admin Login Form (visible when not logged in) -->
-        <div id="adminLoginForm">
-            <div class="input-wrapper">
-                <i class="fas fa-key"></i>
-                <input type="password" id="adminPasskey" placeholder="Admin Passkey">
-                <i class="fas fa-eye-slash eye-icon" id="adminEyeIcon" onclick="toggleAdminPassword()"></i>
-            </div>
+        // Auto Update Year
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Storage Keys
+        const KEYS = {
+            TOOL: "mx_upd_tool",
+            NOTICE: "mx_upd_notice",
+            C_TOOL: "mx_upd_ctool",
+            C_NOTICE: "mx_upd_cnotice",
+            C_ACCENT: "mx_upd_caccent",
+            C_BOX: "mx_upd_cbox"
+        };
+
+        // DOM Elements
+        const DOM = {
+            tool: document.getElementById('displayToolName'),
+            notice: document.getElementById('displayNotice'),
+            root: document.documentElement
+        };
+
+        const INPUTS = {
+            tool: document.getElementById('inputToolName'),
+            notice: document.getElementById('inputNotice'),
+            cTool: document.getElementById('colorTool'),
+            cNotice: document.getElementById('colorNotice'),
+            cAccent: document.getElementById('colorAccent'),
+            cBox: document.getElementById('colorBox')
+        };
+
+        // Load Settings on Start
+        function loadSettings() {
+            if(localStorage.getItem(KEYS.TOOL)) DOM.tool.innerText = localStorage.getItem(KEYS.TOOL);
+            if(localStorage.getItem(KEYS.NOTICE)) DOM.notice.innerText = localStorage.getItem(KEYS.NOTICE);
             
-            <button class="admin-btn" onclick="adminLogin()">
-                <i class="fas fa-lock"></i> LOGIN ADMIN
-            </button>
-        </div>
-        
-        <!-- Admin Dashboard (visible after login) -->
-        <div id="adminContent" style="display: none;">
-            <!-- Stats Cards -->
-            <div class="grid grid-cols-2 gap-4 mb-4">
-                <div class="bg-[#00ff00]/10 p-4 rounded-xl text-center border border-[#00ff00]">
-                    <i class="fas fa-users text-[#00ff00] text-2xl mb-2"></i>
-                    <div class="text-xs text-gray-500 uppercase">TOTAL USERS</div>
-                    <div class="text-3xl text-[#00ff00] font-bold" id="totalUsers">0</div>
-                </div>
-                <div class="bg-[#ff0000]/10 p-4 rounded-xl text-center border border-[#ff0000]">
-                    <i class="fas fa-robot text-[#ff0000] text-2xl mb-2"></i>
-                    <div class="text-xs text-gray-500 uppercase">ACTIVE BOTS</div>
-                    <div class="text-3xl text-[#ff0000] font-bold" id="activeBots">0</div>
-                </div>
-            </div>
-            
-            <!-- User Management -->
-            <div class="mb-4">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-[#00ff00] text-sm"><i class="fas fa-list mr-1"></i>USER ACCOUNTS</span>
-                    <button class="text-xs bg-[#00ff00]/10 border border-[#00ff00] px-3 py-1 rounded hover:bg-[#00ff00] hover:text-black transition" onclick="refreshUserList()">
-                        <i class="fas fa-sync-alt mr-1"></i>REFRESH
-                    </button>
-                </div>
+            if(localStorage.getItem(KEYS.C_TOOL)) DOM.root.style.setProperty('--tool-color', localStorage.getItem(KEYS.C_TOOL));
+            if(localStorage.getItem(KEYS.C_NOTICE)) DOM.root.style.setProperty('--notice-color', localStorage.getItem(KEYS.C_NOTICE));
+            if(localStorage.getItem(KEYS.C_ACCENT)) DOM.root.style.setProperty('--theme-accent', localStorage.getItem(KEYS.C_ACCENT));
+            if(localStorage.getItem(KEYS.C_BOX)) DOM.root.style.setProperty('--box-bg-color', localStorage.getItem(KEYS.C_BOX));
+        }
+
+        window.onload = loadSettings;
+
+        // --- Secret Trigger Logic (5 Clicks or Ctrl+Shift+U) ---
+        let clickCount = 0;
+        let clickTimer;
+
+        document.getElementById('secretTrigger').addEventListener('click', () => {
+            clickCount++;
+            clearTimeout(clickTimer);
+            if (clickCount >= 5) {
+                openAdmin();
+                clickCount = 0;
+            } else {
+                clickTimer = setTimeout(() => { clickCount = 0; }, 800);
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
+                e.preventDefault();
+                openAdmin();
+            }
+        });
+
+        // --- Admin Functions ---
+        function openAdmin() {
+            document.getElementById('adminModal').classList.add('active');
+            document.getElementById('adminPass').value = '';
+            document.getElementById('passError').classList.add('hidden');
+            document.getElementById('loginSection').classList.remove('hidden');
+            document.getElementById('editSection').classList.add('hidden');
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminModal').classList.remove('active');
+        }
+
+        function verifyAdmin() {
+            if (document.getElementById('adminPass').value === ADMIN_PASS) {
+                document.getElementById('loginSection').classList.add('hidden');
+                document.getElementById('editSection').classList.remove('hidden');
                 
-                <div class="bg-black/30 rounded-lg p-2 max-h-48 overflow-y-auto" id="userList">
-                    <div class="text-center text-gray-600 py-4">
-                        <i class="fas fa-spinner fa-spin mr-2"></i>Loading users...
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Admin Controls -->
-            <div class="grid grid-cols-2 gap-2 mb-4">
-                <button class="border border-[#00ff00] bg-[#00ff00]/10 text-[#00ff00] px-3 py-2 rounded text-sm hover:bg-[#00ff00] hover:text-black transition" onclick="restartAllBots()">
-                    <i class="fas fa-sync-alt mr-1"></i>RESTART ALL
-                </button>
-                <button class="border border-[#ff0000] bg-[#ff0000]/10 text-[#ff0000] px-3 py-2 rounded text-sm hover:bg-[#ff0000] hover:text-white transition" onclick="stopAllBots()">
-                    <i class="fas fa-stop-circle mr-1"></i>STOP ALL
-                </button>
-                <button class="border border-[#00ff00] bg-[#00ff00]/10 text-[#00ff00] px-3 py-2 rounded text-sm hover:bg-[#00ff00] hover:text-black transition" onclick="clearAllConsoles()">
-                    <i class="fas fa-eraser mr-1"></i>CLEAR ALL
-                </button>
-                <button class="border border-[#00ff00] bg-[#00ff00]/10 text-[#00ff00] px-3 py-2 rounded text-sm hover:bg-[#00ff00] hover:text-black transition" onclick="exportAccounts()">
-                    <i class="fas fa-download mr-1"></i>EXPORT
-                </button>
-            </div>
-            
-            <!-- Server Info -->
-            <div class="bg-black/20 rounded-lg p-3 mb-4 text-xs">
-                <div class="flex justify-between mb-1">
-                    <span class="text-gray-500">SERVER UPTIME:</span>
-                    <span class="text-[#00ff00]" id="adminServerUptime">00h 00m 00s</span>
-                </div>
-                <div class="flex justify-between mb-1">
-                    <span class="text-gray-500">TOTAL BOTS:</span>
-                    <span class="text-[#00ff00]" id="totalBotsCount">0</span>
-                </div>
-                <div class="flex justify-between">
-                    <span class="text-gray-500">API STATUS:</span>
-                    <span class="text-[#00ff00]">✅ CONNECTED</span>
-                </div>
-            </div>
-            
-            <!-- Admin Activity Log -->
-            <div class="mb-4">
-                <div class="flex justify-between items-center mb-2">
-                    <span class="text-[#00ff00] text-sm"><i class="fas fa-history mr-1"></i>ADMIN LOG</span>
-                    <button class="text-xs text-[#ff0000] hover:text-white hover:bg-[#ff0000] px-2 py-1 rounded transition" onclick="clearAdminLog()">
-                        <i class="fas fa-trash mr-1"></i>CLEAR
-                    </button>
-                </div>
-                <div class="bg-[#0a0a0a] h-24 overflow-y-auto p-2 rounded text-xs border border-gray-800 font-mono" id="adminLog">
-                    <div class="text-[#00ff00]">
-                        <span class="text-[#008800]">[00:00:00]</span> Admin panel initialized
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Logout Button -->
-            <button class="w-full bg-gradient-to-r from-gray-700 to-gray-900 text-white py-3 rounded-lg font-bold hover:from-gray-600 hover:to-gray-800 transition flex items-center justify-center gap-2" onclick="adminLogout()">
-                <i class="fas fa-sign-out-alt"></i> LOGOUT
-          	 </button>
-         </div>
-    	 </div>
- 		</div>
-</div>
-
-<script>
-    const API_URL = "https://darklink-tcp.onrender.com";
-    const API_KEY = "MAINUL_X_SECURE";
-
-    const STORAGE_UID = "mainul_saved_uid";
-    const STORAGE_PASS = "mainul_saved_pass";
-    const STORAGE_LOGIN = "mainul_logged_in";
-    const STORAGE_THEME = "mainul_theme";
-
-    let botEnabled = false;
-    let botStartTime = null;
-    let serverStartTime = null;
-    let realBotStatus = false;
-    let consoleLines = [
-        { text: 'Console Initialized...', timestamp: '00:00:00' }
-    ];
-    
-    // Dual Status Switch
-    let showServer = true;
-
-    document.addEventListener("DOMContentLoaded", function() {
-        const savedTheme = localStorage.getItem(STORAGE_THEME);
-        if (savedTheme === 'light') {
-            document.body.classList.add('light-mode');
-            document.getElementById('themeIcon').classList.remove('fa-moon');
-            document.getElementById('themeIcon').classList.add('fa-sun');
-        }
-        
-        renderConsole();
-        addConsoleLine('MAINUL TCP CONTROLLER initialized');
-        addConsoleLine('Login to start');
-        
-        const isLoggedIn = localStorage.getItem(STORAGE_LOGIN);
-        
-        if (isLoggedIn === 'true') {
-            document.getElementById('loginPage').classList.remove('active');
-            document.getElementById('panelPage').classList.add('active');
-            
-            const savedUid = localStorage.getItem(STORAGE_UID);
-            const savedPass = localStorage.getItem(STORAGE_PASS);
-            
-            if (savedUid && savedPass) {
-                document.getElementById('accountUid').value = savedUid;
-                document.getElementById('accountPass').value = savedPass;
-                addConsoleLine('✅ Loaded saved account');
-            }
-            
-            getServerStartTime();
-            getBotRealStatus();
-            startDualStatusSystem();
-            startLiveConsoleSync();
-            
-            addConsoleLine('✅ Welcome back, MAINUL - X!');
-        } else {
-            document.getElementById('loginPage').classList.add('active');
-        }
-    });
-
-    // ========== TIME FORMAT ==========
-    function formatTime(seconds) {
-        let h = Math.floor(seconds / 3600);
-        let m = Math.floor((seconds % 3600) / 60);
-        let s = seconds % 60;
-        return `${h.toString().padStart(2, '0')}h ${m.toString().padStart(2, '0')}m ${s.toString().padStart(2, '0')}s`;
-    }
-
-    // ========== GET SERVER TIME ==========
-    function getServerStartTime() {
-        fetch(`${API_URL}/api/status`, {
-            method: "GET",
-            headers: { "x-api-key": API_KEY }
-        })
-        .then(res => res.json())
-        .then(data => {
-            let uptimeStr = data.server_uptime || data.uptime || "0s";
-            let seconds = 0;
-            
-            if (uptimeStr.includes('h')) {
-                let parts = uptimeStr.split('h');
-                seconds += parseInt(parts[0]) * 3600;
-                if (parts[1].includes('m')) {
-                    let mParts = parts[1].split('m');
-                    seconds += parseInt(mParts[0]) * 60;
-                    if (mParts[1].includes('s')) {
-                        seconds += parseInt(mParts[1].replace('s', ''));
-                    }
-                }
-            } else if (uptimeStr.includes('m')) {
-                let parts = uptimeStr.split('m');
-                seconds += parseInt(parts[0]) * 60;
-                if (parts[1].includes('s')) {
-                    seconds += parseInt(parts[1].replace('s', ''));
-                }
-            } else if (uptimeStr.includes('s')) {
-                seconds = parseInt(uptimeStr.replace('s', ''));
-            }
-            
-            serverStartTime = Date.now() - (seconds * 1000);
-            addConsoleLine(`📡 Server uptime: ${uptimeStr}`);
-        })
-        .catch(err => {
-            console.log('Failed to get server time');
-            serverStartTime = Date.now();
-        });
-    }
-
-    // ========== GET BOT REAL STATUS ==========
-    function getBotRealStatus() {
-        const uid = getCurrentUid();
-        if (!uid) return;
-        
-        fetch(`${API_URL}/api/user_status`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": API_KEY
-            },
-            body: JSON.stringify({ uid: uid })
-        })
-        .then(res => res.json())
-        .then(data => {
-            realBotStatus = data.running || false;
-            
-            if (realBotStatus) {
-                if (data.start_time) {
-                    botStartTime = data.start_time * 1000;
-                    addConsoleLine(`🤖 Bot running since: ${new Date(botStartTime).toLocaleTimeString()}`);
-                } else if (!botStartTime) {
-                    botStartTime = Date.now();
-                }
-            } else {
-                botStartTime = null;
-            }
-        })
-        .catch(err => {
-            console.log('Status check error');
-        });
-    }
-
-    // ========== UPDATE UI ==========
-    function updateStatusUI() {
-        let now = Date.now();
-        
-        if (showServer) {
-            if (serverStartTime) {
-                let sec = Math.floor((now - serverStartTime) / 1000);
-                document.getElementById("statusBadge").innerText = "SERVER ONLINE";
-                document.getElementById("statusBadge").className = "badge-running";
-                document.getElementById("uptime").innerText = formatTime(sec);
-            } else {
-                document.getElementById("statusBadge").innerText = "SERVER ONLINE";
-                document.getElementById("statusBadge").className = "badge-running";
-                document.getElementById("uptime").innerText = "00h 00m 00s";
-            }
-        } else {
-            if (realBotStatus && botStartTime) {
-                let sec = Math.floor((now - botStartTime) / 1000);
-                document.getElementById("statusBadge").innerText = "BOT RUNNING";
-                document.getElementById("statusBadge").className = "badge-running";
-                document.getElementById("uptime").innerText = formatTime(sec);
-            } else {
-                document.getElementById("statusBadge").innerText = "BOT OFFLINE";
-                document.getElementById("statusBadge").className = "badge-stopped";
-                document.getElementById("uptime").innerText = "00h 00m 00s";
-            }
-        }
-    }
-
-    // ========== DUAL STATUS SYSTEM ==========
-    function startDualStatusSystem() {
-        setInterval(() => {
-            showServer = !showServer;
-            
-            document.getElementById("statusBadge").innerText = "-----";
-            document.getElementById("uptime").innerText = "Loading...";
-            
-            getBotRealStatus();
-            
-            setTimeout(updateStatusUI, 300);
-        }, 3000);
-        
-        setInterval(() => {
-            getBotRealStatus();
-            updateStatusUI();
-        }, 1000);
-    }
-
-    // ========== LIVE CONSOLE SYNC ==========
-    function startLiveConsoleSync() {
-        setInterval(() => {
-            const uid = getCurrentUid();
-            if (!uid) return;
-
-            fetch(`${API_URL}/api/console`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": API_KEY
-                },
-                body: JSON.stringify({ uid })
-            })
-            .then(res => res.json())
-            .then(data => {
-                if (data.console && data.console.length > 0) {
-                    consoleLines = data.console;
-                    renderConsole();
-                }
-            })
-            .catch(err => console.log('Console sync error'));
-        }, 2000);
-    }
-
-    // ========== THEME TOGGLE ==========
-    function toggleTheme() {
-        const body = document.body;
-        const icon = document.getElementById('themeIcon');
-        
-        if (body.classList.contains('light-mode')) {
-            body.classList.remove('light-mode');
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-            localStorage.setItem(STORAGE_THEME, 'dark');
-        } else {
-            body.classList.add('light-mode');
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-            localStorage.setItem(STORAGE_THEME, 'light');
-        }
-    }
-
-    // ========== COPY CONSOLE ==========
-    function copyConsole() {
-        const text = consoleLines.map(line => `[${line.timestamp}] ${line.text}`).join('\n');
-        navigator.clipboard.writeText(text).then(() => {
-            showPopup('✅ Console copied to clipboard!', 'success');
-        });
-    }
-
-    // ========== POPUP ==========
-    function showPopup(message, type = 'success') {
-        const oldPopup = document.getElementById('custom-popup');
-        if (oldPopup) oldPopup.remove();
-
-        const popup = document.createElement('div');
-        popup.id = 'custom-popup';
-        popup.className = `popup-notification popup-${type}`;
-        
-        const title = type === 'success' ? 'Success' : 'Error';
-        const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
-        
-        popup.innerHTML = `
-            <div class="popup-header">
-                <i class="fas ${icon}"></i> ${title}
-            </div>
-            <div class="popup-body">
-                ${message}
-            </div>
-            <div class="popup-footer">
-                <button class="popup-button" onclick="this.closest('#custom-popup').remove()">OK</button>
-            </div>
-        `;
-
-        document.body.appendChild(popup);
-
-        setTimeout(() => {
-            if (document.getElementById('custom-popup')) {
-                document.getElementById('custom-popup').style.animation = 'popupFadeOut 0.3s ease';
-                setTimeout(() => {
-                    if (document.getElementById('custom-popup')) {
-                        document.getElementById('custom-popup').remove();
-                    }
-                }, 300);
-            }
-        }, 5000);
-    }
-
-    // ========== PASSWORD TOGGLES ==========
-    function toggleLoginPassword() {
-        const pass = document.getElementById('loginPassword');
-        const icon = document.getElementById('loginEyeIcon');
-        pass.type = pass.type === 'password' ? 'text' : 'password';
-        icon.classList.toggle('fa-eye-slash');
-        icon.classList.toggle('fa-eye');
-    }
-
-    function toggleAccountPassword() {
-        const pass = document.getElementById('accountPass');
-        const icon = document.getElementById('accountEyeIcon');
-        pass.type = pass.type === 'password' ? 'text' : 'password';
-        icon.classList.toggle('fa-eye-slash');
-        icon.classList.toggle('fa-eye');
-    }
-
-    function toggleAdminPassword() {
-        const pass = document.getElementById('adminPasskey');
-        const icon = document.getElementById('adminEyeIcon');
-        pass.type = pass.type === 'password' ? 'text' : 'password';
-        icon.classList.toggle('fa-eye-slash');
-        icon.classList.toggle('fa-eye');
-    }
-
-    // ========== 🔥 LOGIN HANDLER (API CONNECTED) ==========
-    function handleLogin() {
-        const username = document.getElementById('loginUsername').value.trim();
-        const password = document.getElementById('loginPassword').value.trim();
-        const errorDiv = document.getElementById('loginError');
-
-        if (!username || !password) {
-            errorDiv.style.display = 'block';
-            errorDiv.textContent = 'Please fill all fields!';
-            document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.add('shake'));
-            setTimeout(() => document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.remove('shake')), 500);
-            return;
-        }
-
-        addConsoleLine('🔐 Sending login request...');
-
-        fetch(`${API_URL}/api/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: username,
-                password: password
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                localStorage.setItem(STORAGE_LOGIN, 'true');
-
-                document.getElementById('loginPage').classList.remove('active');
-                document.getElementById('panelPage').classList.add('active');
-
-                const savedUid = localStorage.getItem(STORAGE_UID);
-                const savedPass = localStorage.getItem(STORAGE_PASS);
+                // Populate current values to inputs
+                INPUTS.tool.value = DOM.tool.innerText;
+                INPUTS.notice.value = DOM.notice.innerText;
                 
-                if (savedUid && savedPass) {
-                    document.getElementById('accountUid').value = savedUid;
-                    document.getElementById('accountPass').value = savedPass;
-                    addConsoleLine('✅ Loaded saved account');
-                }
-
-                addConsoleLine('✅ Login successful!');
-                showPopup('🔥 Welcome back, MAINUL - X!', 'success');
-
-                getServerStartTime();
-                getBotRealStatus();
-                startDualStatusSystem();
-                startLiveConsoleSync();
-            } else {
-                errorDiv.style.display = 'block';
-                errorDiv.textContent = data.msg || 'Login failed';
-                addConsoleLine('❌ Login failed');
+                // Get computed colors if not set in localstorage
+                const rs = getComputedStyle(DOM.root);
+                INPUTS.cTool.value = localStorage.getItem(KEYS.C_TOOL) || rgb2hex(rs.getPropertyValue('--tool-color'));
+                INPUTS.cNotice.value = localStorage.getItem(KEYS.C_NOTICE) || rgb2hex(rs.getPropertyValue('--notice-color'));
+                INPUTS.cAccent.value = localStorage.getItem(KEYS.C_ACCENT) || rgb2hex(rs.getPropertyValue('--theme-accent'));
+                // Box color logic is a bit complex due to rgba, we'll just set it to a solid hex for picker
+                INPUTS.cBox.value = localStorage.getItem(KEYS.C_BOX) || "#1a1a1a";
                 
-                document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.add('shake'));
-                setTimeout(() => document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.remove('shake')), 500);
-            }
-        })
-        .catch(() => {
-            errorDiv.style.display = 'block';
-            errorDiv.textContent = 'Server error!';
-            addConsoleLine('❌ API connection error');
-            
-            document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.add('shake'));
-            setTimeout(() => document.querySelectorAll('.input-wrapper input').forEach(i => i.classList.remove('shake')), 500);
-        });
-    }
-
-  // ========== ADMIN PANEL FUNCTIONS ==========
-
-let isAdminLoggedIn = false;
-
-// 👑 Admin Login Function
-function adminLogin() {
-    const passkey = document.getElementById('adminPasskey').value.trim();
-
-    if (!passkey) {
-        showPopup('❌ Please enter admin password', 'error');
-        return;
-    }
-
-    addConsoleLine('👑 Verifying admin credentials...');
-
-    fetch(`${API_URL}/api/admin_login`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ password: passkey })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            isAdminLoggedIn = true;
-            
-            // Store admin pass in localStorage (for future API calls)
-            localStorage.setItem('admin_pass', passkey);
-            
-            addConsoleLine('✅ Admin login successful');
-            showPopup('👑 Admin access granted!', 'success');
-            
-            // Hide login form, show dashboard
-            document.getElementById('adminLoginForm').style.display = 'none';
-            document.getElementById('adminContent').style.display = 'block';
-            document.getElementById('adminPasskey').value = '';
-            
-            // Load admin data
-            loadAdminData();
-            addAdminLog('✅ Admin logged in');
-        } else {
-            addConsoleLine('❌ Wrong admin password');
-            showPopup('❌ Wrong admin password', 'error');
-            
-            document.querySelector('#adminLoginForm .input-wrapper input').classList.add('shake');
-            setTimeout(() => {
-                document.querySelector('#adminLoginForm .input-wrapper input').classList.remove('shake');
-            }, 500);
-        }
-    })
-    .catch(() => {
-        addConsoleLine('❌ Server error');
-        showPopup('❌ Server error', 'error');
-    });
-}
-
-// 👑 Load Admin Dashboard Data
-function loadAdminData() {
-    // Load users count
-    fetch(`${API_URL}/api/accounts`, {
-        headers: { "x-api-key": API_KEY }
-    })
-    .then(res => res.json())
-    .then(data => {
-        const userCount = Object.keys(data).length;
-        document.getElementById('totalUsers').innerText = userCount;
-        document.getElementById('totalBotsCount').innerText = userCount;
-        
-        // Render user list
-        renderUserList(data);
-    })
-    .catch(err => {
-        addAdminLog('❌ Failed to load users');
-    });
-
-    // Load active bots
-    fetch(`${API_URL}/api/status`, {
-        headers: { "x-api-key": API_KEY }
-    })
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById('activeBots').innerText = data.running_bots || 0;
-    });
-
-    // Load server uptime
-    updateServerUptime();
-    setInterval(updateServerUptime, 1000);
-}
-
-// 👑 Render User List
-function renderUserList(users) {
-    const userListEl = document.getElementById('userList');
-    
-    if (!users || Object.keys(users).length === 0) {
-        userListEl.innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-users-slash"></i>
-                <div>No users found</div>
-            </div>
-        `;
-        return;
-    }
-
-    let html = '';
-    for (let uid in users) {
-        html += `
-            <div class="user-list-item">
-                <span>${uid}</span>
-                <button onclick="deleteUser('${uid}')" title="Delete user">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
-        `;
-    }
-    
-    userListEl.innerHTML = html;
-    addAdminLog(`📋 Loaded ${Object.keys(users).length} users`);
-}
-
-// 👑 Refresh User List
-function refreshUserList() {
-    addAdminLog('🔄 Refreshing user list...');
-    
-    fetch(`${API_URL}/api/accounts`, {
-        headers: { "x-api-key": API_KEY }
-    })
-    .then(res => res.json())
-    .then(data => {
-        renderUserList(data);
-        document.getElementById('totalUsers').innerText = Object.keys(data).length;
-        addAdminLog('✅ User list refreshed');
-    })
-    .catch(() => {
-        addAdminLog('❌ Failed to refresh');
-    });
-}
-
-// 👑 Delete User
-function deleteUser(uid) {
-    if (!confirm(`⚠️ Are you sure you want to delete user ${uid}?`)) return;
-    
-    const admin_pass = localStorage.getItem('admin_pass');
-    
-    if (!admin_pass) {
-        showPopup('❌ Admin authentication required', 'error');
-        return;
-    }
-
-    addAdminLog(`🗑️ Deleting user: ${uid}`);
-
-    fetch(`${API_URL}/api/admin/delete_user`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "x-api-key": API_KEY
-        },
-        body: JSON.stringify({ 
-            uid, 
-            admin_pass: admin_pass 
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            addAdminLog(`✅ User ${uid} deleted`);
-            showPopup('✅ User deleted successfully', 'success');
-            refreshUserList(); // Refresh the list
-        } else {
-            addAdminLog(`❌ Failed to delete user: ${data.msg}`);
-            showPopup(data.msg || 'Failed to delete', 'error');
-        }
-    })
-    .catch(() => {
-        addAdminLog('❌ Server error during delete');
-        showPopup('❌ Server error', 'error');
-    });
-}
-
-// 👑 Restart All Bots
-function restartAllBots() {
-    if (!confirm('⚠️ Are you sure you want to restart ALL bots?')) return;
-    
-    const admin_pass = localStorage.getItem('admin_pass');
-    
-    addAdminLog('🔄 Restarting all bots...');
-
-    fetch(`${API_URL}/api/admin/stop_all`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "x-api-key": API_KEY
-        },
-        body: JSON.stringify({ admin_pass: admin_pass })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            addAdminLog('✅ All bots stopped');
-            
-            // Now start them again
-            setTimeout(() => {
-                fetch(`${API_URL}/api/accounts`, {
-                    headers: { "x-api-key": API_KEY }
-                })
-                .then(res => res.json())
-                .then(accounts => {
-                    for (let uid in accounts) {
-                        fetch(`${API_URL}/api/start`, {
-                            method: "POST",
-                            headers: {
-                                "Content-Type": "application/json",
-                                "x-api-key": API_KEY
-                            },
-                            body: JSON.stringify({ 
-                                uid, 
-                                password: accounts[uid] 
-                            })
-                        });
-                    }
-                    addAdminLog('✅ All bots restarted');
-                    showPopup('✅ Restart commands sent', 'success');
-                });
-            }, 2000);
-        } else {
-            addAdminLog('❌ Failed to restart bots');
-        }
-    })
-    .catch(() => {
-        addAdminLog('❌ Server error');
-    });
-}
-
-// 👑 Stop All Bots
-function stopAllBots() {
-    if (!confirm('⚠️ Are you sure you want to stop ALL bots?')) return;
-    
-    const admin_pass = localStorage.getItem('admin_pass');
-    
-    addAdminLog('🛑 Stopping all bots...');
-
-    fetch(`${API_URL}/api/admin/stop_all`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "x-api-key": API_KEY
-        },
-        body: JSON.stringify({ admin_pass: admin_pass })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            addAdminLog(`✅ Stopped ${data.msg || 'all bots'}`);
-            document.getElementById('activeBots').innerText = '0';
-            showPopup('✅ All bots stopped', 'success');
-        } else {
-            addAdminLog('❌ Failed to stop bots');
-        }
-    })
-    .catch(() => {
-        addAdminLog('❌ Server error');
-    });
-}
-
-// 👑 Clear All Consoles
-function clearAllConsoles() {
-    if (!confirm('⚠️ Clear ALL consoles?')) return;
-    
-    const admin_pass = localStorage.getItem('admin_pass');
-    
-    addAdminLog('🧹 Clearing all consoles...');
-
-    fetch(`${API_URL}/api/admin/clear_all`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "x-api-key": API_KEY
-        },
-        body: JSON.stringify({ admin_pass: admin_pass })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            addAdminLog('✅ All consoles cleared');
-            showPopup('✅ All consoles cleared', 'success');
-        } else {
-            addAdminLog('❌ Failed to clear consoles');
-        }
-    })
-    .catch(() => {
-        addAdminLog('❌ Server error');
-    });
-}
-
-// 👑 Export Accounts to JSON
-function exportAccounts() {
-    addAdminLog('📦 Exporting accounts data...');
-
-    fetch(`${API_URL}/api/accounts`, {
-        headers: { "x-api-key": API_KEY }
-    })
-    .then(res => res.json())
-    .then(data => {
-        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `accounts_backup_${new Date().toISOString().slice(0,10)}.json`;
-        a.click();
-        URL.revokeObjectURL(url);
-        
-        addAdminLog('✅ Data exported successfully');
-        showPopup('✅ Accounts exported', 'success');
-    })
-    .catch(() => {
-        addAdminLog('❌ Export failed');
-        showPopup('❌ Export failed', 'error');
-    });
-}
-
-// 👑 Add Admin Log Entry
-function addAdminLog(text) {
-    const logEl = document.getElementById('adminLog');
-    if (!logEl) return;
-    
-    const now = new Date();
-    const time = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
-    
-    const line = document.createElement('div');
-    line.className = 'admin-log-line';
-    line.innerHTML = `<span class="admin-log-time">[${time}]</span> ${text}`;
-    
-    logEl.appendChild(line);
-    logEl.scrollTop = logEl.scrollHeight;
-    
-    // Also add to main console
-    addConsoleLine(`👑 ADMIN: ${text}`);
-}
-
-// 👑 Clear Admin Log
-function clearAdminLog() {
-    const logEl = document.getElementById('adminLog');
-    if (logEl) {
-        logEl.innerHTML = '';
-        addAdminLog('📋 Admin log cleared');
-    }
-}
-
-// 👑 Update Server Uptime in Admin Panel
-function updateServerUptime() {
-    fetch(`${API_URL}/api/status`, {
-        headers: { "x-api-key": API_KEY }
-    })
-    .then(res => res.json())
-    .then(data => {
-        let uptimeStr = data.server_uptime || data.uptime || "0s";
-        
-        // Parse seconds
-        let seconds = 0;
-        if (uptimeStr.includes('s')) {
-            seconds = parseInt(uptimeStr.replace('s', ''));
-        }
-        
-        const hours = Math.floor(seconds / 3600);
-        const minutes = Math.floor((seconds % 3600) / 60);
-        const secs = seconds % 60;
-        
-        const formatted = `${hours.toString().padStart(2,'0')}h ${minutes.toString().padStart(2,'0')}m ${secs.toString().padStart(2,'0')}s`;
-        document.getElementById('adminServerUptime').innerText = formatted;
-    })
-    .catch(() => {
-        document.getElementById('adminServerUptime').innerText = '--h --m --s';
-    });
-}
-
-// 👑 Admin Logout
-function adminLogout() {
-    isAdminLoggedIn = false;
-    localStorage.removeItem('admin_pass');
-    
-    document.getElementById('adminLoginForm').style.display = 'block';
-    document.getElementById('adminContent').style.display = 'none';
-    
-    addAdminLog('👋 Admin logged out');
-    showPopup('Admin logged out', 'info');
-}
-
-// 👑 Check Admin Status when switching to admin section
-function checkAdminStatus() {
-    const adminPass = localStorage.getItem('admin_pass');
-    
-    if (adminPass) {
-        // Verify with server (optional)
-        fetch(`${API_URL}/api/admin_login`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ password: adminPass })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                isAdminLoggedIn = true;
-                document.getElementById('adminLoginForm').style.display = 'none';
-                document.getElementById('adminContent').style.display = 'block';
-                loadAdminData();
             } else {
-                // Invalid stored pass
-                localStorage.removeItem('admin_pass');
-                document.getElementById('adminLoginForm').style.display = 'block';
-                document.getElementById('adminContent').style.display = 'none';
+                document.getElementById('passError').classList.remove('hidden');
             }
-        });
-    } else {
-        document.getElementById('adminLoginForm').style.display = 'block';
-        document.getElementById('adminContent').style.display = 'none';
-    }
-}
-
-// 👑 Update showSection function to include admin check
-// (Add this inside your existing showSection function)
-/*
-// Add this inside the 'admin' section case:
-if (section === 'admin') {
-    checkAdminStatus();
-}
-*/
-
-    // ========== SAVE ACCOUNT ==========
-    function saveAccount() {
-        const uid = document.getElementById('accountUid').value.trim();
-        const pass = document.getElementById('accountPass').value.trim();
-        
-        if (!uid || !pass) {
-            showPopup('❌ Please enter UID and Password', 'error');
-            addConsoleLine('❌ Enter UID & Password');
-            return;
         }
 
-        if (!/^\d+$/.test(uid)) {
-            showPopup('❌ UID must be numbers only', 'error');
-            return;
-        }
+        function saveSettings() {
+            // Save Texts
+            const t = INPUTS.tool.value.trim();
+            const n = INPUTS.notice.value.trim();
+            if(t) { localStorage.setItem(KEYS.TOOL, t); DOM.tool.innerText = t; }
+            if(n) { localStorage.setItem(KEYS.NOTICE, n); DOM.notice.innerText = n; }
 
-        addConsoleLine('📡 Saving account to server...');
-
-        fetch(`${API_URL}/api/add_account`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": API_KEY
-            },
-            body: JSON.stringify({ uid: uid, password: pass })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if (data.success) {
-                localStorage.setItem(STORAGE_UID, uid);
-                localStorage.setItem(STORAGE_PASS, pass);
-                
-                showPopup('✅ Account saved successfully!', 'success');
-                addConsoleLine('✅ Account added & ready');
-            } else {
-                showPopup(data.msg || 'Failed to add account', 'error');
-                addConsoleLine('❌ ' + (data.msg || 'Save failed'));
-            }
-        })
-        .catch(() => {
-            showPopup('❌ API connection error', 'error');
-            addConsoleLine('❌ API error');
-        });
-    }
-
-// ========== SIDEBAR ==========
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
-    document.getElementById('overlay').classList.toggle('active');
-}
-
-function closeSidebar() {
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('overlay').classList.remove('active');
-}
-
-function logout() {
-    localStorage.removeItem(STORAGE_LOGIN);
-    localStorage.removeItem('admin_pass'); // Also remove admin session
-    document.getElementById('panelPage').classList.remove('active');
-    document.getElementById('loginPage').classList.add('active');
-    document.getElementById('loginUsername').value = '';
-    document.getElementById('loginPassword').value = '';
-    addConsoleLine('👋 Logged out');
-}
-
-function showSection(section) {
-    document.querySelectorAll('.content-section').forEach(el => el.style.display = 'none');
-    document.querySelectorAll('.sidebar-menu-item').forEach(el => el.classList.remove('active'));
-    
-    if (section === 'control') {
-        document.getElementById('controlSection').style.display = 'block';
-        document.querySelector('.sidebar-menu-item').classList.add('active');
-    } else if (section === 'login') {
-        document.getElementById('loginSection').style.display = 'block';
-        document.querySelectorAll('.sidebar-menu-item')[1].classList.add('active');
-    } else if (section === 'admin') {
-        document.getElementById('adminSection').style.display = 'block';
-        document.querySelectorAll('.sidebar-menu-item')[2].classList.add('active');
-        
-        
-        checkAdminStatus();
-    }
-}
-    
-    function toggleBot() {
-        const toggle = document.getElementById('botToggle');
-        botEnabled = toggle.checked;
-        
-        if (botEnabled) {
-            addConsoleLine('✅ Bot controls enabled');
-            showPopup('✅ Bot controls are now active', 'success');
-        } else {
-            addConsoleLine('⛔ Bot controls disabled');
-            showPopup('⛔ Bot controls are now disabled', 'info');
+            // Save Colors
+            localStorage.setItem(KEYS.C_TOOL, INPUTS.cTool.value);
+            localStorage.setItem(KEYS.C_NOTICE, INPUTS.cNotice.value);
+            localStorage.setItem(KEYS.C_ACCENT, INPUTS.cAccent.value);
             
-            if (realBotStatus) {
-                stopBot();
+            // For box, add slight transparency to hex
+            const boxColorHex = INPUTS.cBox.value;
+            localStorage.setItem(KEYS.C_BOX, boxColorHex);
+
+            // Apply Colors Live
+            DOM.root.style.setProperty('--tool-color', INPUTS.cTool.value);
+            DOM.root.style.setProperty('--notice-color', INPUTS.cNotice.value);
+            DOM.root.style.setProperty('--theme-accent', INPUTS.cAccent.value);
+            
+            // Convert Hex to RGBA for Box background to keep glass effect inside box
+            const rgbaBox = hexToRgbA(boxColorHex, 0.4);
+            DOM.root.style.setProperty('--box-bg-color', rgbaBox);
+
+            closeAdmin();
+        }
+
+        // Helpers for Color conversion
+        function rgb2hex(rgb) {
+            rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
+            return (rgb && rgb.length === 4) ? "#" +
+            ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
+            ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
+            ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '#ffffff';
+        }
+
+        function hexToRgbA(hex, alpha){
+            let c;
+            if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+                c= hex.substring(1).split('');
+                if(c.length== 3){ c= [c[0], c[0], c[1], c[1], c[2], c[2]]; }
+                c= '0x'+c.join('');
+                return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+','+alpha+')';
             }
+            return `rgba(25,25,25,${alpha})`;
         }
-    }
-    
-    function getCurrentUid() {
-        return localStorage.getItem(STORAGE_UID) || document.getElementById('accountUid').value.trim();
-    }
-
-    // ========== START BOT ==========
-    function startBot() {
-        const uid = getCurrentUid();
-        if (!uid) {
-            showPopup('❌ Please enter UID first', 'error');
-            return;
-        }
-        
-        if (realBotStatus) {
-            showPopup('⚠️ Bot is already running', 'error');
-            return;
-        }
-        
-        const pass = document.getElementById('accountPass').value.trim();
-        if (!pass) {
-            showPopup('❌ Please enter password', 'error');
-            return;
-        }
-
-        addConsoleLine('🚀 Sending start command to device...');
-
-        fetch(`${API_URL}/api/start`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": API_KEY
-            },
-            body: JSON.stringify({ 
-                uid: uid, 
-                password: pass,
-                device: 'user_device'
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success){
-                botStartTime = Date.now();
-                realBotStatus = true;
-                
-                addConsoleLine('✅ Bot started on your device');
-                showPopup('✅ Bot started successfully!', 'success');
-                
-                if (data.start_time) {
-                    botStartTime = data.start_time * 1000;
-                }
-            } else {
-                addConsoleLine('❌ ' + (data.message || 'Failed to start'));
-                showPopup('❌ Failed to start bot', 'error');
-            }
-        })
-        .catch(() => {
-            addConsoleLine('❌ Cannot connect to server');
-            showPopup('❌ Connection error', 'error');
-        });
-    }
-
-    // ========== STOP BOT ==========
-    function stopBot() {
-        const uid = getCurrentUid();
-        if (!uid) {
-            showPopup('❌ Please enter UID first', 'error');
-            return;
-        }
-
-        addConsoleLine('🛑 Sending stop command to device...');
-
-        fetch(`${API_URL}/api/stop`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": API_KEY
-            },
-            body: JSON.stringify({ 
-                uid: uid,
-                device: 'user_device'
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success){
-                botStartTime = null;
-                realBotStatus = false;
-                
-                addConsoleLine('✅ Bot stopped on your device');
-                showPopup('✅ Bot stopped successfully!', 'success');
-            } else {
-                addConsoleLine('❌ ' + (data.message || 'Failed to stop'));
-            }
-        })
-        .catch(() => {
-            addConsoleLine('❌ Cannot connect to server');
-            showPopup('❌ Connection error', 'error');
-        });
-    }
-
-    // ========== RESTART BOT ==========
-    function restartBot() {
-        const uid = getCurrentUid();
-        if (!uid) {
-            showPopup('❌ Please enter UID first', 'error');
-            return;
-        }
-
-        addConsoleLine('🔄 Sending restart command to device...');
-
-        fetch(`${API_URL}/api/restart`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": API_KEY
-            },
-            body: JSON.stringify({ 
-                uid: uid,
-                device: 'user_device'
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success){
-                botStartTime = Date.now();
-                realBotStatus = true;
-                
-                addConsoleLine('✅ Bot restarted on your device');
-                showPopup('✅ Bot restarted successfully!', 'success');
-            } else {
-                addConsoleLine('❌ ' + (data.message || 'Failed to restart'));
-            }
-        })
-        .catch(() => {
-            addConsoleLine('❌ Cannot connect to server');
-            showPopup('❌ Connection error', 'error');
-        });
-    }
-
-    // ========== FORCE KILL ==========
-    function forceKill() {
-        const uid = getCurrentUid();
-        if (!uid) {
-            showPopup('❌ Please enter UID first', 'error');
-            return;
-        }
-
-        if (!confirm('⚠️ Are you sure? This will force kill the bot!')) {
-            return;
-        }
-
-        addConsoleLine('💀 Sending force kill command to device...');
-
-        fetch(`${API_URL}/api/forcekill`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": API_KEY
-            },
-            body: JSON.stringify({ 
-                uid: uid,
-                device: 'user_device'
-            })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success){
-                botStartTime = null;
-                realBotStatus = false;
-                
-                addConsoleLine('✅ Bot force killed on your device');
-                showPopup('✅ Bot force killed!', 'success');
-            } else {
-                addConsoleLine('❌ ' + (data.message || 'Failed to kill'));
-            }
-        })
-        .catch(() => {
-            addConsoleLine('❌ Cannot connect to server');
-            showPopup('❌ Connection error', 'error');
-        });
-    }
-
-    // ========== CLEAR CONSOLE ==========
-    function clearConsole() {
-        const uid = getCurrentUid();
-        if (!uid) {
-            showPopup('❌ Please enter UID first', 'error');
-            return;
-        }
-
-        fetch(`${API_URL}/api/clear_console`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "x-api-key": API_KEY
-            },
-            body: JSON.stringify({ uid })
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.success){
-                consoleLines = [];
-                renderConsole();
-                addConsoleLine('🧹 Console cleared');
-                showPopup('✅ Console cleared!', 'success');
-            }
-        })
-        .catch(() => {
-            addConsoleLine('❌ Cannot connect to server');
-            showPopup('❌ Connection error', 'error');
-        });
-    }
-
-    // ========== RENDER CONSOLE ==========
-    function renderConsole() {
-        const consoleElement = document.getElementById('console');
-        consoleElement.innerHTML = '';
-        
-        consoleLines.forEach(line => {
-            const lineDiv = document.createElement('div');
-            lineDiv.className = 'console-line';
-            lineDiv.innerHTML = `<span class="console-timestamp">[${line.timestamp}]</span> ${line.text}`;
-            consoleElement.appendChild(lineDiv);
-        });
-        
-        consoleElement.scrollTop = consoleElement.scrollHeight;
-    }
-
-    // ========== SCROLL CONSOLE ==========
-    function scrollConsole() {
-        const console = document.getElementById('console');
-        console.scrollTop = console.scrollHeight;
-        addConsoleLine('📜 Scrolled to bottom');
-    }
-
-    // ========== ADD CONSOLE LINE ==========
-    function addConsoleLine(text) {
-        const now = new Date();
-        const time = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
-        
-        consoleLines.push({
-            text: text,
-            timestamp: time
-        });
-        
-        if (consoleLines.length > 200) {
-            consoleLines = consoleLines.slice(-200);
-        }
-        
-        renderConsole();
-    }
-
-    // ========== BUBBLE FUNCTIONS ==========
-    function toggleBubble() {
-        const bubble = document.getElementById('bubbleContent');
-        const overlay = document.getElementById('bubbleOverlay');
-        
-        if (bubble.classList.contains('active')) {
-            bubble.classList.remove('active');
-            overlay.classList.remove('active');
-        } else {
-            bubble.classList.add('active');
-            overlay.classList.add('active');
-        }
-    }
-
-    function closeBubble() {
-        document.getElementById('bubbleContent').classList.remove('active');
-        document.getElementById('bubbleOverlay').classList.remove('active');
-    }
-
-    // Bubble button setup
-    (function() {
-        const bubbleBtn = document.querySelector('.bubble-button');
-        if (bubbleBtn) {
-            bubbleBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleBubble();
-            });
-        }
-    })();
-
-    function quickReply(type) {
-        let message = '';
-        if (type === 'help') message = 'I need help with the bot';
-        else if (type === 'price') message = 'Tell me about pricing';
-        else if (type === 'bot') message = 'Bot features please';
-        
-        addConsoleLine(`💬 Support: ${message}`);
-        showPopup('✅ Message sent to support!', 'success');
-        closeBubble();
-    }
-
-    function copyText(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            showPopup('✅ Copied to clipboard!', 'success');
-        });
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeBubble();
-        }
-    });
-</script>
+    </script>
 </body>
 </html>
