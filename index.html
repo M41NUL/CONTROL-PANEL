@@ -12,10 +12,10 @@
 
     <style>
         :root {
-            --theme-accent: #ffffff;      /* Default Glow & Icon Color */
-            --tool-color: #ffffff;        /* Default Tool Name Color */
-            --notice-color: #9ca3af;      /* Default Notice Text Color */
-            --box-bg-color: rgba(255, 255, 255, 0.03); /* Terminal/Notice Box BG */
+            --theme-accent: #ffffff;      /* Glow & Icon Color */
+            --tool-color: #22c55e;        /* Tool Name Color (Green) */
+            --notice-color: #ef4444;      /* Notice Text Color (Red) */
+            --box-bg-color: rgba(255, 255, 255, 0.03); /* Terminal Box BG */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,7 +32,7 @@
             position: relative;
         }
 
-        /* Animated Background Glows using Theme Accent */
+        /* Animated Background Glows */
         .glow-1 {
             position: absolute;
             top: -15%;
@@ -81,13 +81,12 @@
             max-width: 600px;
         }
 
-        /* Dynamic Colors Applied */
+        /* Dynamic Colors */
         .dynamic-tool { color: var(--tool-color); }
         .dynamic-notice { color: var(--notice-color); }
         .dynamic-box { background: var(--box-bg-color); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .dynamic-icon { color: var(--theme-accent); }
 
-        /* Status Badge & Radar */
+        /* Status Badge */
         .status-badge {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -129,7 +128,6 @@
             font-size: 50px;
             color: var(--theme-accent);
             animation: spin 6s linear infinite;
-            cursor: pointer; /* Admin Trigger */
             text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
@@ -215,44 +213,6 @@
             font-size: 16px;
             color: var(--theme-accent);
         }
-
-        /* Admin UI */
-        .admin-overlay {
-            position: fixed; inset: 0;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(15px);
-            z-index: 999;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: 0.3s;
-        }
-        .admin-overlay.active { opacity: 1; pointer-events: all; }
-        
-        .admin-input {
-            width: 100%; background: rgba(0,0,0,0.4);
-            border: 1px solid rgba(255,255,255,0.1); color: white;
-            padding: 10px 15px; border-radius: 8px; font-size: 12px; margin-bottom: 12px;
-            font-family: 'JetBrains Mono', monospace; outline: none;
-        }
-        .admin-input:focus { border-color: #fff; }
-        
-        .color-picker-group {
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(255,255,255,0.03); padding: 8px 12px; border-radius: 8px; margin-bottom: 8px;
-        }
-        .color-picker-group label { font-size: 11px; color: #aaa; }
-        input[type="color"] {
-            -webkit-appearance: none; border: none; width: 30px; height: 30px;
-            border-radius: 5px; cursor: pointer; background: transparent;
-        }
-        input[type="color"]::-webkit-color-swatch-wrapper { padding: 0; }
-        input[type="color"]::-webkit-color-swatch { border: 1px solid rgba(255,255,255,0.2); border-radius: 5px; }
-
-        .btn-glass {
-            background: #fff; color: #000; border: none; padding: 10px;
-            border-radius: 8px; font-weight: bold; cursor: pointer;
-            width: 100%; font-size: 13px; transition: 0.3s;
-        }
-        .btn-glass:hover { background: #e5e5e5; transform: scale(0.98); }
     </style>
 </head>
 <body>
@@ -272,19 +232,22 @@
         </div>
 
         <div class="gear-container mb-4">
-            <!-- Secret Trigger here (Click 5 times) -->
-            <i class="fas fa-cog gear" id="secretTrigger"></i>
+            <i class="fas fa-cog gear"></i>
             <i class="fas fa-cogs gear-small"></i>
         </div>
 
-        <!-- Dynamic Tool Name -->
-        <h1 id="displayToolName" class="text-2xl md:text-3xl font-bold mb-2 tracking-wider dynamic-tool uppercase">
+        <!-- Fixed Tool Name (Green) -->
+        <h1 class="text-2xl md:text-3xl font-bold mb-2 tracking-wider dynamic-tool uppercase">
             MAINUL TCP CONTROLLER
         </h1>
         
-        <!-- Dynamic Notice Message -->
-        <p id="displayNotice" class="text-sm md:text-sm leading-relaxed mb-4 dynamic-notice px-2">
-            The server is currently undergoing scheduled maintenance to improve performance and add new features. Please wait while we upgrade the core system files.
+        <!-- Fixed Notice Message (Red) -->
+        <p class="text-[13px] md:text-sm leading-relaxed mb-4 dynamic-notice px-2 font-medium">
+            আমরা MAINUL TCP CONTROLLER কে আরও শক্তিশালী করছি।<br>
+            নতুন ফিচার, দ্রুত গতি ও বাগ ফিক্স যোগ করা হচ্ছে।<br>
+            কিছুক্ষণের মধ্যেই আপডেট সম্পূর্ণ হয়ে যাবে।<br><br>
+            ধৈর্য ধরার জন্য ধন্যবাদ ❤️<br>
+            MAINUL - X
         </p>
 
         <!-- Fake Terminal -->
@@ -338,204 +301,9 @@
         </div>
     </div>
 
-    <!-- Secret Admin Panel -->
-    <div class="admin-overlay" id="adminModal">
-        <div class="glass-card !max-w-sm p-6 relative">
-            <i class="fas fa-times absolute top-4 right-4 cursor-pointer text-gray-400 hover:text-white" onclick="closeAdmin()"></i>
-            
-            <h2 class="text-lg font-bold mb-4 text-white"><i class="fas fa-sliders-h mr-2"></i> Customize Update Page</h2>
-            
-            <!-- Login Step -->
-            <div id="loginSection">
-                <input type="password" id="adminPass" class="admin-input" placeholder="Admin Password">
-                <button class="btn-glass" onclick="verifyAdmin()">Unlock Admin</button>
-                <p id="passError" class="text-red-400 text-xs mt-2 hidden text-center">Incorrect Password!</p>
-            </div>
-
-            <!-- Settings Step -->
-            <div id="editSection" class="hidden">
-                <label class="block text-[10px] text-gray-400 mb-1 uppercase">Tool Name</label>
-                <input type="text" id="inputToolName" class="admin-input">
-                
-                <label class="block text-[10px] text-gray-400 mb-1 uppercase">Notice Message</label>
-                <textarea id="inputNotice" class="admin-input h-16 resize-none"></textarea>
-
-                <div class="mt-2 mb-4">
-                    <div class="color-picker-group">
-                        <label>Tool Name Color</label>
-                        <input type="color" id="colorTool" value="#ffffff">
-                    </div>
-                    <div class="color-picker-group">
-                        <label>Notice Text Color</label>
-                        <input type="color" id="colorNotice" value="#9ca3af">
-                    </div>
-                    <div class="color-picker-group">
-                        <label>Theme Accent (Glow/Icons)</label>
-                        <input type="color" id="colorAccent" value="#ffffff">
-                    </div>
-                    <div class="color-picker-group">
-                        <label>Box Background</label>
-                        <input type="color" id="colorBox" value="#1a1a1a">
-                    </div>
-                </div>
-                
-                <button class="btn-glass" onclick="saveSettings()">
-                    <i class="fas fa-save mr-1"></i> Save Changes
-                </button>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // --- ADMIN CONFIGURATION ---
-        const ADMIN_PASS = "mainul"; // আপনার পাসওয়ার্ড
-        
         // Auto Update Year
         document.getElementById('year').innerText = new Date().getFullYear();
-
-        // Storage Keys
-        const KEYS = {
-            TOOL: "mx_upd_tool",
-            NOTICE: "mx_upd_notice",
-            C_TOOL: "mx_upd_ctool",
-            C_NOTICE: "mx_upd_cnotice",
-            C_ACCENT: "mx_upd_caccent",
-            C_BOX: "mx_upd_cbox"
-        };
-
-        // DOM Elements
-        const DOM = {
-            tool: document.getElementById('displayToolName'),
-            notice: document.getElementById('displayNotice'),
-            root: document.documentElement
-        };
-
-        const INPUTS = {
-            tool: document.getElementById('inputToolName'),
-            notice: document.getElementById('inputNotice'),
-            cTool: document.getElementById('colorTool'),
-            cNotice: document.getElementById('colorNotice'),
-            cAccent: document.getElementById('colorAccent'),
-            cBox: document.getElementById('colorBox')
-        };
-
-        // Load Settings on Start
-        function loadSettings() {
-            if(localStorage.getItem(KEYS.TOOL)) DOM.tool.innerText = localStorage.getItem(KEYS.TOOL);
-            if(localStorage.getItem(KEYS.NOTICE)) DOM.notice.innerText = localStorage.getItem(KEYS.NOTICE);
-            
-            if(localStorage.getItem(KEYS.C_TOOL)) DOM.root.style.setProperty('--tool-color', localStorage.getItem(KEYS.C_TOOL));
-            if(localStorage.getItem(KEYS.C_NOTICE)) DOM.root.style.setProperty('--notice-color', localStorage.getItem(KEYS.C_NOTICE));
-            if(localStorage.getItem(KEYS.C_ACCENT)) DOM.root.style.setProperty('--theme-accent', localStorage.getItem(KEYS.C_ACCENT));
-            if(localStorage.getItem(KEYS.C_BOX)) DOM.root.style.setProperty('--box-bg-color', localStorage.getItem(KEYS.C_BOX));
-        }
-
-        window.onload = loadSettings;
-
-        // --- Secret Trigger Logic (5 Clicks or Ctrl+Shift+U) ---
-        let clickCount = 0;
-        let clickTimer;
-
-        document.getElementById('secretTrigger').addEventListener('click', () => {
-            clickCount++;
-            clearTimeout(clickTimer);
-            if (clickCount >= 5) {
-                openAdmin();
-                clickCount = 0;
-            } else {
-                clickTimer = setTimeout(() => { clickCount = 0; }, 800);
-            }
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'u') {
-                e.preventDefault();
-                openAdmin();
-            }
-        });
-
-        // --- Admin Functions ---
-        function openAdmin() {
-            document.getElementById('adminModal').classList.add('active');
-            document.getElementById('adminPass').value = '';
-            document.getElementById('passError').classList.add('hidden');
-            document.getElementById('loginSection').classList.remove('hidden');
-            document.getElementById('editSection').classList.add('hidden');
-        }
-
-        function closeAdmin() {
-            document.getElementById('adminModal').classList.remove('active');
-        }
-
-        function verifyAdmin() {
-            if (document.getElementById('adminPass').value === ADMIN_PASS) {
-                document.getElementById('loginSection').classList.add('hidden');
-                document.getElementById('editSection').classList.remove('hidden');
-                
-                // Populate current values to inputs
-                INPUTS.tool.value = DOM.tool.innerText;
-                INPUTS.notice.value = DOM.notice.innerText;
-                
-                // Get computed colors if not set in localstorage
-                const rs = getComputedStyle(DOM.root);
-                INPUTS.cTool.value = localStorage.getItem(KEYS.C_TOOL) || rgb2hex(rs.getPropertyValue('--tool-color'));
-                INPUTS.cNotice.value = localStorage.getItem(KEYS.C_NOTICE) || rgb2hex(rs.getPropertyValue('--notice-color'));
-                INPUTS.cAccent.value = localStorage.getItem(KEYS.C_ACCENT) || rgb2hex(rs.getPropertyValue('--theme-accent'));
-                // Box color logic is a bit complex due to rgba, we'll just set it to a solid hex for picker
-                INPUTS.cBox.value = localStorage.getItem(KEYS.C_BOX) || "#1a1a1a";
-                
-            } else {
-                document.getElementById('passError').classList.remove('hidden');
-            }
-        }
-
-        function saveSettings() {
-            // Save Texts
-            const t = INPUTS.tool.value.trim();
-            const n = INPUTS.notice.value.trim();
-            if(t) { localStorage.setItem(KEYS.TOOL, t); DOM.tool.innerText = t; }
-            if(n) { localStorage.setItem(KEYS.NOTICE, n); DOM.notice.innerText = n; }
-
-            // Save Colors
-            localStorage.setItem(KEYS.C_TOOL, INPUTS.cTool.value);
-            localStorage.setItem(KEYS.C_NOTICE, INPUTS.cNotice.value);
-            localStorage.setItem(KEYS.C_ACCENT, INPUTS.cAccent.value);
-            
-            // For box, add slight transparency to hex
-            const boxColorHex = INPUTS.cBox.value;
-            localStorage.setItem(KEYS.C_BOX, boxColorHex);
-
-            // Apply Colors Live
-            DOM.root.style.setProperty('--tool-color', INPUTS.cTool.value);
-            DOM.root.style.setProperty('--notice-color', INPUTS.cNotice.value);
-            DOM.root.style.setProperty('--theme-accent', INPUTS.cAccent.value);
-            
-            // Convert Hex to RGBA for Box background to keep glass effect inside box
-            const rgbaBox = hexToRgbA(boxColorHex, 0.4);
-            DOM.root.style.setProperty('--box-bg-color', rgbaBox);
-
-            closeAdmin();
-        }
-
-        // Helpers for Color conversion
-        function rgb2hex(rgb) {
-            rgb = rgb.match(/^rgba?[\s+]?\([\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?,[\s+]?(\d+)[\s+]?/i);
-            return (rgb && rgb.length === 4) ? "#" +
-            ("0" + parseInt(rgb[1],10).toString(16)).slice(-2) +
-            ("0" + parseInt(rgb[2],10).toString(16)).slice(-2) +
-            ("0" + parseInt(rgb[3],10).toString(16)).slice(-2) : '#ffffff';
-        }
-
-        function hexToRgbA(hex, alpha){
-            let c;
-            if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
-                c= hex.substring(1).split('');
-                if(c.length== 3){ c= [c[0], c[0], c[1], c[1], c[2], c[2]]; }
-                c= '0x'+c.join('');
-                return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+','+alpha+')';
-            }
-            return `rgba(25,25,25,${alpha})`;
-        }
     </script>
 </body>
 </html>
