@@ -1389,433 +1389,129 @@
             background: #00ff00;
             color: black;
         }
-        /* আপডেটেড সাপোর্ট বাবল - সুপার লাইভ */
-.support-bubble {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 100;
+/* ================== COMPACT GLASSMORPHISM BUBBLE ================== */
+:root {
+    --theme-green: #00ff00;
+    --glass-bg: rgba(10, 15, 10, 0.75);
+    --glass-border: rgba(0, 255, 0, 0.3);
+    --glass-panel: rgba(0, 255, 0, 0.08);
 }
 
+.support-bubble { position: fixed; bottom: 25px; right: 25px; z-index: 1000; }
+
+/* Bubble Button */
 .bubble-button {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #00ff00, #00cc00);
+    width: 55px; height: 55px;
+    background: linear-gradient(135deg, var(--theme-green), #00aa00);
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    box-shadow: 0 8px 25px rgba(0, 255, 0, 0.4);
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    animation: pulse 2s infinite;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
     position: relative;
+    animation: float 3s ease-in-out infinite;
 }
+.bubble-button:hover { transform: scale(1.1); box-shadow: 0 0 30px rgba(0, 255, 0, 0.8); }
+.bubble-button i { color: #000; font-size: 22px; }
+.notification-dot { position: absolute; top: -2px; right: -2px; width: 14px; height: 14px; background: #ff0000; border-radius: 50%; border: 2px solid #000; animation: pulse 1s infinite; }
 
-.bubble-button:hover {
-    transform: scale(1.15);
-    box-shadow: 0 12px 30px rgba(0, 255, 0, 0.7);
-}
-
-.bubble-button i {
-    color: black;
-    font-size: 22px;
-}
-
-.notification-dot {
-    position: absolute;
-    top: -2px;
-    right: -2px;
-    width: 12px;
-    height: 12px;
-    background: #ff0000;
-    border-radius: 50%;
-    border: 2px solid #050505;
-    animation: pulse 1s infinite;
-}
-
+/* Compact Glass Box */
 .bubble-content {
-    position: absolute;
-    bottom: 60px;
-    right: 0;
-    width: 320px;
-    background: rgba(15, 15, 15, 0.98);
+    position: absolute; bottom: 75px; right: 0;
+    width: 350px; max-width: 90vw;
+    background: var(--glass-bg);
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 255, 0, 0.3);
-    border-radius: 20px;
-    padding: 20px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px) scale(0.95);
-    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    box-shadow: 0 20px 50px rgba(0, 255, 0, 0.3);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 15px;
+    opacity: 0; visibility: hidden;
+    transform: translateY(30px) scale(0.9);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.8), inset 0 0 15px rgba(0, 255, 0, 0.1);
 }
+.bubble-content.active { opacity: 1; visibility: visible; transform: translateY(0) scale(1); }
 
-.bubble-content.active {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0) scale(1);
-}
+/* Common UI */
+.flex-center { display: flex; align-items: center; justify-content: center; gap: 8px; }
+.text-center { text-align: center; }
+.support-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; margin-bottom: 12px; }
+.support-header span { color: var(--theme-green); font-weight: bold; font-size: 13px; text-transform: uppercase; }
+.support-header i { color: var(--theme-green); font-size: 16px; }
 
-.bubble-content::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    right: 18px;
-    width: 24px;
-    height: 24px;
-    background: rgba(15, 15, 15, 0.98);
-    border-right: 1px solid rgba(0, 255, 0, 0.3);
-    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
-    transform: rotate(45deg);
-    backdrop-filter: blur(20px);
-}
+/* Badges */
+.glass-badge { background: rgba(0,255,0,0.1); border: 1px solid rgba(0,255,0,0.3); padding: 4px 10px; border-radius: 20px; font-size: 10px; color: #fff; display: flex; align-items: center; gap: 4px; }
+.glass-badge.highlight { background: rgba(0,255,0,0.2); color: var(--theme-green); font-weight: bold; }
+.live-dot { width: 6px; height: 6px; background: #ff0000; border-radius: 50%; animation: pulse 1s infinite; }
 
-.support-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(0, 255, 0, 0.2);
-}
+/* Slider System */
+.slider-container { width: 100%; overflow: hidden; position: relative; }
+.slider-track { display: flex; width: 300%; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); align-items: flex-start; }
+.slide { width: 33.333%; padding: 0 5px; flex-shrink: 0; box-sizing: border-box; }
 
-.support-header i {
-    color: #00ff00;
-    font-size: 20px;
-}
+/* Glass Panels */
+.glass-panel { background: var(--glass-panel); border: 1px solid rgba(0, 255, 0, 0.15); border-radius: 10px; padding: 10px; margin-bottom: 10px; }
 
-.support-header span {
-    color: #00ff00;
-    font-weight: bold;
-    font-size: 14px;
-}
+/* COMPACT Slide 1: Dev Info Profile & 2-Column Links */
+.compact-profile { display: flex; align-items: center; gap: 12px; border-left: 3px solid var(--theme-green); padding: 8px 12px; }
+.glass-avatar { width: 35px; height: 35px; background: rgba(0, 0, 0, 0.5); border: 1px solid var(--theme-green); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 16px; color: var(--theme-green); }
+.compact-profile h4 { color: #fff; margin: 0; font-size: 14px; font-weight: bold; }
+.compact-profile p { color: var(--theme-green); margin: 2px 0 0 0; font-size: 10px; font-weight: bold; }
 
-.live-badge {
-    background: rgba(255, 0, 0, 0.2);
-    padding: 4px 8px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    border: 1px solid rgba(255, 0, 0, 0.3);
-}
-
-.live-dot {
-    width: 8px;
-    height: 8px;
-    background: #ff0000;
-    border-radius: 50%;
-    animation: pulse 1s infinite;
-}
-
-.live-badge span {
-    color: #ff0000;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.agent-info {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 15px;
-    padding: 10px;
-    background: rgba(0, 255, 0, 0.05);
-    border-radius: 12px;
-    border: 1px solid rgba(0, 255, 0, 0.1);
-}
-
-.agent-avatar {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #00ff00, #00aa00);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.agent-avatar i {
-    color: black;
-    font-size: 20px;
-}
-
-.agent-details {
-    flex: 1;
-}
-
-.agent-name {
-    color: #00ff00;
-    font-weight: bold;
-    font-size: 13px;
-}
-
-.agent-status {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 11px;
-    color: #888;
-}
-
-.status-dot {
-    width: 6px;
-    height: 6px;
-    background: #00ff00;
-    border-radius: 50%;
-    animation: pulse 1s infinite;
-}
-
-.response-time {
-    background: rgba(0, 255, 0, 0.1);
-    padding: 4px 8px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    border: 1px solid rgba(0, 255, 0, 0.2);
-}
-
-.response-time i {
-    color: #00ff00;
-    font-size: 10px;
-}
-
-.response-time span {
-    color: #00ff00;
-    font-size: 10px;
-    font-weight: bold;
-}
-
-.quick-replies {
-    display: flex;
+/* GRID SYSTEM FOR LINKS (NO SCROLL NEEDED) */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    margin-bottom: 15px;
 }
-
-.quick-reply-btn {
-    flex: 1;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(0, 255, 0, 0.2);
-    border-radius: 20px;
-    padding: 6px 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    cursor: pointer;
-    transition: all 0.3s;
-    color: #fff;
-    font-size: 11px;
-}
-
-.quick-reply-btn:hover {
-    background: rgba(0, 255, 0, 0.2);
-    border-color: #00ff00;
-    transform: translateY(-2px);
-}
-
-.quick-reply-btn i {
-    color: #00ff00;
-    font-size: 12px;
-}
-
-.support-info {
-    margin: 15px 0;
-    padding: 10px;
-    background: rgba(0, 255, 0, 0.03);
-    border-radius: 12px;
-    border: 1px solid rgba(0, 255, 0, 0.1);
-}
-
-.support-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 8px 0;
-    padding: 8px;
+.glass-link-item {
+    display: flex; align-items: center; gap: 8px; padding: 8px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 255, 0, 0.15);
     border-radius: 8px;
-    transition: all 0.3s;
+    text-decoration: none; transition: all 0.3s ease;
+    overflow: hidden;
 }
+.glass-link-item:hover { background: rgba(0, 255, 0, 0.2); border-color: var(--theme-green); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,255,0,0.1); }
+.glass-link-item i:first-child { font-size: 15px; color: var(--theme-green); width: 18px; text-align: center; flex-shrink: 0; }
+.glass-link-item .text-box { display: flex; flex-direction: column; overflow: hidden; }
+.glass-link-item .text-box span { font-size: 8px; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; }
+.glass-link-item .text-box strong { 
+    color: #fff; font-size: 10px; font-weight: 500; 
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
+    transition: color 0.3s; 
+}
+.glass-link-item:hover .text-box strong { color: var(--theme-green); }
 
-.support-item:hover {
-    background: rgba(0, 255, 0, 0.1);
-    transform: translateX(5px);
-}
+/* Slide 2 & 3: Bot & TCP (Compact) */
+.bot-icon { font-size: 30px; color: var(--theme-green); margin-bottom: 8px; }
+.bot-header h3, .tcp-header h3 { color: #fff; margin: 0 0 8px 0; font-size: 15px; }
+.desc-box h4, .sys-box h4, .usage-box h4 { color: var(--theme-green); font-size: 12px; margin: 0 0 6px 0; border-bottom: 1px solid rgba(0,255,0,0.2); padding-bottom: 4px; }
+.desc-box p { color: #ccc; margin: 0; }
+.feature-list { list-style: none; padding: 0 !important; margin: 0; }
+.feature-list li { display: flex; align-items: center; gap: 6px; color: #ccc; padding: 3px 0; }
+.feature-list i { color: var(--theme-green); font-size: 10px; }
 
-.support-item i {
-    width: 16px;
-    color: #00ff00;
-    font-size: 14px;
-}
+.compact-flow { display: flex; align-items: center; justify-content: space-between; flex-direction: row !important; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 8px; border: 1px dashed var(--theme-green); }
+.compact-flow span { font-size: 9px; color: #fff; text-align: center; background: rgba(0,255,0,0.1); padding: 4px; border-radius: 4px; border: 1px solid rgba(0,255,0,0.2); flex: 1; }
+.compact-flow i { color: var(--theme-green); font-size: 10px; margin: 0 5px; transform: rotate(-90deg); }
 
-.support-item-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
+/* Navigation Buttons */
+.slide-navigation { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--glass-border); }
+.nav-btn { background: rgba(0, 255, 0, 0.1); border: 1px solid var(--theme-green); color: var(--theme-green); padding: 6px 15px; border-radius: 15px; font-size: 11px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 4px; outline: none; }
+.nav-btn:hover:not(:disabled) { background: var(--theme-green); color: #000; box-shadow: 0 0 10px var(--theme-green); }
+.nav-btn:disabled { opacity: 0.3; border-color: #555; color: #555; cursor: not-allowed; }
+.slide-indicator { color: #fff; font-size: 11px; font-weight: bold; letter-spacing: 1px; background: rgba(0,0,0,0.4); padding: 3px 8px; border-radius: 8px; }
 
-.support-label {
-    color: #666;
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+/* Overlay */
+.glass-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); z-index: 999; display: none; }
+.glass-overlay.active { display: block; }
 
-.support-value {
-    color: #fff;
-    text-decoration: none;
-    font-size: 11px;
-    transition: color 0.3s;
-}
+/* Animations */
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(255,0,0,0.6); } 70% { box-shadow: 0 0 0 6px rgba(255,0,0,0); } 100% { box-shadow: 0 0 0 0 rgba(255,0,0,0); } }
 
-.support-value:hover {
-    color: #00ff00;
-}
-
-.copy-btn-small {
-    background: rgba(0, 255, 0, 0.1);
-    border: 1px solid rgba(0, 255, 0, 0.2);
-    border-radius: 4px;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.copy-btn-small:hover {
-    background: #00ff00;
-    border-color: #00ff00;
-}
-
-.copy-btn-small i {
-    color: #00ff00;
-    font-size: 12px;
-}
-
-.copy-btn-small:hover i {
-    color: black;
-}
-
-.typing-indicator {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    margin: 10px 0;
-    padding: 10px 15px;
-    background: rgba(0, 255, 0, 0.05);
-    border-radius: 20px;
-    border: 1px solid rgba(0, 255, 0, 0.1);
-    width: fit-content;
-    max-width: 100%;
-}
-
-.typing-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    margin: 15px 0;
-    padding: 15px 20px;
-    background: rgba(0, 255, 0, 0.08);
-    border: 1px solid rgba(0, 255, 0, 0.3);
-    border-radius: 30px;
-    width: 100%;
-    box-shadow: 0 4px 15px rgba(0, 255, 0, 0.1);
-    backdrop-filter: blur(5px);
-}
-
-.typing-dots {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.typing-dots span {
-    width: 10px;
-    height: 10px;
-    background: #00ff00;
-    border-radius: 50%;
-    animation: typing 1.4s infinite;
-    box-shadow: 0 0 10px #00ff00;
-}
-
-.typing-dots span:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.typing-dots span:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.typing-text {
-    color: #00ff00;
-    font-size: 13px;
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    background: rgba(0, 255, 0, 0.1);
-    padding: 5px 15px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 255, 0, 0.3);
-}
-
-@keyframes typing {
-    0%, 60%, 100% {
-        transform: translateY(0);
-        opacity: 0.6;
-    }
-    30% {
-        transform: translateY(-8px);
-        opacity: 1;
-    }
-}
-@keyframes typing {
-    0%, 60%, 100% {
-        transform: translateY(0);
-        opacity: 0.6;
-    }
-    30% {
-        transform: translateY(-px);
-        opacity: 1;
-    }
-}
-
-.support-footer {
-    text-align: center;
-    color: #666;
-    font-size: 10px;
-    margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 5px;
-}
-
-.support-footer i {
-    color: #00ff00;
-    font-size: 12px;
-}
-
-.overlay-bubble {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 99;
-    display: none;
-}
-
-.overlay-bubble.active {
-    display: block;
-}
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1886,129 +1582,786 @@
     justify-content: center;
     border: 2px solid #00ff00;
 }
-    </style>
+
+
+/* ========== PREMIUM TOP BAR WITH EFFECT - UPDATED ========== */
+.top-bar-premium {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+    animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tutorial Click Area */
+.tutorial-click-area {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Pulse Ring Effect - Attention Grabbing */
+.pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #00ff00, #008800);
+    border-radius: 60px;
+    opacity: 0.6;
+    animation: pulseRing 1.8s ease-in-out infinite;
+    z-index: 0;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: translate(-50%, -50%) scale(0.98);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.02);
+        opacity: 0.3;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.98);
+        opacity: 0.8;
+    }
+}
+
+/* Tutorial Content */
+.tutorial-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 18px 30px;
+    background: linear-gradient(135deg, #00cc00, #009900);
+    border-radius: 60px;
+    box-shadow: 0 10px 30px rgba(0, 255, 0, 0.4);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Shine Effect on Hover */
+.tutorial-content::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        115deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.3) 45%,
+        rgba(255, 255, 255, 0.3) 55%,
+        transparent 70%
+    );
+    transform: rotate(35deg);
+    transition: left 0.7s ease;
+    pointer-events: none;
+}
+
+.tutorial-click-area:hover .tutorial-content::before {
+    left: 100%;
+}
+
+.tutorial-click-area:hover .tutorial-content {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(0, 255, 0, 0.6);
+    background: linear-gradient(135deg, #00dd00, #00aa00);
+}
+
+.tutorial-click-area:active .tutorial-content {
+    transform: translateY(2px);
+}
+
+/* Play Icon */
+.tutorial-content i:first-child {
+    font-size: 28px;
+    color: white;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.3));
+    animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Main Text */
+.tutorial-content .main-text {
+    font-size: 18px;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Sub Text */
+.tutorial-content .sub-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: #ffffaa;
+    letter-spacing: 0.5px;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 4px 12px;
+    border-radius: 30px;
+}
+
+/* Arrow Icon */
+.tutorial-content .arrow-icon {
+    font-size: 16px;
+    color: white;
+    transition: transform 0.3s ease;
+}
+
+.tutorial-click-area:hover .arrow-icon {
+    transform: translateX(8px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .tutorial-content {
+        flex-wrap: wrap;
+        padding: 12px 20px;
+        gap: 10px;
+    }
+    
+    .tutorial-content .main-text {
+        font-size: 14px;
+    }
+    
+    .tutorial-content .sub-text {
+        font-size: 10px;
+    }
+    
+    .tutorial-content i:first-child {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 580px) {
+    .tutorial-content .sub-text {
+        display: none;
+    }
+    
+    .tutorial-content {
+        padding: 12px 18px;
+    }
+    
+    .tutorial-content .main-text {
+        font-size: 12px;
+        letter-spacing: 0.5px;
+    }
+}
+/* ========== SMALL VIDEO POPUP STYLES ========== */
+.video-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-popup-overlay.active {
+    display: flex;
+}
+
+.video-popup {
+    width: 90%;
+    max-width: 500px;
+    background: linear-gradient(135deg, #0a1a0a, #051005);
+    border: 2px solid #00ff00;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 40px rgba(0, 255, 0, 0.3);
+    animation: popupZoomIn 0.3s ease;
+}
+
+@keyframes popupZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.video-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+}
+
+.popup-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.popup-title i {
+    font-size: 22px;
+    color: #00ff00;
+}
+
+.popup-title span {
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ff00;
+}
+
+.close-popup {
+    background: none;
+    border: none;
+    color: #ff4444;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close-popup:hover {
+    transform: scale(1.2);
+    color: #ff0000;
+}
+
+/* Video Tabs */
+.video-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.video-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 40px;
+    color: #00ff00;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.video-tab i {
+    font-size: 18px;
+}
+
+.video-tab.active {
+    background: #00ff00;
+    color: black;
+    border-color: #00ff00;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.video-tab:hover:not(.active) {
+    background: rgba(0, 255, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+/* Video Player */
+.video-player {
+    display: none;
+    margin-bottom: 15px;
+}
+
+.video-player.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #000;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Video Footer */
+.video-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid #ff0000;
+    border-radius: 10px;
+    color: #ff8888;
+    font-size: 12px;
+    text-align: center;
+}
+
+.video-footer i {
+    font-size: 16px;
+    color: #ff0000;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .video-popup {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .popup-title span {
+        font-size: 14px;
+    }
+    
+    .video-tab {
+        font-size: 11px;
+        padding: 8px;
+    }
+    
+    .video-tab i {
+        font-size: 14px;
+    }
+    
+    .video-footer {
+        font-size: 10px;
+        flex-wrap: wrap;
+    }
+}
+/* ========== VIDEO POPUP STYLES (SIMPLE) ========== */
+.video-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.video-popup-overlay.active { display: flex; }
+
+.video-popup {
+    width: 90%;
+    max-width: 500px;
+    background: linear-gradient(135deg, #0a1a0a, #051005);
+    border: 2px solid #00ff00;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 40px rgba(0, 255, 0, 0.3);
+    animation: popupZoom 0.3s ease;
+}
+@keyframes popupZoom {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.video-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 255, 0, 0.3);
+}
+.popup-title { display: flex; align-items: center; gap: 10px; }
+.popup-title i { font-size: 22px; color: #00ff00; }
+.popup-title span { font-size: 18px; font-weight: bold; color: #00ff00; }
+.close-popup { background: none; border: none; color: #ff4444; font-size: 22px; cursor: pointer; transition: all 0.3s; }
+.close-popup:hover { transform: scale(1.2); color: #ff0000; }
+
+.video-tabs { display: flex; gap: 10px; margin-bottom: 15px; }
+.video-tab {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    background: rgba(0, 255, 0, 0.1);
+    border: 1px solid rgba(0, 255, 0, 0.3);
+    border-radius: 40px;
+    color: #00ff00;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+.video-tab.active { background: #00ff00; color: black; box-shadow: 0 0 10px #00ff00; }
+.video-tab:hover:not(.active) { background: rgba(0, 255, 0, 0.2); transform: translateY(-2px); }
+
+.video-player-content { display: none; margin-bottom: 15px; }
+.video-player-content.active { display: block; animation: fadeIn 0.3s; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 12px;
+    background: #000;
+    overflow: hidden;
+}
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.popup-footer-support {
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid #ff0000;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: #ff8888;
+    font-size: 11px;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 480px) {
+    .video-popup { padding: 15px; width: 95%; }
+    .popup-title span { font-size: 14px; }
+    .video-tab { font-size: 11px; padding: 8px; }
+    .popup-footer-support { font-size: 9px; }
+}
+/* Video Description Styles */
+.video-description {
+    background: rgba(0, 0, 0, 0.4);
+    padding: 12px;
+    border-radius: 10px;
+    margin: 12px 0;
+    border-left: 3px solid #00ff00;
+}
+
+.video-description p {
+    color: #ddd;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.quick-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.quick-links a {
+    color: #00ff00;
+    text-decoration: none;
+    font-size: 11px;
+    padding: 4px 10px;
+    background: rgba(0, 255, 0, 0.1);
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+.quick-links a:hover {
+    background: #00ff00;
+    color: black;
+    transform: translateY(-2px);
+}  </style>
 </head>
 <body>
     <div class="fixed top-1/4 left-1/4 w-96 h-96 bg-[#00ff00] rounded-full mix-blend-multiply filter blur-[128px] opacity-10 -z-10"></div>
 <div class="fixed bottom-1/4 right-1/4 w-96 h-96 bg-[#ff0000] rounded-full mix-blend-multiply filter blur-[128px] opacity-10 -z-10"></div>
 
-<!-- সুপার সাপোর্ট বাবল - লাইভ ফিল -->
+<!-- Glassmorphism Support Bubble -->
 <div class="support-bubble">
     <div class="bubble-button" onclick="toggleBubble()">
         <i class="fas fa-headset"></i>
         <span class="notification-dot"></span>
     </div>
-    <div class="bubble-content" id="bubbleContent">
-        <!-- হেডার লাইভ স্ট্যাটাস -->
+
+    <div class="bubble-content glass-effect" id="bubbleContent">
+        <!-- হেডার -->
         <div class="support-header">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-user-circle"></i>
-                <span>MAINUL SUPPORT</span>
+            <div class="flex-center gap-2">
+                <i class="fas fa-terminal"></i>
+                <span id="slideTitle">Developer Info</span>
             </div>
-            <div class="live-badge">
+            <div class="live-badge glass-badge">
                 <span class="live-dot"></span>
-                <span>LIVE</span>
+                <span>SYSTEM</span>
             </div>
         </div>
-        
-        <!-- এজেন্ট তথ্য -->
-        <div class="agent-info">
-            <div class="agent-avatar">
-                <i class="fas fa-robot"></i>
-            </div>
-            <div class="agent-details">
-                <div class="agent-name">MAINUL - X</div>
-                <div class="agent-status">
-                    <span class="status-dot"></span>
-                    Online Now
+
+        <!-- স্লাইডার কন্টেইনার -->
+        <div class="slider-container">
+            <div class="slider-track" id="sliderTrack">
+                
+                <!-- Page 1: Developer Information -->
+                <div class="slide scrollable-slide">
+                    <div class="profile-card glass-panel">
+                        <div class="avatar glass-avatar"><i class="fas fa-user-ninja"></i></div>
+                        <div class="info">
+                            <h4>Md. Mainul Islam</h4>
+                            <p>Owner: MAINUL - X</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-list">
+                        <!-- Direct Hyperlinks -->
+                        <a href="https://github.com/M41NUL" target="_blank" class="glass-link-item">
+                            <i class="fab fa-github"></i>
+                            <div class="text-box">
+                                <span>GitHub</span>
+                                <strong>M41NUL</strong>
+                            </div>
+                            <i class="fas fa-external-link-alt link-icon"></i>
+                        </a>
+
+                        <a href="https://wa.me/8801308850528" target="_blank" class="glass-link-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div class="text-box">
+                                <span>WhatsApp</span>
+                                <strong>+8801308850528</strong>
+                            </div>
+                            <i class="fas fa-external-link-alt link-icon"></i>
+                        </a>
+
+                        <a href="https://t.me/mdmainulislaminfo" target="_blank" class="glass-link-item">
+                            <i class="fab fa-telegram-plane"></i>
+                            <div class="text-box">
+                                <span>Telegram</span>
+                                <strong>@mdmainulislaminfo</strong>
+                            </div>
+                            <i class="fas fa-external-link-alt link-icon"></i>
+                        </a>
+
+                        <a href="https://t.me/mainul_x_official" target="_blank" class="glass-link-item">
+                            <i class="fas fa-bullhorn"></i>
+                            <div class="text-box">
+                                <span>TG Channel</span>
+                                <strong>MAINUL X OFFICIAL</strong>
+                            </div>
+                            <i class="fas fa-external-link-alt link-icon"></i>
+                        </a>
+
+                        <a href="https://t.me/mainul_x_official_gc" target="_blank" class="glass-link-item">
+                            <i class="fas fa-users"></i>
+                            <div class="text-box">
+                                <span>TG Group</span>
+                                <strong>MAINUL X GC</strong>
+                            </div>
+                            <i class="fas fa-external-link-alt link-icon"></i>
+                        </a>
+
+                        <a href="https://youtube.com/@mdmainulislaminfo" target="_blank" class="glass-link-item">
+                            <i class="fab fa-youtube"></i>
+                            <div class="text-box">
+                                <span>YouTube</span>
+                                <strong>@mdmainulislaminfo</strong>
+                            </div>
+                            <i class="fas fa-external-link-alt link-icon"></i>
+                        </a>
+
+                        <a href="mailto:githubmainul@gmail.com" class="glass-link-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="text-box">
+                                <span>Email 1</span>
+                                <strong>githubmainul@gmail.com</strong>
+                            </div>
+                            <i class="fas fa-external-link-alt link-icon"></i>
+                        </a>
+
+                        <a href="mailto:devmainulislam@gmail.com" class="glass-link-item">
+                            <i class="fas fa-envelope-open-text"></i>
+                            <div class="text-box">
+                                <span>Email 2</span>
+                                <strong>devmainulislam@gmail.com</strong>
+                            </div>
+                            <i class="fas fa-external-link-alt link-icon"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-            <div class="response-time">
-                <i class="fas fa-bolt"></i>
-                2min
+
+                <!-- Page 2: Bot Information -->
+                <div class="slide">
+                    <div class="bot-header glass-panel text-center">
+                        <i class="fas fa-robot bot-icon"></i>
+                        <h3>Free Fire TCP Bot</h3>
+                        <div class="badges flex-center">
+                            <span class="glass-badge">Version: V4</span>
+                            <span class="glass-badge highlight">Total Commands: 62+</span>
+                        </div>
+                    </div>
+                    
+                    <div class="desc-box glass-panel">
+                        <h4><i class="fas fa-info-circle"></i> Description</h4>
+                        <p>This bot is designed for Free Fire automation and TCP control system. Users can control multiple actions inside guild using commands.</p>
+                    </div>
+
+                    <div class="sys-box glass-panel">
+                        <h4><i class="fas fa-cogs"></i> Main System</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> TCP Control Panel Based</li>
+                            <li><i class="fas fa-check"></i> Command Driven Automation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Page 3: TCP Control Panel -->
+                <div class="slide">
+                    <div class="tcp-header glass-panel text-center">
+                        <i class="fas fa-network-wired bot-icon"></i>
+                        <h3>TCP Control Panel</h3>
+                        <span class="glass-badge highlight" style="margin-top: 5px; display: inline-block;">System Type: Control Panel</span>
+                    </div>
+
+                    <div class="sys-box glass-panel">
+                        <h4><i class="fas fa-list-ul"></i> Functions</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-bolt"></i> Guild Control System</li>
+                            <li><i class="fas fa-bolt"></i> Command Execution via TCP</li>
+                            <li><i class="fas fa-bolt"></i> Automated Request System</li>
+                            <li><i class="fas fa-bolt"></i> Real-time Action Trigger</li>
+                        </ul>
+                    </div>
+
+                    <div class="usage-box glass-panel">
+                        <h4><i class="fas fa-random"></i> Usage Flow</h4>
+                        <div class="flow-chart">
+                            <span>User gives command</span>
+                            <i class="fas fa-arrow-right"></i>
+                            <span>TCP Panel processes</span>
+                            <i class="fas fa-arrow-right"></i>
+                            <span>Bot executes action</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        
-        <!-- কুইক রিপ্লাই বাটন -->
-        <div class="quick-replies">
-            <button class="quick-reply-btn" onclick="quickReply('help')">
-                <i class="fas fa-question-circle"></i> Help
+
+        <!-- Next / Previous Navigation -->
+        <div class="slide-navigation">
+            <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled>
+                <i class="fas fa-chevron-left"></i> Previous
             </button>
-            <button class="quick-reply-btn" onclick="quickReply('price')">
-                <i class="fas fa-tag"></i> Price
-            </button>
-            <button class="quick-reply-btn" onclick="quickReply('bot')">
-                <i class="fas fa-robot"></i> Bot
+            <div class="slide-indicator" id="slideIndicator">1 / 3</div>
+            <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">
+                Next <i class="fas fa-chevron-right"></i>
             </button>
         </div>
         
-        <!-- কন্টাক্ট ইনফো -->
-        <div class="support-info">
-            <div class="support-item">
-                <i class="fab fa-telegram-plane"></i>
-                <div class="support-item-content">
-                    <span class="support-label">Telegram</span>
-                    <a href="https://t.me/mdmainulislaminfo" target="_blank" class="support-value">@mdmainulislaminfo</a>
-                </div>
-                <button class="copy-btn-small" onclick="copyText('@mdmainulislaminfo')">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            
-            <div class="support-item">
-                <i class="fab fa-whatsapp"></i>
-                <div class="support-item-content">
-                    <span class="support-label">WhatsApp</span>
-                    <a href="https://wa.me/8801308850528" target="_blank" class="support-value">+8801308850528</a>
-                </div>
-                <button class="copy-btn-small" onclick="copyText('+8801308850528')">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            
-            <div class="support-item">
-                <i class="fab fa-github"></i>
-                <div class="support-item-content">
-                    <span class="support-label">GitHub</span>
-                    <a href="https://github.com/M41NUL" target="_blank" class="support-value">M41NUL</a>
-                </div>
-                <button class="copy-btn-small" onclick="copyText('M41NUL')">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-            
-            <div class="support-item">
-                <i class="fas fa-envelope"></i>
-                <div class="support-item-content">
-                    <span class="support-label">Email</span>
-                    <a href="mailto:githubmainul@gmail.com" class="support-value">githubmainul@gmail.com</a>
-                </div>
-                <button class="copy-btn-small" onclick="copyText('githubmainul@gmail.com')">
-                    <i class="fas fa-copy"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- টাইপিং ইন্ডিকেটর (বড় গ্রিন কার্ড) -->
-<div class="typing-indicator">
-    <div class="typing-dots">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-    <div class="typing-text">Support is typing...</div>
-</div>
-        
-        <!-- ফুটার -->
-        <div class="support-footer">
-            <i class="fas fa-shield-alt"></i>
-            <span>24/7 Premium Support • Response < 5min</span>
-        </div>
     </div>
 </div>
 
 <!-- Bubble Overlay -->
-<div class="overlay-bubble" id="bubbleOverlay" onclick="closeBubble()"></div>
+<div class="overlay-bubble glass-overlay" id="bubbleOverlay" onclick="closeBubble()"></div>
+
+<!-- Video Tutorial Popup Trigger -->
+<div class="top-bar-premium">
+    <div class="tutorial-click-area" onclick="showVideoPopup()">
+        <div class="pulse-ring"></div>
+        <div class="tutorial-content">
+            <i class="fas fa-play-circle"></i>
+            <span class="main-text">▶ WATCH VIDEO TUTORIAL</span>
+            <span class="sub-text">Setup Bot + TCP Control Panel Easily</span>
+            <i class="fas fa-arrow-right arrow-icon"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Video Popup Modal (YouTube Shorts এম্বেড) -->
+<div id="videoPopup" class="video-popup-overlay" onclick="if(event.target === this) closeVideoPopup()">
+    <div class="video-popup">
+        <div class="video-popup-header">
+            <div class="popup-title">
+                <i class="fab fa-youtube" style="color: #ff0000;"></i>
+                <span>VIDEO TUTORIAL</span>
+            </div>
+            <button class="close-popup" onclick="closeVideoPopup()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- YouTube Shorts Video Embed -->
+        <div class="video-wrapper">
+            <iframe 
+                id="tutorialVideo"
+                src="https://www.youtube.com/embed/ImnIW9s0Z7I?autoplay=0&rel=0" 
+                title="Free Fire TCP Bot Setup Tutorial"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+        <!-- Video Description / Caption -->
+        <div class="video-description">
+            <p>🔥 আসসালামু আলাইকুম! Free Fire Guest Account তৈরি করে TCP Bot সেটআপ করুন সহজেই। সম্পূর্ণ গাইড দেখুন ভিডিওতে।</p>
+            <div class="quick-links">
+                <a href="https://apkpure.com/mt-manager/bin.mt.plus" target="_blank">📥 MT Manager</a>
+                <a href="https://tcpffbot.netlify.app/" target="_blank">🌐 TCP Panel</a>
+                <a href="https://t.me/mainul_x_official" target="_blank">📢 Telegram Channel</a>
+            </div>
+        </div>
+        
+        <div class="popup-footer-support">
+            <i class="fas fa-headset"></i>
+            <span>Need help? Telegram: @mdmainulislaminfo | WhatsApp: +8801308850528</span>
+        </div>
+    </div>
+</div>
 
     <div id="loginPage" class="page">
         <div class="login-container">
@@ -2287,7 +2640,33 @@
     let consoleLines = [
         { text: 'Console Initialized...', timestamp: '00:00:00' }
     ];
-    
+// ========== VIDEO POPUP FUNCTIONS ==========
+
+function showVideoPopup() {
+    const popup = document.getElementById('videoPopup');
+    if (popup) {
+        popup.classList.add('active');
+        if (typeof addConsoleLine === 'function') addConsoleLine('🎬 Video tutorial popup opened');
+    }
+}
+
+function closeVideoPopup() {
+    const popup = document.getElementById('videoPopup');
+    if (popup) {
+        popup.classList.remove('active');
+        if (typeof addConsoleLine === 'function') addConsoleLine('📹 Video tutorial popup closed');
+    }
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const popup = document.getElementById('videoPopup');
+        if (popup && popup.classList.contains('active')) {
+            closeVideoPopup();
+        }
+    }
+});
     // Dual Status Switch
     let showServer = true;
 
@@ -3421,58 +3800,73 @@ function showSection(section) {
         renderConsole();
     }
 
-    // ========== BUBBLE FUNCTIONS ==========
-    function toggleBubble() {
-        const bubble = document.getElementById('bubbleContent');
-        const overlay = document.getElementById('bubbleOverlay');
-        
-        if (bubble.classList.contains('active')) {
-            bubble.classList.remove('active');
-            overlay.classList.remove('active');
-        } else {
-            bubble.classList.add('active');
-            overlay.classList.add('active');
-        }
+// ========== SUPER GLASSMORPHISM BUBBLE LOGIC ==========
+
+let currentSlideIndex = 0;
+const totalSlides = 3;
+const slideTitles = ["Developer Info", "Bot Information", "TCP Panel Info"];
+
+// Toggle Open/Close
+function toggleBubble() {
+    const bubble = document.getElementById('bubbleContent');
+    const overlay = document.getElementById('bubbleOverlay');
+    
+    if (bubble.classList.contains('active')) {
+        closeBubble();
+    } else {
+        bubble.classList.add('active');
+        overlay.classList.add('active');
+        // Reset to first slide when opened
+        currentSlideIndex = 0;
+        updateSlider();
     }
+}
 
-    function closeBubble() {
-        document.getElementById('bubbleContent').classList.remove('active');
-        document.getElementById('bubbleOverlay').classList.remove('active');
-    }
+// Close Function
+function closeBubble() {
+    document.getElementById('bubbleContent').classList.remove('active');
+    document.getElementById('bubbleOverlay').classList.remove('active');
+}
 
-    // Bubble button setup
-    (function() {
-        const bubbleBtn = document.querySelector('.bubble-button');
-        if (bubbleBtn) {
-            bubbleBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                toggleBubble();
-            });
-        }
-    })();
+// Slider Function (Next / Previous)
+function changeSlide(direction) {
+    currentSlideIndex += direction;
+    
+    // Safety check
+    if(currentSlideIndex < 0) currentSlideIndex = 0;
+    if(currentSlideIndex >= totalSlides) currentSlideIndex = totalSlides - 1;
 
-    function quickReply(type) {
-        let message = '';
-        if (type === 'help') message = 'I need help with the bot';
-        else if (type === 'price') message = 'Tell me about pricing';
-        else if (type === 'bot') message = 'Bot features please';
-        
-        addConsoleLine(`💬 Support: ${message}`);
-        showPopup('✅ Message sent to support!', 'success');
+    updateSlider();
+}
+
+function updateSlider() {
+    const track = document.getElementById('sliderTrack');
+    const title = document.getElementById('slideTitle');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicator = document.getElementById('slideIndicator');
+
+    // Move Track (33.333% per slide)
+    track.style.transform = `translateX(-${currentSlideIndex * 33.333}%)`;
+
+    // Update Header Title
+    title.innerText = slideTitles[currentSlideIndex];
+
+    // Update Indicator Text
+    indicator.innerText = `${currentSlideIndex + 1} / ${totalSlides}`;
+
+    // Enable/Disable Buttons
+    prevBtn.disabled = currentSlideIndex === 0;
+    nextBtn.disabled = currentSlideIndex === totalSlides - 1;
+}
+
+// Close on Escape Key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
         closeBubble();
     }
+});
 
-    function copyText(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            showPopup('✅ Copied to clipboard!', 'success');
-        });
-    }
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeBubble();
-        }
-    });
 </script>
 </body>
 </html>
