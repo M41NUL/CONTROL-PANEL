@@ -1,4 +1,4 @@
-# 🔥 **_MAINUL TCP CONTROL PANEL_** 🚀
+# 🔥 **_MUJAHID TCP BOT CONTROL PANEL_** 🚀
 
 ![Version](https://img.shields.io/badge/version-1.0.0-00ff00?style=for-the-badge&logo=github)
 ![Release](https://img.shields.io/badge/release-stable-brightgreen?style=for-the-badge)
@@ -54,7 +54,7 @@
 
 ```
 
-Username: mainul
+Username: mujahid
 Password: 1234
 
 ```
@@ -72,7 +72,7 @@ Password: 1234
 ## 📦 **_INSTALLATION_**
 
 ```bash
-git clone https://github.com/M41NUL/CONTROL-PANEL.git
+git clone https://github.com/MUJAHID/CONTROL-PANEL.git
 cd CONTROL-PANEL
 pip install -r requirements.txt
 python app.py
@@ -96,14 +96,14 @@ python app.py
 
 ## 💀 DEVELOPER
 
-![Developer](https://img.shields.io/badge/DEVELOPER-MAINUL--X-FF6B6B?style=for-the-badge)
+![Developer](https://img.shields.io/badge/DEVELOPER-MUJAHID--X-FF6B6B?style=for-the-badge)
 
 | Platform | Contact |
 |----------|---------|
-| ![Telegram](https://img.shields.io/badge/-@mdmainulislaminfo-26A5E4?style=flat&logo=telegram) | [@mdmainulislaminfo](https://t.me/mdmainulislaminfo) |
-| ![WhatsApp](https://img.shields.io/badge/-+8801308850528-25D366?style=flat&logo=whatsapp) | [Chat Now](https://wa.me/8801308850528) |
-| ![GitHub](https://img.shields.io/badge/-@M41NUL-181717?style=flat&logo=github) | [https://github.com/M41NUL](https://github.com/M41NUL) |
-| ![Email](https://img.shields.io/badge/-githubmainul@gmail.com-EA4335?style=flat&logo=gmail) | [Send Email](mailto:githubmainul@gmail.com) |
+| ![Telegram](https://img.shields.io/badge/-@mujahidbd71info-26A5E4?style=flat&logo=telegram) | [@mujahidbd71](https://t.me/mujahidbd71) |
+| ![WhatsApp](https://img.shields.io/badge/-+8801402546458-25D366?style=flat&logo=whatsapp) | [Chat Now](https://wa.me/8801402546458) 
+
+| ![Email](https://img.shields.io/badge/-mujahidbd78@gmail.com-EA4335?style=flat&logo=gmail) | [Send Email](mailto:mujahidbd78@gmail.com) |
 
 ---
 
@@ -122,7 +122,7 @@ python app.py
 
 ```
 
-Copyright (c) 2026 MAINUL - X (Md. Mainul Islam)
+Copyright (c) 2026 MUJAHID - X (Md. Mujahid Hussain)
 
 ```
 
@@ -138,7 +138,7 @@ Copyright (c) 2026 MAINUL - X (Md. Mainul Islam)
 
 ## 🧠 POWERED BY
 
-![MAINUL](https://img.shields.io/badge/🔥%20MAINUL--X%20TEAM%20🔥-2026-ff69b4?style=for-the-badge)
+![MUJAHID](https://img.shields.io/badge/🔥%20MAINUL--X%20TEAM%20🔥-2026-ff69b4?style=for-the-badge)
 
 ---
 
