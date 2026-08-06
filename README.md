@@ -1,4 +1,4 @@
-# 🔥 **_MAINUL TCP CONTROL PANEL_** 🚀
+# 🔥 **_MUJAHID TCP CONTROL PANEL_** 🚀
 
 ![Version](https://img.shields.io/badge/version-1.0.0-00ff00?style=for-the-badge&logo=github)
 ![Release](https://img.shields.io/badge/release-stable-brightgreen?style=for-the-badge)
